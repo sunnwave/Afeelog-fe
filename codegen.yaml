@@ -1,0 +1,14 @@
+schema:
+  - https://backendonline.codebootcamp.co.kr/graphql
+
+generates:
+  ./src/commons/graphql/schema.json:
+    plugins:
+      - introspection
+
+  ./src/commons/graphql/generated/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      typesPrefix: I
