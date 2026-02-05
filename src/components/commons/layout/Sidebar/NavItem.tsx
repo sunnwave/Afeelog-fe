@@ -15,10 +15,8 @@ export default function NavItem({
     <Link
       href={href}
       className={[
-        "flex items-center rounded-xl px-3 py-2 text-sm",
-        active
-          ? "bg-[#FFF7E6] text-[#B45309] font-semibold"
-          : "text-[#4B5563] hover:bg-[#FFF7E6]/60",
+        "flex items-center rounded-xl px-3 py-2 text-sm hover:cursor-pointer transition-transform duration-150 ease-out motion-reduce:transition-none motion-reduce:hover:scale-100 hover:scale-[1.03]",
+        active ? "bg-[#CC7533] text-[#ffffff] font-medium" : "text-[#111827]",
       ].join(" ")}
     >
       {label}

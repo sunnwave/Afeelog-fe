@@ -9,14 +9,14 @@ export default function Sidebar() {
   const isLoggedIn = !!accessToken;
 
   return (
-    <div className="sticky top-0 h-screen border-r border-[#E5E7EB] bg-white/70 px-4 py-6 backdrop-blur">
+    <div className="sticky top-0 h-screen  border-r border-[#E5E7EB] bg-white/70 px-4 py-6 backdrop-blur">
       {/* Profile entry (top) */}
       <div className="mb-5 hidden lg:block">
         <Logo />
       </div>
       <Link
         href={isLoggedIn ? "/me" : "/login"}
-        className="mb-6 flex items-center gap-3 rounded-2xl border border-[#E5E7EB] bg-white px-3 py-3 hover:bg-[#FFF7E6]/40"
+        className="mb-6 flex items-center gap-3 rounded-2xl border border-[#E5E7EB] bg-white px-4 py-4 hover:bg-[#FFF7E6]/40"
       >
         {isLoggedIn && (
           <div className="h-10 w-10 rounded-full bg-[#FFF7E6] ring-1 ring-[#E5E7EB]" />
@@ -35,7 +35,7 @@ export default function Sidebar() {
       {/* Write CTA (separate from active tab color) */}
       <Link
         href={isLoggedIn ? "/records/new" : "/login"}
-        className="mb-6 flex items-center border border-amber-600 bg-white justify-center rounded-2xl px-4 py-3 text-sm font-semibold text-amber-600 hover:opacity-95"
+        className="mb-6 flex items-center border border-[#B45309] bg-white justify-center rounded-2xl px-4 py-3 text-sm font-semibold text-[#B45309] transition-transform duration-150 ease-out hover:cursor-pointer hover:scale-[1.03]"
       >
         작성(+)
       </Link>
