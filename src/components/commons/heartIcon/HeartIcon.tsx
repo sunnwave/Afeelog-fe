@@ -1,7 +1,7 @@
 import { Heart } from "lucide-react";
 import { JSX, useState } from "react";
 
-export default function HeardtIcon({
+export default function HeartIcon({
   isLiked,
   likeCount,
 }: {

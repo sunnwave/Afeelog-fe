@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import HeardtIcon from "./HeartIcon";
+import HeartIcon from "./HeartIcon";
 
-const meta: Meta<typeof HeardtIcon> = {
+const meta: Meta<typeof HeartIcon> = {
   title: "commons/HeardtIcon",
-  component: HeardtIcon,
+  component: HeartIcon,
   parameters: {
     layout: "fullscreen",
   },
@@ -21,7 +21,7 @@ const meta: Meta<typeof HeardtIcon> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof HeardtIcon>;
+type Story = StoryObj<typeof HeartIcon>;
 
 export const Default: Story = {
   args: {

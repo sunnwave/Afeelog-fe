@@ -28,6 +28,9 @@ export default function RecordFeedCard({
   };
 
   return (
-    <article className="relative bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4]"></article>
+    <article
+      onClick={onClick}
+      className="relative bg-card rounded-2xl border border-border hover:border-primary/50 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4]"
+    ></article>
   );
 }

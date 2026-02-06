@@ -8,8 +8,8 @@ type AvatarSize = "xs" | "sm" | "md" | "lg";
 type AvatarType = "filled" | "outlined";
 
 const sizeClasses: Record<AvatarSize, { px: number; cls: string }> = {
-  xs: { px: 32, cls: "h-8 w-8" },
-  sm: { px: 36, cls: "h-9 w-9" },
+  xs: { px: 32, cls: "h-8 w-8 text-sm font-semibold" },
+  sm: { px: 36, cls: "h-9 w-9 text-sm font-semibold" },
   md: { px: 45, cls: "h-[45px] w-[45px] text-xl font-semibold" },
   lg: { px: 72, cls: "h-18 w-18 text-3xl font-bold" },
 };
@@ -32,23 +32,19 @@ export default function Avatar({
 
   const base = "rounded-full flex items-center justify-center";
 
-  if (avatarUrl) {
-    return (
-      <Image
-        className={`${base} object-cover`}
-        src={avatarUrl}
-        alt="User Avatar"
-        width={sizeClasses[size].px}
-        height={sizeClasses[size].px}
-      />
-    );
-  } else {
-    return (
-      <div
-        className={`${base} ${typeClasses[type]} ${sizeClasses[size].cls} text-white font-semibold`}
-      >
-        {user?.name?.[0] || "익"}
-      </div>
-    );
-  }
+  return avatarUrl ? (
+    <Image
+      className={`${base} object-cover`}
+      src={avatarUrl}
+      alt="User Avatar"
+      width={sizeClasses[size].px}
+      height={sizeClasses[size].px}
+    />
+  ) : (
+    <div
+      className={`${base} ${typeClasses[type]} ${sizeClasses[size].cls} text-white font-semibold`}
+    >
+      {user?.name?.[0] || "익"}
+    </div>
+  );
 }
