@@ -2,7 +2,7 @@ import {
   IQuery,
   IQueryFetchBoardsArgs,
 } from "@/commons/graphql/generated/types";
-import RecordCard from "@/components/features/records/RecordCard";
+import RecordFeedCard from "@/components/features/records/RecordFeedCard/RecordCard";
 import { gql, useQuery } from "@apollo/client";
 import { JSX, useState } from "react";
 
@@ -69,7 +69,7 @@ export default function RecordFeedPage(): JSX.Element {
       ) : (
         <section style={{ display: "grid", gap: 12 }}>
           {records.map((board) => (
-            <RecordCard key={board._id} board={board} />
+            <RecordFeedCard key={board._id} board={board} />
           ))}
         </section>
       )}
