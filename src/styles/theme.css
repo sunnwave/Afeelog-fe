@@ -1,0 +1,332 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+
+  /* Modern Minimal color system - sophisticated slate palette */
+  /* App background: pure white */
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  /* Card/Surface: pure white */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  /* Popover */
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  /* Primary: Deep Slate - sophisticated charcoal */
+  --primary: #1e293b;
+  --primary-foreground: #ffffff;
+  --primary-hover: #334155;
+  --primary-pressed: #0f172a;
+
+  /* Secondary: Soft slate background */
+  --secondary: #f8fafc;
+  --secondary-foreground: #1e293b;
+
+  /* Muted: subtle grays for low-emphasis content */
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+
+  /* Accent: Minimal slate tint */
+  --accent: #f1f5f9;
+  --accent-foreground: #334155;
+
+  /* Soft accent: contemporary slate-blue */
+  --apricot: #94a3b8;
+
+  /* Point colors - sophisticated accents */
+  --point-indigo: #6366f1;
+  --point-indigo-light: #818cf8;
+  --point-emerald: #10b981;
+  --point-emerald-light: #34d399;
+
+  /* Destructive: muted red */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Success */
+  --success: #10b981;
+
+  /* Borders and inputs - refined light gray */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --input-background: #ffffff;
+  --switch-background: #cbd5e1;
+  --ring: #1e293b;
+
+  /* Font weights */
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+
+  /* Spacing (8pt system) */
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 48px;
+
+  /* Responsive breakpoints */
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1280px;
+
+  /* Max content widths */
+  --max-content-width: 720px;
+  --max-app-width: 1440px;
+
+  /* Grid columns */
+  --grid-columns-mobile: 4;
+  --grid-columns-tablet: 8;
+  --grid-columns-desktop: 12;
+
+  /* Typography scale - Mobile (base 14-16px) */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+
+  /* Border radius - 16px system */
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows - very subtle */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-md: 0 2px 4px 0 rgb(0 0 0 / 0.04), 0 1px 2px 0 rgb(0 0 0 / 0.02);
+  --shadow-lg: 0 4px 8px 0 rgb(0 0 0 / 0.05), 0 2px 4px 0 rgb(0 0 0 / 0.03);
+
+  /* Chart colors - warm Bronze Amber palette */
+  --chart-1: #b45309;
+  --chart-2: #fdba74;
+  --chart-3: #c2410c;
+  --chart-4: #fcd34d;
+  --chart-5: #9a3412;
+
+  /* Sidebar colors */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #1e293b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #334155;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #1e293b;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #1a1a1a;
+  --card-foreground: #fafafa;
+  --popover: #1a1a1a;
+  --popover-foreground: #fafafa;
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --primary-hover: #7c3aed;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #8b5cf6;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: #27272a;
+  --input: #27272a;
+  --input-background: #1a1a1a;
+  --ring: #a78bfa;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-point-indigo: var(--point-indigo);
+  --color-point-indigo-light: var(--point-indigo-light);
+  --color-point-emerald: var(--point-emerald);
+  --color-point-emerald-light: var(--point-emerald-light);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input,
+  textarea {
+    font-size: 1rem;
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-4px);
+    }
+    75% {
+      transform: translateX(4px);
+    }
+  }
+
+  .animate-shake {
+    animation: shake 0.3s ease-in-out;
+  }
+
+  /* Responsive Typography - Desktop scales up */
+  @media (min-width: 1280px) {
+    html {
+      font-size: 18px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Tablet intermediate scale */
+  @media (min-width: 768px) and (max-width: 1279px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  /* Utility classes for responsive containers */
+  .container-reading {
+    max-width: var(--max-content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-app {
+    max-width: var(--max-app-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
