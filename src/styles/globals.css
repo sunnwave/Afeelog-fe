@@ -1,3 +1,4 @@
+@import "./theme.css";
 @import "tailwindcss";
 
 :root {
@@ -26,5 +27,3 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
-@import "./theme.css";
