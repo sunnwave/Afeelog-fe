@@ -1,4 +1,4 @@
-import { QUOTE_GRADIENTS } from "@/constants/quoteGradients";
+import { GRADIENTS } from "@/constants/gradientPallete";
 
 function hashToIndex(input: string, mod: number) {
   let h = 0;
@@ -8,5 +8,5 @@ function hashToIndex(input: string, mod: number) {
 }
 
 export function pickQuoteGradient(key: string) {
-  return QUOTE_GRADIENTS[hashToIndex(key || "default", QUOTE_GRADIENTS.length)];
+  return GRADIENTS[hashToIndex(key || "default", GRADIENTS.length)];
 }
