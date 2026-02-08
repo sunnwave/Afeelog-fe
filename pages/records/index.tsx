@@ -2,7 +2,7 @@ import {
   IQuery,
   IQueryFetchBoardsArgs,
 } from "@/commons/graphql/generated/types";
-import RecordFeedCard from "@/components/features/records/RecordFeedCard/RecordCard";
+import RecordFeedCard from "@/components/features/records/RecordFeedCard/RecordFeedCard";
 import { gql, useQuery } from "@apollo/client";
 import { JSX, useState } from "react";
 

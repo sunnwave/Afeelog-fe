@@ -1,9 +1,5 @@
-export default function formatDate(dateString: string): string {
-  const dateText = new Date(dateString).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
+import moment from "moment";
 
-  return dateText;
+export default function formatDate(dateString: string): string {
+  return moment(dateString).format("YYYY.MM.DD");
 }
