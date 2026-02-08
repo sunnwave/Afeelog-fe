@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { IUser } from "@/commons/graphql/generated/types";
 import ProfileEntry from "./ProfileEntry";
-import { vi } from "vitest";
+// import { vi } from "vitest";
 
 // // ✅ UI 확인용 Avatar mock
 // vi.mock("@/components/commons/avatar/Avatar", () => ({
@@ -42,10 +42,6 @@ type Story = StoryObj<typeof ProfileEntry>;
 
 export const LoggedOut: Story = {
   args: { user: baseUser, variant: "loggedOut" },
-};
-
-export const LoggedIn: Story = {
-  args: { user: baseUser, variant: "loggedIn" },
 };
 
 export const LoggedIn_LongName: Story = {

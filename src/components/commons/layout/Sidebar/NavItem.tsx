@@ -1,25 +1,26 @@
+import { NavItemType } from "@/constants/navigation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function NavItem({
-  href,
-  label,
-}: {
-  href: string;
-  label: string;
-}) {
+export default function NavItem({ nav }: { nav: NavItemType }) {
   const router = useRouter();
-  const active = router.pathname === href;
+  const isActive = router.pathname === nav.href;
 
   return (
     <Link
-      href={href}
-      className={[
-        "flex items-center rounded-xl px-3 py-2 text-sm hover:cursor-pointer transition-transform duration-150 ease-out motion-reduce:transition-none motion-reduce:hover:scale-100 hover:scale-[1.03]",
-        active ? "bg-[#CC7533] text-[#ffffff] font-medium" : "text-[#111827]",
-      ].join(" ")}
+      href={nav.href}
+      className={`
+                w-full h-12.5 flex items-center gap-3 px-4 py-3 rounded-[20px]
+                transition-all font-medium relative
+                ${
+                  isActive
+                    ? "bg-primary text-white "
+                    : "hover:bg-accent text-foreground"
+                }
+              `}
     >
-      {label}
+      <nav.icon className="w-4.5 h-4.5" />
+      {nav.label}
     </Link>
   );
 }
