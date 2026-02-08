@@ -124,7 +124,7 @@
   --sidebar-ring: #1e293b;
 }
 
-.dark {
+/* .dark {
   --background: #0a0a0a;
   --foreground: #fafafa;
   --card: #1a1a1a;
@@ -162,7 +162,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
-}
+} */
 
 @theme inline {
   --color-background: var(--background);

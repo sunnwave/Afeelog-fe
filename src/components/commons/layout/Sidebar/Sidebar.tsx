@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "@/commons/stores";
 import NavItem from "./NavItem";
-import Logo from "../Logo";
+import Logo from "../../logo/Logo";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);
@@ -12,7 +12,7 @@ export default function Sidebar() {
     <div className="sticky top-0 h-screen  border-r border-[#E5E7EB] bg-white/70 px-4 py-6 backdrop-blur">
       {/* Profile entry (top) */}
       <div className="mb-5 hidden lg:block">
-        <Logo />
+        <Logo size="lg" showSubtitle={true} />
       </div>
       <Link
         href={isLoggedIn ? "/me" : "/login"}
@@ -37,7 +37,7 @@ export default function Sidebar() {
         href={isLoggedIn ? "/records/new" : "/login"}
         className="mb-6 flex items-center border border-[#B45309] bg-white justify-center rounded-2xl px-4 py-3 text-sm font-semibold text-[#B45309] transition-transform duration-150 ease-out hover:cursor-pointer hover:scale-[1.03]"
       >
-        작성(+)
+        작성하기
       </Link>
 
       <nav className="space-y-1">
