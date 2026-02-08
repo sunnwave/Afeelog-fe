@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import HeartIcon from "./HeartIcon";
 
 const meta: Meta<typeof HeartIcon> = {
-  title: "commons/HeardtIcon",
+  title: "commons/HeartIcon",
   component: HeartIcon,
   parameters: {
     layout: "fullscreen",

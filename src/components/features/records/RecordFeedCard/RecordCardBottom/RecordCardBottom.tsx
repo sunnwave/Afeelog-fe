@@ -1,8 +1,8 @@
 import { JSX } from "react";
 import Profile from "../Profile/Profile";
-import CommentIcon from "@/components/commons/commentIcon/CommentIcon";
-import HeardtIcon from "@/components/commons/heartIcon/HeartIcon";
 import { IBoard } from "@/commons/graphql/generated/types";
+import CommentIcon from "@/components/commons/icons/commentIcon/CommentIcon";
+import HeartIcon from "@/components/commons/icons/heartIcon/HeartIcon";
 
 export default function RecordCardBottom({
   board,
@@ -14,7 +14,7 @@ export default function RecordCardBottom({
       <Profile board={board} />
       <div className="flex items-center gap-4">
         <CommentIcon count={board.likeCount ?? 0} />
-        <HeardtIcon likeCount={board.likeCount} isLiked={false} />
+        <HeartIcon likeCount={board.likeCount} isLiked={false} />
       </div>
     </div>
   );

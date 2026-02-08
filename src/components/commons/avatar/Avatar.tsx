@@ -1,5 +1,6 @@
 import { IUser } from "@/commons/graphql/generated/types";
 import { getProfileImage } from "@/utils/getImage";
+import { pickAvatarGradient } from "@/utils/pickAvatarColor";
 import Image from "next/image";
 import { JSX } from "react";
 
@@ -14,11 +15,6 @@ const sizeClasses: Record<AvatarSize, { px: number; cls: string }> = {
   lg: { px: 72, cls: "h-18 w-18 text-3xl font-bold" },
 };
 
-const typeClasses: Record<AvatarType, string> = {
-  filled: "bg-[#94A3B8]/70 border-0 ",
-  outlined: "bg-white/20 border border-white/30",
-};
-
 export default function Avatar({
   user,
   size = "sm",
@@ -29,6 +25,14 @@ export default function Avatar({
   type?: AvatarType;
 }): JSX.Element {
   const avatarUrl = getProfileImage(user?.picture);
+  const s = sizeClasses[size];
+
+  const key = user?._id || user?.email || user?.name || "anonymous";
+  const g = pickAvatarGradient(key);
+  const filledStyle =
+    type === "filled"
+      ? { backgroundImage: `linear-gradient(135deg, ${g.from}, ${g.to})` }
+      : undefined;
 
   const base = "rounded-full flex items-center justify-center";
 
@@ -42,7 +46,12 @@ export default function Avatar({
     />
   ) : (
     <div
-      className={`${base} ${typeClasses[type]} ${sizeClasses[size].cls} text-white font-semibold`}
+      className={`${base} ${
+        sizeClasses[size].cls
+      } text-white font-semibold overflow-hidden ${
+        type === "outlined" ? "bg-white/20 border border-white/30" : ""
+      }`}
+      style={filledStyle}
     >
       {user?.name?.[0] || "익"}
     </div>
