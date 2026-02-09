@@ -13,17 +13,17 @@ export default function RecordFeedCard({
 }: {
   board: IBoard;
 }): JSX.Element {
-  // const router = useRouter();
+  const router = useRouter();
 
   const hasImages = !!(board.images && board.images.length > 0);
 
-  // const onClick = () => {
-  //   void router.push(`/records/${board._id}`);
-  // };
+  const onClick = () => {
+    void router.push(`/records/${board._id}`);
+  };
 
   return (
     <article
-      // onClick={onClick}
+      onClick={onClick}
       className="relative bg-card rounded-2xl p-4.5 hover:border-primary/50 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4]"
     >
       {hasImages ? (
