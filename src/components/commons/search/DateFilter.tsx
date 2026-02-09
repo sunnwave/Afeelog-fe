@@ -11,7 +11,7 @@ export default function DateFilter(): JSX.Element {
           // value={startDate}
           // onChange={(e) => setStartDate(e.target.value)}
           placeholder="시작일"
-          className="w-full md:w-[140px] h-10 pl-9 pr-3 rounded-lg border border-border bg-background text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+          className="w-full max-w-[120px] h-10 pl-9 pr-3 text-sm rounded-lg border border-border bg-background text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
         />
         <label
           htmlFor="startDate"
@@ -28,7 +28,7 @@ export default function DateFilter(): JSX.Element {
           // value={endDate}
           // onChange={(e) => setEndDate(e.target.value)}
           placeholder="종료일"
-          className="w-full md:w-[140px] h-10 pl-9 pr-3 rounded-lg border border-border bg-background text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+          className="w-full max-w-[120px] h-10 pl-9 pr-3 rounded-lg border border-border bg-background text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
         />
         <label
           htmlFor="endDate"

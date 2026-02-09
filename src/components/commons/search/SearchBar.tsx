@@ -16,15 +16,15 @@ export default function SearchBar({
   };
 
   return (
-    <div className="mb-4 flex flex-col md:flex-row gap-2">
-      <div className="relative flex items-center">
+    <div className="w-full flex flex-col md:flex-row gap-2">
+      <div className="relative w-full flex items-center">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <input
           type="text"
           placeholder="제목, 작성자, 내용 검색..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-12 pr-4 py-3 rounded-xl text-sm border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          className="w-full pl-12 pr-4 py-2 rounded-xl text-sm border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
         />
         {searchQuery && (
           <button
