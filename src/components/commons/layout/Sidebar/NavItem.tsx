@@ -1,8 +1,8 @@
-import { NavItemType } from "@/constants/navigation";
+import { SideNavItemType } from "@/constants/navigation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function NavItem({ nav }: { nav: NavItemType }) {
+export default function NavItem({ nav }: { nav: SideNavItemType }) {
   const router = useRouter();
   const isActive = router.pathname === nav.href;
 

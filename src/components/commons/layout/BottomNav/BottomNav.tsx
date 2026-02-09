@@ -2,37 +2,42 @@ import Link from "next/link";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "@/commons/stores";
 import BottomNavItem from "./BottomNavItem";
+import { FileText, Home, Plus, Ticket, User } from "lucide-react";
+import Avatar from "../../avatar/Avatar";
 
 export default function BottomNav() {
   const accessToken = useRecoilValue(accessTokenState);
   const isLoggedIn = !!accessToken;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 border-t border-[#E5E7EB] bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-[720px] items-center px-2">
-        <BottomNavItem href="/" label="홈" />
-        <BottomNavItem href="/records" label="기록" />
-
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border safe-area-inset-bottom">
+      <div className="grid grid-cols-5 items-center h-16 max-w-2xl mx-auto px-2">
+        <BottomNavItem href="/" label="홈" icon={Home} />
+        <BottomNavItem href="/records" label="기록" icon={FileText} />
         {/* Write (+) */}
         <Link
           href={isLoggedIn ? "/write" : "/login"}
-          className="mx-2 my-2 flex h-11 w-11 items-center justify-center rounded-full bg-amber-600 text-white shadow"
+          className="flex flex-col items-center justify-center gap-1 h-full transition-colors relative"
           aria-label="작성"
         >
-          +
+          <div className="flex items-center justify-center w-12 h-12 -mt-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+            <Plus className="w-6 h-6" strokeWidth={2.5} />
+          </div>
+          <span className="text-xs font-semibold">작성</span>
         </Link>
+        <BottomNavItem href="/trade" label="거래" icon={Ticket} />
 
-        <BottomNavItem href="/trade" label="거래" />
-
-        {/* Profile entry (icon BottomNavItem) */}
-        <Link
-          href={isLoggedIn ? "/me" : "/login"}
-          className="flex flex-1 flex-col items-center justify-center py-2 text-xs text-[#4B5563]"
-        >
-          <div className="h-6 w-6 rounded-full bg-[#FFF7E6] ring-1 ring-[#E5E7EB]" />
-          프로필
-        </Link>
+        {isLoggedIn ? (
+          <Link
+            href="/me"
+            className="flex flex-1 flex-col items-center justify-center"
+          >
+            <Avatar size="md" />
+          </Link>
+        ) : (
+          <BottomNavItem href="/login" label="로그인" icon={User} />
+        )}
       </div>
-    </div>
+    </nav>
   );
 }

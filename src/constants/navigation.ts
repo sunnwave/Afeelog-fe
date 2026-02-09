@@ -1,6 +1,6 @@
-import { FileText, Home, LucideIcon, Ticket } from "lucide-react";
+import { FileText, Home, LucideIcon, Plus, Ticket } from "lucide-react";
 
-export const NAV_ITEMS = [
+export const SIDE_NAV_ITEMS = [
   { tab: "home", href: "/", label: "홈", icon: Home },
   { tab: "records", href: "/records", label: "필로그", icon: FileText },
   { tab: "trade", href: "/trade", label: "거래", icon: Ticket },
@@ -11,5 +11,5 @@ export const NAV_ITEMS = [
   icon: LucideIcon;
 }>;
 
-export type TabType = (typeof NAV_ITEMS)[number]["tab"];
-export type NavItemType = (typeof NAV_ITEMS)[number];
+export type TabType = (typeof SIDE_NAV_ITEMS)[number]["tab"];
+export type SideNavItemType = (typeof SIDE_NAV_ITEMS)[number];

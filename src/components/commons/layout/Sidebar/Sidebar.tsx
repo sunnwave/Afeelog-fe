@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "@/commons/stores";
 import Logo from "../../logo/Logo";
 import ProfileEntry from "./ProfileEntry/ProfileEntry";
-import { NAV_ITEMS } from "@/constants/navigation";
+import { SIDE_NAV_ITEMS } from "@/constants/navigation";
 import NavItem from "./NavItem";
 import { LogOut } from "lucide-react";
 
@@ -32,7 +32,7 @@ export default function Sidebar() {
             <span>작성하기</span>
           </button>
         </div>
-        {NAV_ITEMS.map((item) => {
+        {SIDE_NAV_ITEMS.map((item) => {
           return <NavItem key={item.label} nav={item} />;
         })}
         {isLoggedIn && (
