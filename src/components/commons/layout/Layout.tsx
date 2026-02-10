@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen  text-[#111827] bg-background">
       {/* Desktop: sidebar + content */}
-      <div className="mx-auto w-full max-w-[1200px] lg:grid lg:grid-cols-[280px_1fr]">
+      <div className="mx-auto w-full max-w-[1200px] lg:grid lg:grid-cols-[272px_1fr]">
         <aside className="hidden lg:block">
           <Sidebar />
         </aside>
@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         </div>
 
         {/* Content */}
-        <main className="w-full px-3 py-3 pb-20 md:px-6 md:py-8 lg:px-8 lg:pb-8">
+        <main className="w-full px-3 py-3 pb-20 md:px-6 md:py-8 lg:px-6 lg:pb-8">
           {children}
         </main>
       </div>

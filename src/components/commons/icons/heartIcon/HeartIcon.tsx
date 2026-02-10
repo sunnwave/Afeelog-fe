@@ -1,13 +1,17 @@
+import { UI_SIZE, UISize } from "@/ui/size";
 import { Heart } from "lucide-react";
 import { JSX, useState } from "react";
 
 export default function HeartIcon({
   isLiked,
   likeCount,
+  size = "md",
 }: {
   isLiked: boolean;
   likeCount: number;
+  size?: UISize;
 }): JSX.Element {
+  const s = UI_SIZE[size];
   const [liked, setLiked] = useState(isLiked);
   const [likes, setLikes] = useState(likeCount ?? 0);
 
@@ -23,7 +27,7 @@ export default function HeartIcon({
       className="flex flex-col items-center gap-1 transition-colors group/like"
     >
       <Heart
-        className={`h-5 w-5 transition-colors ${
+        className={`${s.icon} transition-colors ${
           liked
             ? "text-point-indigo"
             : "text-white/90 group-hover/like:text-point-indigo-light"
@@ -32,7 +36,7 @@ export default function HeartIcon({
       />
 
       <span
-        className={`text-sm ${liked ? "text-point-indigo" : "text-white/60"}`}
+        className={`${s.meta} ${liked ? "text-point-indigo" : "text-white/60"}`}
       >
         {likes}
       </span>

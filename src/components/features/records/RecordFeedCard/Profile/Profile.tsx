@@ -1,15 +1,27 @@
 import { IBoard } from "@/commons/graphql/generated/types";
 import Avatar from "@/components/commons/avatar/Avatar";
+import { UI_SIZE, UISize } from "@/ui/size";
 import formatDate from "@/utils/formatDate";
 import { JSX } from "react";
 
-export default function Profile({ board }: { board: IBoard }): JSX.Element {
+export default function Profile({
+  board,
+  size = "md",
+}: {
+  board: IBoard;
+  size?: UISize;
+}): JSX.Element {
+  const s = UI_SIZE[size];
   return (
-    <div className="flex items-center gap-3">
-      <Avatar user={board.user || undefined} size="sm" type="outlined" />
-      <div className="flex flex-col ">
-        <p className="text-base text-white/90">{board.user?.name || "익명"}</p>
-        <p className="text-sm text-white/70">{formatDate(board.createdAt)}</p>
+    <div className={`flex items-center ${s.gap}`}>
+      <Avatar user={board.user || undefined} size={s.avatar} type="outlined" />
+      <div className={`flex flex-col text-white/90`}>
+        <p className={`${s.meta} font-medium max-w-[140px] truncate`}>
+          {board.user?.name || "익명"}
+        </p>
+        <p className={`${s.caption} text-white/70`}>
+          {formatDate(board.createdAt)}
+        </p>
       </div>
     </div>
   );

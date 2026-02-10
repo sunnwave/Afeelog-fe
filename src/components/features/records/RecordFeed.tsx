@@ -1,64 +1,56 @@
-import {
-  IQuery,
-  IQueryFetchBoardsArgs,
-} from "@/commons/graphql/generated/types";
 import { ResponsiveLayout } from "@/components/commons/layout/ResponsiveLayout";
-import { gql, useQuery } from "@apollo/client";
-import { JSX, useState } from "react";
+import { JSX, useCallback, useState } from "react";
 import RecordFeedCard from "./RecordFeedCard/RecordFeedCard";
 import { Sparkles } from "lucide-react";
 import ResponsiveGrid from "@/components/commons/layout/ResponsiveGrid";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { CARD_SIZE_BY_BP } from "@/ui/pickCardSize";
+import { useFetchRecords } from "./hooks/queries/useFetchRecords";
+import { useInfiniteScroll } from "@/commons/hooks/ui/useInfiniteScroll";
 
-const FETCH_BOARDS = gql`
-  query fetchBoards($page: Int) {
-    fetchBoards(page: $page) {
-      _id
-      writer
-      title
-      contents
-      createdAt
-    }
-  }
-`;
+const RECORDS_PER_PAGE = 10;
 
 export default function RecordFeed(): JSX.Element {
-  const [page, setPage] = useState(1);
+  const bp = useBreakpoint();
+  const cardSize = CARD_SIZE_BY_BP[bp];
 
-  const { data, loading, fetchMore } = useQuery<
-    Pick<IQuery, "fetchBoards">,
-    IQueryFetchBoardsArgs
-  >(FETCH_BOARDS, { variables: { page: 1 } });
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { data, fetchMore } = useFetchRecords();
 
   const records = data?.fetchBoards ?? [];
-  const isEmpty = !loading && records.length === 0;
+  const isEmpty = records.length === 0;
 
-  const onClickLoadMore = async () => {
-    const nextPage = page + 1;
+  const onLoadMore = useCallback(() => {
+    if (!data || isLoading || !hasMore) return;
+    setIsLoading(true);
 
-    await fetchMore({
+    const currentLength = data.fetchBoards.length;
+    const nextPage = Math.floor(currentLength / RECORDS_PER_PAGE) + 1;
+
+    fetchMore({
       variables: { page: nextPage },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchBoards) return prev;
+        const newRecords = fetchMoreResult.fetchBoards ?? [];
+
+        if (newRecords.length < RECORDS_PER_PAGE) setHasMore(false);
 
         return {
-          fetchBoards: [
-            ...(prev.fetchBoards ?? []),
-            ...fetchMoreResult.fetchBoards,
-          ],
+          fetchBoards: [...(prev.fetchBoards ?? []), ...newRecords],
         };
       },
+    }).finally(() => {
+      setIsLoading(false);
     });
+  }, [data, fetchMore, isLoading, hasMore]);
 
-    setPage(nextPage);
-  };
-
-  if (loading && records.length === 0) {
-    return (
-      <ResponsiveLayout contentType="app" className="py-4">
-        <div className="p-3 text-muted-foreground">불러오는 중…</div>
-      </ResponsiveLayout>
-    );
-  }
+  const sentinelRef = useInfiniteScroll({
+    hasMore,
+    isLoading,
+    onLoadMore,
+  });
 
   if (isEmpty) {
     return (
@@ -73,20 +65,16 @@ export default function RecordFeed(): JSX.Element {
 
   return (
     <ResponsiveLayout contentType="app" className="py-4">
-      <ResponsiveGrid colsMobile={1} colsTablet={2} colsDesktop={3} gap={2}>
-        {records.map((board) => (
-          <RecordFeedCard key={board._id} board={board} />
+      <ResponsiveGrid colsMobile={1} colsTablet={2} colsDesktop={3} gap={3}>
+        {records?.map((board) => (
+          <RecordFeedCard key={board._id} board={board} size={cardSize} />
         ))}
       </ResponsiveGrid>
 
-      <div className="mt-4 flex justify-center">
-        <button
-          onClick={onClickLoadMore}
-          className="rounded-xl border border-border bg-background px-4 py-2 text-sm hover:bg-accent/60 transition-colors"
-        >
-          더 보기
-        </button>
-      </div>
+      <div ref={sentinelRef} className="h-6" />
+      {isLoading && (
+        <div className="p-3 text-muted-foreground">불러오는 중…</div>
+      )}
     </ResponsiveLayout>
   );
 }

@@ -7,12 +7,16 @@ import RecordCardBottom from "./RecordCardBottom/RecordCardBottom";
 import RecordCardContent from "./RecordCardContent/RecordCardContent";
 import GradientBg from "./GradientBg";
 import BookMarkIcon from "@/components/commons/icons/bookmarkIcon/BookMarkIcon";
+import { UI_SIZE, UISize } from "@/ui/size";
 
 export default function RecordFeedCard({
   board,
+  size = "md",
 }: {
   board: IBoard;
+  size?: UISize;
 }): JSX.Element {
+  const s = UI_SIZE[size];
   const router = useRouter();
 
   const hasImages = !!(board.images && board.images.length > 0);
@@ -24,7 +28,7 @@ export default function RecordFeedCard({
   return (
     <article
       onClick={onClick}
-      className="relative bg-card rounded-2xl p-4.5 hover:border-primary/50 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4]"
+      className={`relative bg-card rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4] ${s.pad}`}
     >
       {hasImages ? (
         <Image
@@ -37,12 +41,14 @@ export default function RecordFeedCard({
         <GradientBg boardId={board._id} />
       )}
       <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-      <div className="absolute top-4 right-4 z-20">
-        <BookMarkIcon isSaved={false} />
+      <div className={`absolute z-20 ${s.bookmarkPos}`}>
+        <BookMarkIcon isSaved={false} size={size} />
       </div>
-      <div className="absolute inset-x-0 bottom-0 p-6 text-white z-10">
-        <RecordCardContent board={board} />
-        <RecordCardBottom board={board} />
+      <div
+        className={`absolute z-10 inset-x-0 bottom-0 text-white flex flex-col ${s.pad}`}
+      >
+        <RecordCardContent board={board} size={size} />
+        <RecordCardBottom board={board} size={size} />
       </div>
     </article>
   );
