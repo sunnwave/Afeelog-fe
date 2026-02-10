@@ -1,5 +1,4 @@
 import { IBoard } from "@/commons/graphql/generated/types";
-import BookMarkIcon from "@/components/commons/bookmarkIcon/BookMarkIcon";
 import { getImageUrl } from "@/utils/getImage";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -7,6 +6,7 @@ import { JSX } from "react";
 import RecordCardBottom from "./RecordCardBottom/RecordCardBottom";
 import RecordCardContent from "./RecordCardContent/RecordCardContent";
 import GradientBg from "./GradientBg";
+import BookMarkIcon from "@/components/commons/icons/bookmarkIcon/BookMarkIcon";
 
 export default function RecordFeedCard({
   board,

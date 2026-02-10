@@ -9,9 +9,10 @@ export default function HeartIcon({
   likeCount: number;
 }): JSX.Element {
   const [liked, setLiked] = useState(isLiked);
-  const [likes, setLikes] = useState(likeCount);
+  const [likes, setLikes] = useState(likeCount ?? 0);
 
-  const handelClickLike = (): void => {
+  const handelClickLike = (e: React.MouseEvent): void => {
+    e.stopPropagation();
     setLikes((prev) => (liked ? prev - 1 : prev + 1));
     setLiked((prev) => !prev);
   };

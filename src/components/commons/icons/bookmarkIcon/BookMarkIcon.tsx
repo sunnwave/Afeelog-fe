@@ -8,7 +8,8 @@ export default function BookMarkIcon({
 }): JSX.Element {
   const [saved, setSaved] = useState(isSaved);
 
-  const handleClickSave = (): void => {
+  const handleClickSave = (e: React.MouseEvent): void => {
+    e.stopPropagation();
     setSaved((prev) => !prev);
   };
   return (
