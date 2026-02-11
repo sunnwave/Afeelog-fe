@@ -1,27 +1,52 @@
-import { JSX } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
+import KeywordItem from "./KeywordItem";
+import DashBoardHeader from "../DashBoardHeader";
 
-export default function KeywordDashBoard(): JSX.Element {
+type DashBoardType = "feelog" | "market";
+
+export default function KeywordDashBoard({
+  variant,
+  keywords,
+  intervalMs = 2000,
+}: {
+  variant: DashBoardType;
+  keywords: Array<{ rank: number; name: string }>;
+  intervalMs?: number;
+  pauseOnHover?: boolean;
+}): JSX.Element {
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+
+  const len = keywords?.length ?? 0;
+  const safeIndex = len > 0 ? highlightedIndex % len : 0;
+
+  useEffect(() => {
+    if (len <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setHighlightedIndex((prev) => {
+        const next = prev + 1;
+        return next >= len ? 0 : next;
+      });
+    }, intervalMs);
+
+    return () => window.clearInterval(timer);
+  }, [len, intervalMs]);
+
   return (
-    // <div className="hidden lg:grid lg:grid-cols-2 gap-6">
-    //   {/* 인기 공연 TOP 5 */}
-    //   {popularShowKeywords.length > 0 && (
-    //     <section>
-    //       <PopularShowKeywords
-    //         keywords={popularShowKeywords}
-    //         onKeywordClick={(keyword) => onKeywordClick?.(keyword)}
-    //       />
-    //     </section>
-    //   )}
+    <div className="bg-gradient-to-br from-secondary via-accent/50 to-background rounded-2xl border border-border p-6 shadow-sm h-full flex flex-col">
+      {/* Header */}
+      <DashBoardHeader variant={variant} />
 
-    //   {/* 인기 마켓 키워드 */}
-    //   {popularTradeKeywords.length > 0 && (
-    //     <section>
-    //       <PopularTradeKeywords
-    //         keywords={popularTradeKeywords}
-    //         onKeywordClick={(keyword) => onTradeKeywordClick?.(keyword)}
-    //       />
-    //     </section>
-    //   )}
-    // </div>
+      <div className="space-y-2 flex-1">
+        {keywords.map((keyword, index) => (
+          <KeywordItem
+            key={keyword.rank}
+            keyword={keyword}
+            active={safeIndex === index}
+            variant={variant}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

@@ -49,7 +49,7 @@ export default function KeywordItem({
     <button
       key={keyword.rank}
       onClick={() => onKeywordClick(keyword.name)}
-      className={`w-full flex items-center gap-3 p-3 rounded-xl bg-background/60 backdrop-blur-sm border transition-all duration-300 group relative overflow-hidden
+      className={`w-full flex items-center gap-3 p-3 rounded-xl bg-background/60 backdrop-blur-sm border transition-all duration-300 group relative overflow-hidden cursor-pointer
               ${
                 active
                   ? `${c.button} scale-[1.02] shadow-md`
