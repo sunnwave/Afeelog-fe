@@ -1,18 +1,3 @@
-// import { JSX } from "react";
-
-// type ButtonVariant = "solid" | "outlined" | "soft" | "ghost";
-// type ButtonSize = "sm" | "md" | "lg" | "icon";
-
-// export default function Button({
-//   variant,
-//   size,
-// }: {
-//   variant: ButtonVariant;
-//   size: ButtonSize;
-// }): JSX.Element {
-//   return <></>;
-// }
-
 import type { ButtonHTMLAttributes, JSX, ReactNode } from "react";
 import { cn } from "@/utils/cn";
 

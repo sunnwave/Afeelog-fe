@@ -13,7 +13,7 @@ export default function BottomNav() {
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border safe-area-inset-bottom">
       <div className="grid grid-cols-5 items-center h-16 max-w-2xl mx-auto px-2">
         <BottomNavItem href="/" label="홈" icon={Home} />
-        <BottomNavItem href="/records" label="기록" icon={FileText} />
+        <BottomNavItem href="/records" label="필로그" icon={FileText} />
         {/* Write (+) */}
         <Link
           href={isLoggedIn ? "/write" : "/login"}
@@ -25,7 +25,7 @@ export default function BottomNav() {
           </div>
           <span className="text-xs font-semibold">작성</span>
         </Link>
-        <BottomNavItem href="/trade" label="거래" icon={Ticket} />
+        <BottomNavItem href="/trade" label="마켓" icon={Ticket} />
 
         {isLoggedIn ? (
           <Link

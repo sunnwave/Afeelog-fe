@@ -6,7 +6,7 @@ import { JSX } from "react";
 import RecordCardBottom from "./RecordCardBottom/RecordCardBottom";
 import GradientBg from "./GradientBg";
 import BookMarkIcon from "@/components/commons/ui/icons/bookmarkIcon/BookMarkIcon";
-import { UI_SIZE, UISize } from "@/ui/size";
+import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import RecordCardContent from "./RecordCardContent";
 
 export default function RecordFeedCard({
@@ -14,7 +14,7 @@ export default function RecordFeedCard({
   size = "lg",
 }: {
   board: IBoard;
-  size?: UISize;
+  size?: CARD_UI_SIZE;
 }): JSX.Element {
   const s = UI_SIZE[size];
   const router = useRouter();
@@ -42,7 +42,7 @@ export default function RecordFeedCard({
       )}
       <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
       <div className={`absolute z-20 ${s.bookmarkPos}`}>
-        <BookMarkIcon isSaved={false} size={size} />
+        <BookMarkIcon isSaved={false} iconSize={size} />
       </div>
       <div
         className={`absolute z-10 inset-x-0 bottom-0 text-white flex flex-col ${s.pad}`}
