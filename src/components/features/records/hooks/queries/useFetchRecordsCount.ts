@@ -4,7 +4,7 @@ import {
 } from "@/commons/graphql/generated/types";
 import { gql, useQuery } from "@apollo/client";
 
-export const FETCH_BOARDS_COUNT = gql`
+export const FETCH_RECORDS_COUNT = gql`
   query fetchBoardsCount(
     $startDate: DateTime
     $endDate: DateTime
@@ -14,11 +14,11 @@ export const FETCH_BOARDS_COUNT = gql`
   }
 `;
 
-export const useFetchBoardsCount = () => {
+export const useFetchRecordsCount = () => {
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoardsCount">,
     IQueryFetchBoardsCountArgs
-  >(FETCH_BOARDS_COUNT);
+  >(FETCH_RECORDS_COUNT);
 
   return {
     data,

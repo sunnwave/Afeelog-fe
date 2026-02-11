@@ -1,15 +1,18 @@
-import { UI_SIZE, UISize } from "@/ui/size";
+import { IconSize, UI_ICON } from "@/ui/iconSize";
+import { cn } from "@/utils/cn";
 import { Bookmark } from "lucide-react";
 import { JSX, useState } from "react";
 
 export default function BookMarkIcon({
   isSaved,
-  size = "md",
+  iconSize = "lg",
+  className,
 }: {
   isSaved: boolean;
-  size?: UISize;
+  iconSize?: IconSize;
+  className?: string;
 }): JSX.Element {
-  const s = UI_SIZE[size];
+  const s = UI_ICON[iconSize];
   const [saved, setSaved] = useState(isSaved);
 
   const handleClickSave = (e: React.MouseEvent): void => {
@@ -23,11 +26,14 @@ export default function BookMarkIcon({
       aria-label="저장"
     >
       <Bookmark
-        className={`${s.bookmarkIcon} transition-colors ${
+        className={cn(
+          s.icon,
+          "transition-colors",
           saved
             ? "fill-point-emerald text-point-emerald"
-            : "group-hover/save:text-point-emerald-light"
-        }`}
+            : "group-hover/save:text-point-emerald-light",
+          className
+        )}
         fill={saved ? "currentColor" : "none"}
       />
     </button>

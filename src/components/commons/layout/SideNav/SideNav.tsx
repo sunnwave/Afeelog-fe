@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "@/commons/stores";
-import Logo from "../../logo/Logo";
+import Logo from "../../ui/logo/Logo";
 import ProfileEntry from "./ProfileEntry/ProfileEntry";
 import { SIDE_NAV_ITEMS } from "@/constants/navigation";
 import NavItem from "./NavItem";

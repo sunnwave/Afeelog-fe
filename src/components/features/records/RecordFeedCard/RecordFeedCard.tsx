@@ -4,14 +4,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { JSX } from "react";
 import RecordCardBottom from "./RecordCardBottom/RecordCardBottom";
-import RecordCardContent from "./RecordCardContent/RecordCardContent";
 import GradientBg from "./GradientBg";
-import BookMarkIcon from "@/components/commons/icons/bookmarkIcon/BookMarkIcon";
+import BookMarkIcon from "@/components/commons/ui/icons/bookmarkIcon/BookMarkIcon";
 import { UI_SIZE, UISize } from "@/ui/size";
+import RecordCardContent from "./RecordCardContent";
 
 export default function RecordFeedCard({
   board,
-  size = "md",
+  size = "lg",
 }: {
   board: IBoard;
   size?: UISize;

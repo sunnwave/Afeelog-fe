@@ -1,13 +1,13 @@
 import { IBoard } from "@/commons/graphql/generated/types";
-import { UI_SIZE, UISize } from "@/ui/size";
+import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import { JSX } from "react";
 
 export default function RecordCardContent({
   board,
-  size = "md",
+  size = "lg",
 }: {
   board: IBoard;
-  size?: UISize;
+  size?: CARD_UI_SIZE;
 }): JSX.Element {
   const s = UI_SIZE[size];
 

@@ -1,5 +1,5 @@
 import { IUser } from "@/commons/graphql/generated/types";
-import Avatar from "@/components/commons/avatar/Avatar";
+import Avatar from "@/components/commons/ui/avatar/Avatar";
 import { ChevronRight } from "lucide-react";
 import { JSX } from "react";
 

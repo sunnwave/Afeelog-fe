@@ -1,12 +1,12 @@
 import { IBoard } from "@/commons/graphql/generated/types";
-import Avatar from "@/components/commons/avatar/Avatar";
+import Avatar from "@/components/commons/ui/avatar/Avatar";
 import { UI_SIZE, UISize } from "@/ui/size";
 import formatDate from "@/utils/formatDate";
 import { JSX } from "react";
 
 export default function Profile({
   board,
-  size = "md",
+  size = "lg",
 }: {
   board: IBoard;
   size?: UISize;
