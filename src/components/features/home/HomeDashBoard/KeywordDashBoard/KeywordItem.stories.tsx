@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import KeywordItem from "./KeywordItem";
 
 const meta: Meta<typeof KeywordItem> = {
-  title: "commons/KeywordItem",
+  title: "features/home/KeywordItem",
   component: KeywordItem,
   parameters: {
     layout: "fullscreen",
