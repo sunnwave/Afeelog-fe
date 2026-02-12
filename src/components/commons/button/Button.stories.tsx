@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
+import { Button } from "./Button"; // ✅ 경로 맞게 수정
 
 const meta: Meta<typeof Button> = {
   title: "commons/Button",
@@ -7,102 +7,148 @@ const meta: Meta<typeof Button> = {
   parameters: {
     layout: "centered",
   },
-};
-export default meta;
-
-type Story = StoryObj<typeof Button>;
-
-export const Playground: Story = {
   args: {
-    children: "Button",
+    children: "버튼",
     variant: "solid",
     tone: "neutral",
+    size: "sm",
     selected: false,
     disabled: false,
   },
   argTypes: {
-    variant: { control: "inline-radio", options: ["tab", "solid", "ghost"] },
+    onClick: { action: "clicked" },
+    variant: {
+      control: "inline-radio",
+      options: ["tab", "solid", "outlined", "ghost"],
+    },
     tone: {
       control: "inline-radio",
       options: ["primary", "indigo", "emerald", "neutral"],
     },
+    size: {
+      control: "inline-radio",
+      options: ["tab", "sm", "md", "lg"],
+    },
     selected: { control: "boolean" },
     disabled: { control: "boolean" },
-    children: { control: "text" },
+    className: { control: "text" },
+  },
+  decorators: [
+    (Story) => (
+      <div className="min-h-[240px] w-[420px] bg-background p-6 rounded-2xl border border-border flex items-center justify-center">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Tab: Story = {
+  args: {
+    variant: "tab",
+    tone: "indigo",
+    selected: true,
+    size: "tab",
+    children: "필로그 키워드",
   },
 };
 
-export const Gallery: Story = {
+export const SolidPrimary: Story = {
+  args: {
+    variant: "solid",
+    tone: "primary",
+    size: "md",
+    children: "Primary Solid",
+  },
+};
+
+export const OutlinedEmerald: Story = {
+  args: {
+    variant: "outlined",
+    tone: "emerald",
+    size: "md",
+    children: "Outlined Emerald",
+  },
+};
+
+export const GhostNeutral: Story = {
+  args: {
+    variant: "ghost",
+    tone: "neutral",
+    size: "sm",
+    children: "Ghost Neutral",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    variant: "solid",
+    tone: "indigo",
+    size: "md",
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const SizeShowcase: Story = {
   render: () => (
-    <div className="w-[840px] max-w-[calc(100vw-32px)] space-y-6">
-      {/* TAB */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold text-foreground">Tab</h3>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="tab" tone="indigo" selected>
-            필로그 키워드(선택)
-          </Button>
-          <Button variant="tab" tone="indigo">
-            필로그 키워드
-          </Button>
-          <Button variant="tab" tone="emerald" selected>
-            마켓 키워드(선택)
-          </Button>
-          <Button variant="tab" tone="emerald">
-            마켓 키워드
-          </Button>
-          <Button variant="tab" tone="neutral">
-            뉴트럴
-          </Button>
-          <Button variant="tab" tone="neutral" selected>
-            뉴트럴(선택)
-          </Button>
-        </div>
-      </section>
+    <div className="w-[520px] space-y-3">
+      <Button size="sm">Size sm</Button>
+      <Button size="md">Size md</Button>
+      <Button size="lg">Size lg</Button>
+    </div>
+  ),
+};
 
-      {/* SOLID */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold text-foreground">Solid</h3>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="solid" tone="primary">
-            Primary
-          </Button>
-          <Button variant="solid" tone="indigo">
-            Indigo
-          </Button>
-          <Button variant="solid" tone="emerald">
-            Emerald
-          </Button>
-          <Button variant="solid" tone="neutral">
-            Neutral
-          </Button>
-          <Button variant="solid" tone="indigo" disabled>
-            Disabled
-          </Button>
-        </div>
-      </section>
+export const ToneShowcaseSolid: Story = {
+  render: () => (
+    <div className="w-[520px] grid grid-cols-2 gap-3">
+      <Button tone="primary" variant="solid">
+        primary
+      </Button>
+      <Button tone="indigo" variant="solid">
+        indigo
+      </Button>
+      <Button tone="emerald" variant="solid">
+        emerald
+      </Button>
+      <Button tone="neutral" variant="solid">
+        neutral
+      </Button>
+    </div>
+  ),
+};
 
-      {/* GHOST */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold text-foreground">Ghost</h3>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="ghost" tone="primary">
-            Primary
-          </Button>
-          <Button variant="ghost" tone="indigo">
-            Indigo
-          </Button>
-          <Button variant="ghost" tone="emerald">
-            Emerald
-          </Button>
-          <Button variant="ghost" tone="neutral">
-            Neutral
-          </Button>
-          <Button variant="ghost" tone="indigo" disabled>
-            Disabled
-          </Button>
-        </div>
-      </section>
+export const ToneShowcaseOutlined: Story = {
+  render: () => (
+    <div className="w-[520px] grid grid-cols-2 gap-3">
+      <Button tone="primary" variant="outlined">
+        primary
+      </Button>
+      <Button tone="indigo" variant="outlined">
+        indigo
+      </Button>
+      <Button tone="emerald" variant="outlined">
+        emerald
+      </Button>
+      <Button tone="neutral" variant="outlined">
+        neutral
+      </Button>
+    </div>
+  ),
+};
+
+export const TabPairExample: Story = {
+  render: () => (
+    <div className="w-[520px] flex gap-2">
+      <Button variant="tab" tone="indigo" size="tab" selected>
+        필로그 키워드
+      </Button>
+      <Button variant="tab" tone="emerald" size="tab" selected={false}>
+        마켓 키워드
+      </Button>
     </div>
   ),
 };

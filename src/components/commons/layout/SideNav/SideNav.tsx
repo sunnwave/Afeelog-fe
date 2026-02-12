@@ -32,9 +32,9 @@ export default function Sidebar() {
             <span>작성하기</span>
           </button>
         </div>
-        {SIDE_NAV_ITEMS.map((item) => {
-          return <NavItem key={item.label} nav={item} />;
-        })}
+        {SIDE_NAV_ITEMS.map((item) => (
+          <NavItem key={item.label} nav={item} />
+        ))}
         {isLoggedIn && (
           <div className="p-4 border-t border-border">
             <button
