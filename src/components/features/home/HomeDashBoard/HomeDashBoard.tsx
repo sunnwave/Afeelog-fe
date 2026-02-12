@@ -1,5 +1,5 @@
 import { accessTokenState } from "@/commons/stores";
-import { JSX, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import MyDashBoard from "./MyDashBoard/MyDashBoard";
 import TwoColumnDashboard from "./TwoColumnDashboard/TwoColumnDashboard";
@@ -12,6 +12,14 @@ export default function HomeDashBoard(): JSX.Element {
   const [activeKeywordType, setActiveKeywordType] = useState<
     "feelog" | "market"
   >("feelog");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveKeywordType((prev) => (prev === "feelog" ? "market" : "feelog"));
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleManualSwitch = (type: "feelog" | "market") => {
     setActiveKeywordType(type);
