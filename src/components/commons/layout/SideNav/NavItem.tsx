@@ -10,7 +10,7 @@ export default function NavItem({ nav }: { nav: SideNavItemType }) {
     <Button
       variant="tab"
       tone="primary"
-      size="sm"
+      size="md"
       selected={isActive}
       className="relative rounded-2xl justify-start"
       onClick={() => router.push(nav.href)}

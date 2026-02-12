@@ -1,8 +1,8 @@
 import { cn } from "@/utils/cn";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
-type ButtonTone = "primary" | "indigo" | "emerald" | "neutral";
 type ButtonVariant = "tab" | "solid" | "outlined" | "ghost";
+type ButtonTone = "primary" | "indigo" | "emerald" | "neutral";
 type ButtonSize = "tab" | "sm" | "md" | "lg";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -18,7 +18,7 @@ const base =
 const sizes = {
   tab: "py-2.5 px-4 text-sm", // 네가 쓰던 탭 버튼 사이즈
   sm: "px-4 py-3 text-sm font-medium gap-3",
-  md: "px-5 py-3.5 text-sm font-medium gap-3",
+  md: "px-5 py-3 text-md font-bold gap-3",
   lg: "px-6 py-4 text-base font-semibold gap-3",
 } satisfies Record<ButtonSize, string>;
 

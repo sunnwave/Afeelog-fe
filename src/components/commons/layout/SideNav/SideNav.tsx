@@ -5,32 +5,33 @@ import ProfileEntry from "./ProfileEntry/ProfileEntry";
 import { SIDE_NAV_ITEMS } from "@/constants/navigation";
 import NavItem from "./NavItem";
 import { LogOut } from "lucide-react";
+import { Button } from "../../button/Button";
+import { useNavigation } from "@/commons/hooks/ui/useNavigation";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);
   const isLoggedIn = !!accessToken;
 
+  const { onClickNavigation } = useNavigation();
+
   return (
     <aside className="hidden lg:flex lg:flex-col fixed left-0 top-0 h-screen w-68 bg-card border-r border-border z-50">
-      {/* Logo */}
       <div className="p-6 border-b border-border">
         <Logo size="lg" showSubtitle />
       </div>
       <ProfileEntry />
       <nav className="flex-1 overflow-y-auto p-4 space-y-1">
         <div className="pt-4 pb-2">
-          <button
-            // onClick={onWriteClick}
-            className="
-                    w-full h-12.5 flex items-center justify-center px-4 py-3 rounded-2xl
-                    border border-primary text-primary font-bold text-sm
-                    hover:bg-primary/5
-                    active:scale-[0.98]
-                    transition-all duration-200
-                  "
+          <Button
+            variant="outlined"
+            tone="primary"
+            size="sm"
+            className="active:scale-[0.98]"
+            // TODO:필로그or마켓 모달 뜨도록 수정
+            onClick={onClickNavigation("/records/new")}
           >
-            <span>작성하기</span>
-          </button>
+            작성하기
+          </Button>
         </div>
         {SIDE_NAV_ITEMS.map((item) => (
           <NavItem key={item.label} nav={item} />

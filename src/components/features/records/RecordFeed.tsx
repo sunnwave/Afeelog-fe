@@ -3,7 +3,7 @@ import { JSX, useCallback, useState } from "react";
 import RecordFeedCard from "./RecordFeedCard/RecordFeedCard";
 import { Sparkles } from "lucide-react";
 import ResponsiveGrid from "@/components/commons/layout/ResponsiveGrid";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useBreakpoint } from "@/commons/hooks/ui/useBreakpoint";
 import { CARD_SIZE_BY_BP } from "@/ui/pickCardSize";
 import { useFetchRecords } from "./hooks/queries/useFetchRecords";
 import { useInfiniteScroll } from "@/commons/hooks/ui/useInfiniteScroll";
