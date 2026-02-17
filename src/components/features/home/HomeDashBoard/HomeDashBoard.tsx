@@ -26,10 +26,11 @@ export default function HomeDashBoard(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 space-y-10 md:space-y-12">
+    // <div className="min-h-screen bg-background">
+    <>
+      {/* <div className="max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 space-y-10 md:space-y-12">
         {isLoggedIn && <MyDashBoard />}
-      </div>
+        </div> */}
       {/* 모바일&태블릿 */}
       <SingleDashBoard
         activeKeywordType={activeKeywordType}
@@ -38,6 +39,7 @@ export default function HomeDashBoard(): JSX.Element {
 
       {/* 데스트탑 */}
       <TwoColumnDashboard />
-    </div>
+    </>
+    // </div>
   );
 }

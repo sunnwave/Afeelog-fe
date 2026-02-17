@@ -1,6 +1,6 @@
 import { ResponsiveLayout } from "@/components/commons/layout/ResponsiveLayout";
 import { JSX, useCallback, useState } from "react";
-import RecordFeedCard from "./RecordFeedCard/RecordFeedCard";
+import RecordFeedCard from "./RecordCard/RecordCard";
 import { Sparkles } from "lucide-react";
 import ResponsiveGrid from "@/components/commons/layout/ResponsiveGrid";
 import { useBreakpoint } from "@/commons/hooks/ui/useBreakpoint";

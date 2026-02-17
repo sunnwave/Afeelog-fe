@@ -16,7 +16,7 @@ const base =
   "w-full flex items-center justify-center rounded-lg font-medium cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none";
 
 const sizes = {
-  tab: "py-2.5 px-4 text-sm", // 네가 쓰던 탭 버튼 사이즈
+  tab: "py-2.5 px-4 text-sm",
   sm: "px-4 py-3 text-sm font-medium gap-3",
   md: "px-5 py-3 text-md font-bold gap-3",
   lg: "px-6 py-4 text-base font-semibold gap-3",
@@ -54,7 +54,8 @@ const outlinedTone = {
     "border border-point-indigo text-point-indigo hover:bg-point-indigo/5 ",
   emerald:
     "border border-point-emerald text-point-emerald  hover:bg-point-emerald/5 ",
-  neutral: "border border-foreground text-foreground hover:opacity-90 ",
+  neutral:
+    "border border-border text-foreground hover:bg-accent/80 active:bg-accent/70 transition-colors ",
 } satisfies Record<ButtonTone, string>;
 
 const ghostTone = {

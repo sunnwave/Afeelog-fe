@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { IBoard } from "@/commons/graphql/generated/types";
-import RecordFeedCard from "./RecordFeedCard";
-import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
+import RecordCard from "./RecordCard";
 
 const IMG = "https://picsum.photos/id/64/600/800";
 
@@ -29,9 +28,9 @@ const baseBoard = {
   },
 } as unknown as IBoard;
 
-const meta: Meta<typeof RecordFeedCard> = {
-  title: "features/records/RecordFeedCard",
-  component: RecordFeedCard,
+const meta: Meta<typeof RecordCard> = {
+  title: "features/records/RecordCard",
+  component: RecordCard,
   parameters: { layout: "fullscreen" },
   decorators: [
     (Story) => (
@@ -55,7 +54,7 @@ const meta: Meta<typeof RecordFeedCard> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof RecordFeedCard>;
+type Story = StoryObj<typeof RecordCard>;
 
 export const Poster: Story = {
   args: {

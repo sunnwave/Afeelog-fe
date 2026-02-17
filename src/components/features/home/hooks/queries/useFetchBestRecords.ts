@@ -1,7 +1,7 @@
 import { IQuery } from "@/commons/graphql/generated/types";
 import { gql, useQuery } from "@apollo/client";
 
-const FETCH_BEST_BOARDS = gql`
+const FETCH_BEST_RECORDS = gql`
   query fetchBoardsOfTheBest {
     fetchBoardsOfTheBest {
       _id
@@ -18,9 +18,9 @@ const FETCH_BEST_BOARDS = gql`
   }
 `;
 
-export const useFetchBestBoards = () => {
+export const useFetchBestRecords = () => {
   const { data, refetch } =
-    useQuery<Pick<IQuery, "fetchBoardsOfTheBest">>(FETCH_BEST_BOARDS);
+    useQuery<Pick<IQuery, "fetchBoardsOfTheBest">>(FETCH_BEST_RECORDS);
 
   console.log(data);
 

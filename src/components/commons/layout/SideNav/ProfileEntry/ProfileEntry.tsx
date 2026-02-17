@@ -1,4 +1,6 @@
 import { IUser } from "@/commons/graphql/generated/types";
+import { useNavigation } from "@/commons/hooks/ui/useNavigation";
+import { Button } from "@/components/commons/button/Button";
 import Avatar from "@/components/commons/ui/avatar/Avatar";
 import { ChevronRight } from "lucide-react";
 import { JSX } from "react";
@@ -14,20 +16,19 @@ export default function ProfileEntry({
 }): JSX.Element {
   const isLoggedIn = variant === "loggedIn";
 
-  const onMoveMyPage = () => {};
-  const onMoveLogin = () => {};
+  const { onClickNavigation } = useNavigation();
 
   return (
     <div className="p-4 border-b border-border">
-      <button
-        onClick={isLoggedIn ? onMoveMyPage : onMoveLogin}
-        className="
-            w-full flex items-center border border-border gap-4.5 px-4 py-4 rounded-[20px]
-            hover:bg-accent/80 active:bg-accent/70 transition-colors cursor-pointer
-          "
+      <Button
+        variant="outlined"
+        tone="neutral"
+        onClick={
+          isLoggedIn ? onClickNavigation("/me") : onClickNavigation("/login")
+        }
       >
         {isLoggedIn && <Avatar user={user} size="md" type="filled" />}
-        <div className="flex flex-1 flex-col items-start min-w-0 w-full ">
+        <div className="flex-1 min-w-0 flex flex-col items-start">
           <p className="font-semibold text-base text-foreground truncate">
             {isLoggedIn ? user?.name : "로그인해주세요"}
           </p>
@@ -35,9 +36,8 @@ export default function ProfileEntry({
             {isLoggedIn ? "마이페이지로 이동" : "로그인하고 내 기록을 관리해요"}
           </p>
         </div>
-
         <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-      </button>
+      </Button>
     </div>
   );
 }

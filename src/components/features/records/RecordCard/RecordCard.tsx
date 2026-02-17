@@ -9,7 +9,7 @@ import BookMarkIcon from "@/components/commons/ui/icons/bookmarkIcon/BookMarkIco
 import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import RecordCardContent from "./RecordCardContent";
 
-export default function RecordFeedCard({
+export default function RecordCard({
   board,
   size = "lg",
 }: {
@@ -28,7 +28,7 @@ export default function RecordFeedCard({
   return (
     <article
       onClick={onClick}
-      className={`relative bg-card rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4] ${s.pad}`}
+      className={`relative w-full bg-card rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all overflow-hidden cursor-pointer group aspect-[3/4] ${s.pad}`}
     >
       {hasImages ? (
         <Image

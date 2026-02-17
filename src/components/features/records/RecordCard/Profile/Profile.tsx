@@ -1,6 +1,6 @@
 import { IBoard } from "@/commons/graphql/generated/types";
 import Avatar from "@/components/commons/ui/avatar/Avatar";
-import { UI_SIZE, UISize } from "@/ui/size";
+import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import formatDate from "@/utils/formatDate";
 import { JSX } from "react";
 
@@ -9,7 +9,7 @@ export default function Profile({
   size = "lg",
 }: {
   board: IBoard;
-  size?: UISize;
+  size?: CARD_UI_SIZE;
 }): JSX.Element {
   const s = UI_SIZE[size];
   return (
