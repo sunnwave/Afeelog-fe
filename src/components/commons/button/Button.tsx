@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, forwardRef } from "react";
 
 type ButtonVariant = "tab" | "solid" | "outlined" | "ghost";
 type ButtonTone = "primary" | "indigo" | "emerald" | "neutral";
-type ButtonSize = "tab" | "sm" | "md" | "lg";
+type ButtonSize = "tab" | "xs" | "sm" | "md" | "lg";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
@@ -17,6 +17,7 @@ const base =
 
 const sizes = {
   tab: "py-2.5 px-4 text-sm",
+  xs: "px-3 py-1.5 text-sm font-semibold gap-1.5",
   sm: "px-4 py-3 text-sm font-medium gap-3",
   md: "px-5 py-3 text-md font-bold gap-3",
   lg: "px-6 py-4 text-base font-semibold gap-3",
@@ -55,7 +56,7 @@ const outlinedTone = {
   emerald:
     "border border-point-emerald text-point-emerald  hover:bg-point-emerald/5 ",
   neutral:
-    "border border-border text-foreground hover:bg-accent/80 active:bg-accent/70 transition-colors ",
+    "border border-border text-muted-foreground hover:bg-accent/70 active:bg-accent/70 transition-colors ",
 } satisfies Record<ButtonTone, string>;
 
 const ghostTone = {

@@ -17,7 +17,7 @@ const baseUser: IUser = {
 };
 
 const meta: Meta<typeof Avatar> = {
-  title: "commons/Avatar",
+  title: "commons/ui/Avatar",
   component: Avatar,
   parameters: {
     layout: "fullscreen",

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import BookMarkIcon from "./BookMarkIcon";
 
 const meta: Meta<typeof BookMarkIcon> = {
-  title: "commons/BookMarkIcon",
+  title: "commons/ui/icons/BookMarkIcon",
   component: BookMarkIcon,
   parameters: {
     layout: "fullscreen",

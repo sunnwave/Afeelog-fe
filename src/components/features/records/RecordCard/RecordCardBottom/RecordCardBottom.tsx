@@ -1,9 +1,9 @@
 import { JSX } from "react";
-import Profile from "../Profile/Profile";
 import { IBoard } from "@/commons/graphql/generated/types";
 import CommentIcon from "@/components/commons/ui/icons/commentIcon/CommentIcon";
 import HeartIcon from "@/components/commons/ui/icons/heartIcon/HeartIcon";
 import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
+import Profile from "@/components/commons/profile/Profile";
 
 export default function RecordCardBottom({
   board,
@@ -15,7 +15,7 @@ export default function RecordCardBottom({
   const s = UI_SIZE[size];
   return (
     <div className="flex items-center justify-between">
-      <Profile board={board} size={size} />
+      <Profile record={board} size={size} />
       <div className={`flex items-center ${s.gap}`}>
         {/* TODO: commentcount로 변경해야 함 */}
         <CommentIcon count={board.likeCount ?? 0} iconSize={size} />

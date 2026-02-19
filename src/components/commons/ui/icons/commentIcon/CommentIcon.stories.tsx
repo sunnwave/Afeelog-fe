@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import CommentIcon from "./CommentIcon";
 
 const meta: Meta<typeof CommentIcon> = {
-  title: "commons/CommentIcon",
+  title: "commons/ui/icons/CommentIcon",
   component: CommentIcon,
   parameters: { layout: "fullscreen" },
   decorators: [

@@ -1,4 +1,4 @@
-import { IconSize, UI_ICON } from "@/ui/iconSize";
+import { ICON_COLOR, IconColor, IconSize, ICON_SIZE } from "@/ui/iconSize";
 import { cn } from "@/utils/cn";
 import { Heart } from "lucide-react";
 import { JSX, useState } from "react";
@@ -8,15 +8,19 @@ export default function HeartIcon({
   likeCount,
   iconSize = "sm",
   direction = "col",
+  iconColor = "white",
   className,
 }: {
   isLiked: boolean;
   likeCount: number;
   iconSize?: IconSize;
+  iconColor?: IconColor;
   direction?: "col" | "row";
   className?: string;
 }): JSX.Element {
-  const s = UI_ICON[iconSize];
+  const s = ICON_SIZE[iconSize];
+  const c = ICON_COLOR[iconColor];
+
   const [liked, setLiked] = useState(isLiked);
   const [likes, setLikes] = useState(likeCount ?? 0);
 
@@ -44,17 +48,13 @@ export default function HeartIcon({
           "transition-colors",
           liked
             ? "text-point-indigo"
-            : "text-white/90 group-hover/like:text-point-indigo-light",
+            : `${c.icon} group-hover/like:text-point-indigo-light`,
           className
         )}
         fill={liked ? "currentColor" : "none"}
       />
       <span
-        className={cn(
-          s.text,
-          liked ? "text-point-indigo" : "text-white/60",
-          className
-        )}
+        className={cn(s.text, liked ? "text-point-indigo" : c.text, className)}
       >
         {likes}
       </span>

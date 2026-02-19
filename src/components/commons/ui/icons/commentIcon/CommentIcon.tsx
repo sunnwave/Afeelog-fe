@@ -1,4 +1,4 @@
-import { IconSize, UI_ICON } from "@/ui/iconSize";
+import { IconSize, ICON_SIZE } from "@/ui/iconSize";
 import { cn } from "@/utils/cn";
 import { MessageCircle } from "lucide-react";
 import { JSX } from "react";
@@ -14,7 +14,7 @@ export default function CommentIcon({
   direction?: "col" | "row";
   className?: string;
 }): JSX.Element {
-  const s = UI_ICON[iconSize];
+  const s = ICON_SIZE[iconSize];
 
   const isRow = direction === "row";
   return (

@@ -17,7 +17,7 @@ export default function BestRecords(): JSX.Element {
           <span>이번 주 베스트 필로그</span>
         </h2>
         <Button
-          variant="ghost"
+          variant="outlined"
           tone="neutral"
           className="justify-end max-w-fit"
           onClick={onClickNavigation("/records")}
@@ -26,7 +26,6 @@ export default function BestRecords(): JSX.Element {
           <ChevronRight className="w-5 h-5" />
         </Button>
       </div>
-      {/* TODO: 전체 화면 스크롤 해결 */}
       <div className="w-full max-w-full min-w-0 overflow-x-auto">
         <div className="flex flex-nowrap gap-5">
           {data?.fetchBoardsOfTheBest.map((board) => (
