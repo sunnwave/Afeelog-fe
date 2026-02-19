@@ -24,7 +24,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       {/* ✅ Main: sidebar 만큼 밀고, 내용만 컨테이너로 가운데 정렬 */}
       <div className={`lg:pl-[300px]`}>
         <main className="w-full">
-          <div className="mx-auto w-full max-w-[1200px] px-3 py-3 pb-20 md:px-6 md:py-8 lg:px-6 lg:pb-8">
+          <div className="mx-auto w-full max-w-[1200px] pb-20">
+            {/* <div className="mx-auto w-full max-w-[1200px] pb-20 md:px-6 md:py-8 lg:px-6 lg:pb-8"> */}
             {children}
           </div>
         </main>

@@ -9,7 +9,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
   tone?: ButtonTone;
   size?: ButtonSize;
-  selected?: boolean; // ✅ "선택됨" (persist 상태)
+  selected?: boolean;
 };
 
 const base =
@@ -64,7 +64,8 @@ const ghostTone = {
     "text-point-indigo hover:bg-point-indigo/10 active:bg-point-indigo/15",
   emerald:
     "text-point-emerald hover:bg-point-emerald/10 active:bg-point-emerald/15",
-  neutral: "text-foreground hover:bg-muted active:bg-muted/80",
+  neutral:
+    "text-muted-foreground hover:text-primary transition-colors active:bg-muted/80",
 } satisfies Record<ButtonTone, string>;
 
 export const Button = forwardRef<HTMLButtonElement, Props>(function Button(

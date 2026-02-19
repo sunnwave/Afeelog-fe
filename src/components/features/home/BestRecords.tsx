@@ -3,9 +3,11 @@ import { useFetchBestRecords } from "./hooks/queries/useFetchBestRecords";
 import RecordCard from "../records/RecordCard/RecordCard";
 import { Button } from "@/components/commons/button/Button";
 import { ChevronRight, Flame } from "lucide-react";
+import { useNavigation } from "@/commons/hooks/ui/useNavigation";
 
 export default function BestRecords(): JSX.Element {
   const { data } = useFetchBestRecords();
+  const { onClickNavigation } = useNavigation();
 
   return (
     <div className="w-full overflow-x-hidden flex flex-col space-y-6">
@@ -17,7 +19,8 @@ export default function BestRecords(): JSX.Element {
         <Button
           variant="ghost"
           tone="neutral"
-          className="justify-end max-w-fit p-0"
+          className="justify-end max-w-fit"
+          onClick={onClickNavigation("/records")}
         >
           더보기
           <ChevronRight className="w-5 h-5" />

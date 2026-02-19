@@ -1,4 +1,3 @@
-// src/components/features/home/KeywordDashBoard/KeywordDashBoard.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
 import KeywordDashBoard from "./KeywordDashBoard";
 import { MOCK_FEELLOG_KEYWORDS, MOCK_MARKET_KEYWORDS } from "../../constants";

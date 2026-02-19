@@ -1,3 +1,3 @@
 export default function TradeDetailPage() {
-  return <div>Trade Detail Page</div>;
+  return <div>Market Detail Page</div>;
 }

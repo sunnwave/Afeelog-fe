@@ -1,3 +1,5 @@
+import RecordDetail from "@/components/features/recordDetail/RecordDetail";
+
 export default function RecordDetailPage() {
-  return <div>Record Detail Page</div>;
+  return <RecordDetail />;
 }
