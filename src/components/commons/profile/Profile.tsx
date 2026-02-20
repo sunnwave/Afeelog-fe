@@ -1,8 +1,8 @@
 import { IBoard } from "@/shared/graphql/generated/types";
 import Avatar, { AvatarType } from "@/components/ui/avatar/Avatar";
 import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
-import formatDate from "@/utils/formatDate";
 import { JSX } from "react";
+import { formatDate } from "@/utils/date";
 
 type ProfileTone = "primary" | "white";
 

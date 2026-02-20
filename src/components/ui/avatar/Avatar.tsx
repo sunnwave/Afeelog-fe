@@ -11,7 +11,7 @@ export type AvatarType = "filled" | "outlined";
 const AVATAR_SIZE: Record<AvatarSize, { px: number; cls: string }> = {
   xs: { px: 32, cls: "h-8 w-8 text-sm font-semibold" },
   sm: { px: 36, cls: "h-9 w-9 text-sm font-semibold" },
-  md: { px: 45, cls: "h-[45px] w-[45px] text-xl font-semibold" },
+  md: { px: 40, cls: "h-[40px] w-[40px] text-xl font-semibold" },
   lg: { px: 72, cls: "h-[72px] w-[72px] text-3xl font-bold" },
 };
 

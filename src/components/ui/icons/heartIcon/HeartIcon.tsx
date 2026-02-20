@@ -12,7 +12,7 @@ export default function HeartIcon({
   className,
 }: {
   isLiked: boolean;
-  likeCount: number;
+  likeCount?: number;
   iconSize?: IconSize;
   iconColor?: IconColor;
   direction?: "col" | "row";

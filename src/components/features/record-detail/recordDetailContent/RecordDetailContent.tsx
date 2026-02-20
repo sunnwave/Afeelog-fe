@@ -8,6 +8,7 @@ import RecordDetailContentMain from "./RecordDetailContentMain";
 import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
 import BookMarkIcon from "@/components/ui/icons/bookmarkIcon/BookMarkIcon";
 import { cn } from "@/utils/cn";
+import RecordComments from "../../record-comments/RecordComments";
 
 export default function RecordDetailContent({
   record,
@@ -61,6 +62,8 @@ export default function RecordDetailContent({
         </div>
 
         <div className="border-t border-border" />
+
+        <RecordComments />
       </div>
     </div>
     // </>
