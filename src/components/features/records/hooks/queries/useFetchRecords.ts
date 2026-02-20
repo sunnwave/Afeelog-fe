@@ -1,7 +1,7 @@
 import {
   IQuery,
   IQueryFetchBoardsArgs,
-} from "@/commons/graphql/generated/types";
+} from "@/shared/graphql/generated/types";
 import { gql, useQuery } from "@apollo/client";
 
 const FETCH_RECORDS = gql`

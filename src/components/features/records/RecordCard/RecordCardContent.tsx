@@ -1,4 +1,4 @@
-import { IBoard } from "@/commons/graphql/generated/types";
+import { IBoard } from "@/shared/graphql/generated/types";
 import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import { JSX } from "react";
 

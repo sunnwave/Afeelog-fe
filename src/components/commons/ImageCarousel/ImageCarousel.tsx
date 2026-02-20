@@ -3,6 +3,7 @@ import { JSX, useState } from "react";
 import ImageCounter from "./ImageCounter";
 import DotIndicator from "./DotIndicator";
 import NavigationArrow from "./NavigationArrow";
+import { getImageUrl } from "@/utils/getImage";
 
 export default function ImageCarousel({
   images,
@@ -16,7 +17,8 @@ export default function ImageCarousel({
       <div className="relative aspect-[3/4] bg-muted rounded-2xl overflow-hidden group">
         {/* Main Image */}
         <Image
-          src={images[currentImageIndex]}
+          src={getImageUrl(images[currentImageIndex])}
+          // src={images[currentImageIndex]}
           alt={`${images[currentImageIndex]}`}
           fill
           className="w-full h-full object-cover"

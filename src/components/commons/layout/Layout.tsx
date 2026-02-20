@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import BottomNav from "./BottomNav/BottomNav";
 import Sidebar from "./SideNav/SideNav";
-import Logo from "../ui/logo/Logo";
+import Logo from "../../ui/logo/Logo";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

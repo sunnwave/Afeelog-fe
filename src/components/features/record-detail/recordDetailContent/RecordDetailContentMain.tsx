@@ -1,4 +1,4 @@
-import { IBoard } from "@/commons/graphql/generated/types";
+import { IBoard } from "@/shared/graphql/generated/types";
 import { useMemo, useState } from "react";
 
 export default function RecordContents({ record }: { record: IBoard }) {

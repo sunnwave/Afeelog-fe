@@ -1,4 +1,4 @@
-import { IQuery } from "@/commons/graphql/generated/types";
+import { IQuery } from "@/shared/graphql/generated/types";
 import { gql, useQuery } from "@apollo/client";
 
 const FETCH_BEST_RECORDS = gql`

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import type { IBoard } from "@/commons/graphql/generated/types";
+import type { IBoard } from "@/shared/graphql/generated/types";
 import Profile from "./Profile";
 
 const IMG = "https://picsum.photos/id/64/200/200";

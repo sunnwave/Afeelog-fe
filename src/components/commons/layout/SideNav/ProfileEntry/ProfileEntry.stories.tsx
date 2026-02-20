@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import type { IUser } from "@/commons/graphql/generated/types";
+import type { IUser } from "@/shared/graphql/generated/types";
 import ProfileEntry from "./ProfileEntry";
 // import { vi } from "vitest";
 

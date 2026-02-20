@@ -1,5 +1,5 @@
-import { IBoard } from "@/commons/graphql/generated/types";
-import Avatar, { AvatarType } from "@/components/commons/ui/avatar/Avatar";
+import { IBoard } from "@/shared/graphql/generated/types";
+import Avatar, { AvatarType } from "@/components/ui/avatar/Avatar";
 import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import formatDate from "@/utils/formatDate";
 import { JSX } from "react";

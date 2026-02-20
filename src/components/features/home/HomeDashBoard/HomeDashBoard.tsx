@@ -1,4 +1,4 @@
-import { accessTokenState } from "@/commons/stores";
+import { accessTokenState } from "@/shared/stores";
 import { JSX, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import TwoColumnDashboard from "./TwoColumnDashboard/TwoColumnDashboard";

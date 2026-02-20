@@ -1,4 +1,4 @@
-import { AvatarSize } from "@/components/commons/ui/avatar/Avatar";
+import { AvatarSize } from "@/components/ui/avatar/Avatar";
 import { IconSize } from "./iconSize";
 
 export type CARD_UI_SIZE = "sm" | "lg";

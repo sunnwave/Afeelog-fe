@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "@/commons/stores";
+import { accessTokenState } from "@/shared/stores";
 import {
   ApolloProvider,
   ApolloClient,

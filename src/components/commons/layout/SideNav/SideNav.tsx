@@ -1,12 +1,12 @@
 import { useRecoilValue } from "recoil";
-import { accessTokenState } from "@/commons/stores";
-import Logo from "../../ui/logo/Logo";
+import { accessTokenState } from "@/shared/stores";
+import Logo from "../../../ui/logo/Logo";
 import ProfileEntry from "./ProfileEntry/ProfileEntry";
 import { SIDE_NAV_ITEMS } from "@/constants/navigation";
 import NavItem from "./NavItem";
 import { LogOut } from "lucide-react";
 import { Button } from "../../button/Button";
-import { useNavigation } from "@/commons/hooks/ui/useNavigation";
+import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);

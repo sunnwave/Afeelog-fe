@@ -1,7 +1,4 @@
-import {
-  IQuery,
-  IQueryFetchBoardArgs,
-} from "@/commons/graphql/generated/types";
+import { IQuery, IQueryFetchBoardArgs } from "@/shared/graphql/generated/types";
 import { gql, useQuery } from "@apollo/client";
 
 const FETCH_RECORD = gql`
@@ -23,14 +20,12 @@ const FETCH_RECORD = gql`
   }
 `;
 
-export const useFetchRecord = (recorId: string) => {
-  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
+export const useFetchRecord = (recordId?: string) => {
+  return useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_RECORD,
     {
-      variables: recorId ? { boardId: recorId } : undefined,
-      skip: !recorId,
+      variables: { boardId: recordId ?? "" },
+      skip: !recordId,
     }
   );
-
-  return data;
 };

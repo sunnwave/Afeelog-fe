@@ -1,11 +1,11 @@
-import { IBoard } from "@/commons/graphql/generated/types";
+import { IBoard } from "@/shared/graphql/generated/types";
 import { getImageUrl } from "@/utils/getImage";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { JSX } from "react";
 import RecordCardBottom from "./RecordCardBottom/RecordCardBottom";
 import GradientBg from "./GradientBg";
-import BookMarkIcon from "@/components/commons/ui/icons/bookmarkIcon/BookMarkIcon";
+import BookMarkIcon from "@/components/ui/icons/bookmarkIcon/BookMarkIcon";
 import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import RecordCardContent from "./RecordCardContent";
 

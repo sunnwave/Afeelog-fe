@@ -2,7 +2,7 @@ import { JSX } from "react";
 import HomeDashBoard from "./HomeDashBoard/HomeDashBoard";
 import BestRecords from "./BestRecords";
 import { useRecoilValue } from "recoil";
-import { accessTokenState } from "@/commons/stores";
+import { accessTokenState } from "@/shared/stores";
 import MyDashBoard from "./HomeDashBoard/MyDashBoard/MyDashBoard";
 
 export default function HomePage(): JSX.Element {

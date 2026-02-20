@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import RecordCardBottom from "./RecordCardBottom";
-import type { IBoard } from "@/commons/graphql/generated/types";
+import type { IBoard } from "@/shared/graphql/generated/types";
 
 const IMG = "https://picsum.photos/id/64/200/200";
 
