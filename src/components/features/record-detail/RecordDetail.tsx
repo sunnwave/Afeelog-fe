@@ -17,25 +17,29 @@ export default function RecordDetail(): JSX.Element | null {
 
   if (!router.isReady) return null;
   if (!recordId) return null;
+
+  //TODO: 에러 화면 구현
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러!</div>;
+  if (!record) return <div>데이터가 없어요</div>;
 
   const images = (record?.images ?? []).filter((v): v is string => !!v);
   const hasImages = images.length > 0;
-
-  console.log(hasImages);
 
   if (!router.isReady) return <></>;
   if (!recordId) return <></>;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col px-3 py-3 lg:px-4 lg:py-4">
+    <div className="min-h-screen bg-background flex flex-col px-4">
       {/* 뒤로가기 버튼 */}
       <BackButton fallbackHref="/records" label="목록으로" />
 
       {hasImages ? (
-        <div className="grid grid-cols-2 gap-8">
-          <ImageCarousel images={record?.images ?? []} />
+        <div className="mt-3 space-y-6 w-full md:px-6 lg:grid lg:grid-cols-2 lg:items-start lg:space-y-0 lg:gap-8">
+          <ImageCarousel
+            images={images ?? []}
+            className="lg:sticky lg:top-15 lg:h-fit"
+          />
           {record && <RecordDetailContent record={record} isWriter={false} />}
         </div>
       ) : (
@@ -43,7 +47,7 @@ export default function RecordDetail(): JSX.Element | null {
           <RecordDetailContent
             record={record}
             isWriter={false}
-            className="w-full max-w-3xl mx-auto lg:px-4 lg:py-2"
+            className="w-full max-w-3xl mx-auto px-2 py-2 lg:px-4"
           />
         )
       )}

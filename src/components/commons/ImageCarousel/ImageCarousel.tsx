@@ -4,16 +4,20 @@ import ImageCounter from "./ImageCounter";
 import DotIndicator from "./DotIndicator";
 import NavigationArrow from "./NavigationArrow";
 import { getImageUrl } from "@/utils/getImage";
+import { cn } from "@/utils/cn";
 
 export default function ImageCarousel({
   images,
+  className,
 }: {
   images: Array<string>;
+  className?: string;
 }): JSX.Element {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  //TODO: 모바일 태블릿 스와이프 기능 추가
   return (
-    <div className="sticky top-8 h-fit">
+    <div className={cn(className)}>
       <div className="relative aspect-[3/4] bg-muted rounded-2xl overflow-hidden group">
         {/* Main Image */}
         <Image

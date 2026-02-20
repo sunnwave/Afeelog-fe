@@ -32,7 +32,7 @@ export default function BackButton({
   }, [router, fallbackHref, forceFallback]);
 
   return (
-    <div className={cn("sticky top-0 z-50 py-2 bg-white/90", className)}>
+    <div className={cn("sticky top-0 z-50 py-4 mt-2 bg-white/90", className)}>
       <Button
         variant="ghost"
         tone="neutral"
