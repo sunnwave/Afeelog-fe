@@ -1,9 +1,22 @@
+import WriterMenu from "@/components/commons/writerMenu/WriterMenu";
 import Avatar from "@/components/ui/avatar/Avatar";
 import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
 import { IBoardComment } from "@/shared/graphql/generated/types";
 import { fromNow } from "@/utils/date";
 
-export default function CommentItem({ comment }: { comment: IBoardComment }) {
+export default function CommentItem({
+  comment,
+  isWriter,
+}: {
+  comment: IBoardComment;
+  isWriter: boolean;
+}) {
+  // TODO: 작성자 판별
+  // const isWriter=comment.user?._id
+
+  const onEditClick = () => {};
+  const onDeleteClick = () => {};
+
   return (
     <div className="w-full flex items-start gap-3">
       <Avatar
@@ -16,7 +29,7 @@ export default function CommentItem({ comment }: { comment: IBoardComment }) {
         <div className="flex flex-col gap-1">
           <div className="flex gap-2">
             <span className="font-medium text-sm">{comment.writer}</span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs font-regular text-muted-foreground">
               {comment.updatedAt === comment.createdAt
                 ? `${fromNow(comment.createdAt)} 작성됨`
                 : `${fromNow(comment.updatedAt)} 수정됨`}
@@ -26,13 +39,20 @@ export default function CommentItem({ comment }: { comment: IBoardComment }) {
             {comment.contents}
           </p>
         </div>
-        <HeartIcon
-          iconSize="xs"
-          isLiked={false}
-          likeCount={comment.rating}
-          iconColor="neutral"
-          className="ml-3"
-        />
+        <div className="flex items-start gap-4.5 ml-3">
+          <HeartIcon
+            iconSize="xs"
+            isLiked={false}
+            likeCount={comment.rating}
+            iconColor="neutral"
+          />
+          {isWriter && (
+            <WriterMenu
+              onEditClick={onEditClick}
+              onDeleteClick={onDeleteClick}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

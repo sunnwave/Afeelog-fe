@@ -43,7 +43,7 @@ const baseComment = {
 } as unknown as IBoardComment;
 
 export const Default: Story = {
-  args: { comment: baseComment },
+  args: { comment: baseComment, isWriter: true },
 };
 
 export const AnonymousUser: Story = {
@@ -58,6 +58,7 @@ export const LongContent: Story = {
         "아주 긴 댓글 내용입니다. ".repeat(20) +
         "\n\n줄바꿈도 있고, 계속 길어집니다.",
     } as any,
+    isWriter: false,
   },
 };
 
