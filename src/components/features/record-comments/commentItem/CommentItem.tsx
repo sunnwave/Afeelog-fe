@@ -6,15 +6,20 @@ import { fromNow } from "@/utils/date";
 export default function CommentItem({ comment }: { comment: IBoardComment }) {
   return (
     <div className="w-full flex items-start gap-3">
-      <Avatar user={comment.user ?? undefined} size="md" type="filled" />
+      <Avatar
+        user={comment.user ?? undefined}
+        writer={comment.writer ?? undefined}
+        size="md"
+        type="filled"
+      />
       <div className="flex flex-1 justify-between">
         <div className="flex flex-col gap-1">
           <div className="flex gap-2">
             <span className="font-medium text-sm">{comment.writer}</span>
             <span className="text-xs text-muted-foreground">
-              {comment.updatedAt
-                ? `${fromNow(comment.updatedAt)} 수정됨`
-                : `${fromNow(comment.createdAt)} 작성됨`}
+              {comment.updatedAt === comment.createdAt
+                ? `${fromNow(comment.createdAt)} 작성됨`
+                : `${fromNow(comment.updatedAt)} 수정됨`}
             </span>
           </div>
           <p className="w-full text-sm leading-relaxed text-foreground mb-2 whitespace-pre-wrap">

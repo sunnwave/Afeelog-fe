@@ -17,17 +17,19 @@ const AVATAR_SIZE: Record<AvatarSize, { px: number; cls: string }> = {
 
 export default function Avatar({
   user,
+  writer,
   size = "sm",
   type = "outlined",
 }: {
   user?: IUser;
+  writer?: string;
   size?: AvatarSize;
   type?: AvatarType;
 }): JSX.Element {
   const avatarUrl = getProfileImage(user?.picture);
   const s = AVATAR_SIZE[size];
 
-  const key = user?._id || user?.email || user?.name || "anonymous";
+  const key = user?._id || writer || "anonymous";
   const g = pickAvatarGradient(key);
   const filledStyle =
     type === "filled"
@@ -51,7 +53,7 @@ export default function Avatar({
       }`}
       style={filledStyle}
     >
-      {user?.name?.[0] || "익"}
+      {user?.name?.[0] || writer?.[0] || "익"}
     </div>
   );
 }

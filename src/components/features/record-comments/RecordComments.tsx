@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useFetchRecordComments } from "./hooks/queries/useFetchRecordComments";
+import CommmentList from "./CommentList";
 
 export default function RecordComments() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function RecordComments() {
       <h2 className="text-lg font-bold">
         댓글 <span>{comments.length}</span>
       </h2>
+      <CommmentList isLoading={loading} comments={comments} />
     </div>
   );
 }
