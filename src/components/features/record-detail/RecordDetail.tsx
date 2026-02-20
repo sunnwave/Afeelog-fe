@@ -1,11 +1,9 @@
 import { JSX } from "react";
 import { useRouter } from "next/router";
 import { useFetchRecord } from "./hooks/queries/useFetchRecord";
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/commons/button/Button";
-import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 import RecordDetailContent from "./recordDetailContent/RecordDetailContent";
 import ImageCarousel from "@/components/commons/imageCarousel/ImageCarousel";
+import BackButton from "@/components/commons/backButton/BackButton";
 
 export default function RecordDetail(): JSX.Element | null {
   const router = useRouter();
@@ -16,8 +14,6 @@ export default function RecordDetail(): JSX.Element | null {
 
   const { data, loading, error } = useFetchRecord(recordId); // ✅ 항상 호출
   const record = data?.fetchBoard;
-
-  const { onClickNavigation } = useNavigation();
 
   if (!router.isReady) return null;
   if (!recordId) return null;
@@ -35,17 +31,8 @@ export default function RecordDetail(): JSX.Element | null {
   return (
     <div className="min-h-screen bg-background flex flex-col px-3 py-3 lg:px-4 lg:py-4">
       {/* 뒤로가기 버튼 */}
-      <div className="sticky top-0 z-50 py-2 bg-white/90">
-        <Button
-          variant="ghost"
-          tone="neutral"
-          className="p-0 justify-start"
-          onClick={onClickNavigation("/records")}
-        >
-          <ArrowLeft className="w-4-h-4" />
-          <span>목록으로</span>
-        </Button>
-      </div>
+      <BackButton fallbackHref="/records" label="목록으로" />
+
       {hasImages ? (
         <div className="grid grid-cols-2 gap-8">
           <ImageCarousel images={record?.images ?? []} />

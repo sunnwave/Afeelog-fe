@@ -17,6 +17,7 @@ export default function RecordFeed(): JSX.Element {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  // TODO: search 적용, URL query 적용
   const { data, fetchMore } = useFetchRecords();
 
   const records = data?.fetchBoards ?? [];
