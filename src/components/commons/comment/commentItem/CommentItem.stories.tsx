@@ -43,7 +43,10 @@ const baseComment = {
 } as unknown as IBoardComment;
 
 export const Default: Story = {
-  args: { comment: baseComment },
+  args: {
+    comment: baseComment,
+    isWriter: false
+  },
 };
 
 export const AnonymousUser: Story = {

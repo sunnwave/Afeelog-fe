@@ -27,7 +27,7 @@ export default function WriterMenu({
             className="fixed inset-0 z-10"
             onClick={() => setShowMenu(false)}
           />
-          <div className="absolute right-0 top-8 z-20 w-28 bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+          <div className="absolute right-0 top-5 z-20 w-28 bg-card border border-border rounded-lg shadow-lg overflow-hidden">
             <button
               onClick={() => {
                 onEditClick();
