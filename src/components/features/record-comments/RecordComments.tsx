@@ -3,6 +3,7 @@ import { useFetchRecordComments } from "./hooks/queries/useFetchRecordComments";
 import CommmentList from "../../commons/comment/commentList/CommentList";
 import CommentInput from "@/components/commons/comment/commentInput/CommentInput";
 import { useCreateRecordComment } from "./hooks/mutations/useCreateRecordComment";
+import { useBreakpoint } from "@/shared/hooks/ui/useBreakpoint";
 
 export default function RecordComments() {
   const router = useRouter();
@@ -23,6 +24,10 @@ export default function RecordComments() {
     writer,
     password,
   });
+
+  const bp = useBreakpoint();
+  const isFixed = bp !== "desktop";
+
   const comments = data?.fetchBoardComments ?? [];
 
   console.log(comments);
@@ -37,7 +42,7 @@ export default function RecordComments() {
         댓글 <span>{comments.length}</span>
       </h2>
       <CommmentList isLoading={loading} comments={comments} />
-      <CommentInput onSubmit={onSubmit} isLoggedIn={true} />
+      <CommentInput onSubmit={onSubmit} isLoggedIn={true} isFixed={isFixed} />
     </div>
   );
 }

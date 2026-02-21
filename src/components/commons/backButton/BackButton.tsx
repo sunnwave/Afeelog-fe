@@ -36,7 +36,7 @@ export default function BackButton({
       <Button
         variant="ghost"
         tone="neutral"
-        className="p-0 justify-start"
+        className="p-0 justify-start max-w-fit hover:bg-white/90"
         onClick={onBack}
       >
         <ArrowLeft className="w-4-h-4" />

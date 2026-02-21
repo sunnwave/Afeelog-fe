@@ -17,9 +17,9 @@ export default function BestRecords(): JSX.Element {
           <span>이번 주 베스트 필로그</span>
         </h2>
         <Button
-          variant="outlined"
+          variant="ghost"
           tone="neutral"
-          className="justify-end max-w-fit"
+          className="justify-end max-w-fit hover:bg-background"
           onClick={onClickNavigation("/records")}
         >
           더보기
