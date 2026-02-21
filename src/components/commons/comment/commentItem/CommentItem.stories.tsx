@@ -4,7 +4,7 @@ import CommentItem from "./CommentItem";
 import type { IBoardComment } from "@/shared/graphql/generated/types";
 
 const meta: Meta<typeof CommentItem> = {
-  title: "features/record-comments/CommentItem",
+  title: "commons/comment/CommentItem",
   component: CommentItem,
   parameters: { layout: "padded" },
   decorators: [
@@ -43,7 +43,7 @@ const baseComment = {
 } as unknown as IBoardComment;
 
 export const Default: Story = {
-  args: { comment: baseComment, isWriter: true },
+  args: { comment: baseComment },
 };
 
 export const AnonymousUser: Story = {
@@ -58,10 +58,5 @@ export const LongContent: Story = {
         "아주 긴 댓글 내용입니다. ".repeat(20) +
         "\n\n줄바꿈도 있고, 계속 길어집니다.",
     } as any,
-    isWriter: false,
   },
-};
-
-export const HighLikes: Story = {
-  args: { comment: { ...baseComment, rating: 999 } as any },
 };

@@ -1,18 +1,18 @@
 import WriterMenu from "@/components/commons/writerMenu/WriterMenu";
 import Avatar from "@/components/ui/avatar/Avatar";
-import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
 import { IBoardComment } from "@/shared/graphql/generated/types";
 import { fromNow } from "@/utils/date";
 
 export default function CommentItem({
   comment,
-  isWriter,
-}: {
+}: // isWriter,
+{
   comment: IBoardComment;
-  isWriter: boolean;
+  // isWriter: boolean;
 }) {
   // TODO: 작성자 판별
   // const isWriter=comment.user?._id
+  const isWriter = false;
 
   const onEditClick = () => {};
   const onDeleteClick = () => {};
@@ -39,20 +39,9 @@ export default function CommentItem({
             {comment.contents}
           </p>
         </div>
-        <div className="flex items-start gap-4.5 ml-3">
-          <HeartIcon
-            iconSize="xs"
-            isLiked={false}
-            likeCount={comment.rating}
-            iconColor="neutral"
-          />
-          {isWriter && (
-            <WriterMenu
-              onEditClick={onEditClick}
-              onDeleteClick={onDeleteClick}
-            />
-          )}
-        </div>
+        {isWriter && (
+          <WriterMenu onEditClick={onEditClick} onDeleteClick={onDeleteClick} />
+        )}
       </div>
     </div>
   );

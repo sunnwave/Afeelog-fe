@@ -1,13 +1,15 @@
 import { IBoardComment } from "@/shared/graphql/generated/types";
 import { MessageCircle } from "lucide-react";
-import CommentItem from "./commentItem/CommentItem";
+import CommentItem from "../commentItem/CommentItem";
 
 export default function CommmentList({
   isLoading,
   comments,
+  subText = "이 기록에 대한 생각을 공유해주세요",
 }: {
   isLoading: boolean;
   comments: Array<IBoardComment>;
+  subText?: string;
 }) {
   // TODO: skeleton 구현
   // if (isLoading) {
@@ -22,9 +24,7 @@ export default function CommmentList({
         <p className="text-sm font-medium text-foreground mb-1">
           첫 댓글을 남겨보세요
         </p>
-        <p className="text-xs text-muted-foreground">
-          이 기록에 대한 생각을 공유해주세요
-        </p>
+        <p className="text-xs text-muted-foreground">{subText}</p>
       </div>
     );
   }
