@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button"; // ✅ 경로 맞게 수정
+import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
   title: "commons/Button",
   component: Button,
-  parameters: {
-    layout: "centered",
-  },
+  parameters: { layout: "centered" },
   args: {
     children: "버튼",
     variant: "solid",
@@ -23,11 +21,11 @@ const meta: Meta<typeof Button> = {
     },
     tone: {
       control: "inline-radio",
-      options: ["primary", "indigo", "emerald", "neutral"],
+      options: ["primary", "indigo", "emerald", "neutral", "destructive"], // ✅ 추가
     },
     size: {
       control: "inline-radio",
-      options: ["tab", "sm", "md", "lg"],
+      options: ["tab", "xs", "sm", "md", "lg"], // ✅ xs 추가
     },
     selected: { control: "boolean" },
     disabled: { control: "boolean" },
@@ -92,9 +90,29 @@ export const Disabled: Story = {
   },
 };
 
+// ✅ destructive 추가 스토리들
+export const SolidDestructive: Story = {
+  args: {
+    variant: "solid",
+    tone: "destructive",
+    size: "md",
+    children: "삭제",
+  },
+};
+
+export const OutlinedDestructive: Story = {
+  args: {
+    variant: "outlined",
+    tone: "destructive",
+    size: "md",
+    children: "삭제",
+  },
+};
+
 export const SizeShowcase: Story = {
   render: () => (
     <div className="w-[520px] space-y-3">
+      <Button size="xs">Size xs</Button>
       <Button size="sm">Size sm</Button>
       <Button size="md">Size md</Button>
       <Button size="lg">Size lg</Button>
@@ -117,6 +135,9 @@ export const ToneShowcaseSolid: Story = {
       <Button tone="neutral" variant="solid">
         neutral
       </Button>
+      <Button tone="destructive" variant="solid">
+        destructive
+      </Button>
     </div>
   ),
 };
@@ -135,6 +156,31 @@ export const ToneShowcaseOutlined: Story = {
       </Button>
       <Button tone="neutral" variant="outlined">
         neutral
+      </Button>
+      <Button tone="destructive" variant="outlined">
+        destructive
+      </Button>
+    </div>
+  ),
+};
+
+export const ToneShowcaseGhost: Story = {
+  render: () => (
+    <div className="w-[520px] grid grid-cols-2 gap-3">
+      <Button tone="primary" variant="ghost">
+        primary
+      </Button>
+      <Button tone="indigo" variant="ghost">
+        indigo
+      </Button>
+      <Button tone="emerald" variant="ghost">
+        emerald
+      </Button>
+      <Button tone="neutral" variant="ghost">
+        neutral
+      </Button>
+      <Button tone="destructive" variant="ghost">
+        destructive
       </Button>
     </div>
   ),

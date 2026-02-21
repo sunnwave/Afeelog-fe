@@ -2,7 +2,7 @@ import { cn } from "@/utils/cn";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
 type ButtonVariant = "tab" | "solid" | "outlined" | "ghost";
-type ButtonTone = "primary" | "indigo" | "emerald" | "neutral";
+type ButtonTone = "primary" | "indigo" | "emerald" | "neutral" | "destructive";
 type ButtonSize = "tab" | "xs" | "sm" | "md" | "lg";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -22,7 +22,6 @@ const sizes = {
   md: "px-5 py-3 text-md font-bold gap-3",
   lg: "px-6 py-4 text-base font-semibold gap-3",
 } satisfies Record<ButtonSize, string>;
-
 const tabTone = {
   primary: {
     idle: "hover:bg-accent text-foreground",
@@ -40,6 +39,10 @@ const tabTone = {
     idle: "bg-accent text-muted-foreground hover:bg-soft-accent",
     selected: "bg-foreground text-background shadow-md",
   },
+  destructive: {
+    idle: "bg-accent text-muted-foreground hover:bg-soft-accent",
+    selected: "bg-destructive text-destructive-foreground shadow-md",
+  },
 } satisfies Record<ButtonTone, { idle: string; selected: string }>;
 
 const solidTone = {
@@ -47,16 +50,20 @@ const solidTone = {
   indigo: "bg-point-indigo text-white hover:opacity-90 active:opacity-85",
   emerald: "bg-point-emerald text-white hover:opacity-90 active:opacity-85",
   neutral: "bg-foreground text-background hover:opacity-90 active:opacity-85",
+  destructive:
+    "bg-destructive text-destructive-foreground hover:opacity-90 active:opacity-85",
 } satisfies Record<ButtonTone, string>;
 
 const outlinedTone = {
   primary: "border border-primary text-primary hover:bg-primary/5",
   indigo:
-    "border border-point-indigo text-point-indigo hover:bg-point-indigo/5 ",
+    "border border-point-indigo text-point-indigo hover:bg-point-indigo/5",
   emerald:
-    "border border-point-emerald text-point-emerald  hover:bg-point-emerald/5 ",
+    "border border-point-emerald text-point-emerald hover:bg-point-emerald/5",
   neutral:
-    "border border-border text-muted-foreground hover:bg-accent/70 active:bg-accent/70 transition-colors ",
+    "border border-border text-muted-foreground hover:bg-accent/70 active:bg-accent/70 transition-colors",
+  destructive:
+    "border border-destructive text-destructive hover:bg-destructive/10 active:bg-destructive/15",
 } satisfies Record<ButtonTone, string>;
 
 const ghostTone = {
@@ -66,7 +73,9 @@ const ghostTone = {
   emerald:
     "text-point-emerald hover:bg-point-emerald/10 active:bg-point-emerald/15",
   neutral:
-    "text-muted-foreground hover:text-primary transition-colors active:bg-muted/80",
+    "text-muted-foreground hover:bg-muted hover:text-primary transition-colors active:bg-muted/80",
+  destructive:
+    "text-destructive hover:bg-destructive/10 active:bg-destructive/15",
 } satisfies Record<ButtonTone, string>;
 
 export const Button = forwardRef<HTMLButtonElement, Props>(function Button(
