@@ -4,23 +4,32 @@ import { IBoardComment } from "@/shared/graphql/generated/types";
 import { fromNow } from "@/utils/date";
 import { useState } from "react";
 import { CommentUpdate } from "../commentUpdate/CommentUpdate";
+import { useCommentActions } from "../context/CommentActionsContext";
 
-export default function CommentItem({
-  comment,
-  isWriter = true,
-}: {
-  comment: IBoardComment;
-  isWriter?: boolean;
-}) {
+export default function CommentItem({ comment }: { comment: IBoardComment }) {
   // TODO: 작성자 판별
   // const isWriter=comment.user?._id
   // const isWriter = false;
 
+  const { canEdit, onSave, onDelete, onStartEdit } = useCommentActions();
+
+  const isWriter = canEdit(comment);
+
   const [isUpdate, setIsUpdate] = useState(false);
 
-  const onDeleteClick = () => {};
-  const onSave = () => {};
+  const handleEditClick = () => {
+    onStartEdit?.(comment._id);
+    setIsUpdate(true);
+  };
 
+  const handleSave = async (newContents: string) => {
+    await onSave(comment._id, newContents);
+    setIsUpdate(false);
+  };
+
+  const handleDelete = async () => {
+    await onDelete(comment._id);
+  };
   return (
     <div className="w-full flex items-start gap-3">
       <Avatar
@@ -43,8 +52,8 @@ export default function CommentItem({
           {isUpdate ? (
             <CommentUpdate
               initialContent={comment.contents}
-              onSave={onSave}
-              setIsUpdate={setIsUpdate}
+              onSave={handleSave}
+              onCancel={() => setIsUpdate(false)}
             />
           ) : (
             <p className="w-full text-sm leading-relaxed text-foreground mb-2 whitespace-pre-wrap">
@@ -54,8 +63,8 @@ export default function CommentItem({
         </div>
         {isWriter && (
           <WriterMenu
-            onEditClick={() => setIsUpdate(true)}
-            onDeleteClick={onDeleteClick}
+            onEditClick={handleEditClick}
+            onDeleteClick={handleDelete}
           />
         )}
       </div>

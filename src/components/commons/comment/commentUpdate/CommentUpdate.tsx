@@ -1,18 +1,18 @@
-import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, useRef, useEffect } from "react";
 import { X, Check } from "lucide-react";
 import { Button } from "../../button/Button";
 
 interface CommentEditFormProps {
   initialContent: string;
   onSave: (content: string) => void;
-  setIsUpdate: Dispatch<SetStateAction<boolean>>;
+  onCancel: () => void;
   autoFocus?: boolean;
 }
 
 export function CommentUpdate({
   initialContent,
   onSave,
-  setIsUpdate,
+  onCancel,
   autoFocus = true,
 }: CommentEditFormProps) {
   const [content, setContent] = useState(initialContent);
@@ -23,13 +23,14 @@ export function CommentUpdate({
     e.preventDefault();
     if (content.trim() && content.trim() !== initialContent) {
       onSave(content.trim());
+    } else {
+      onCancel();
     }
-    setIsUpdate(false);
   };
 
   const handleCancel = () => {
     setContent(initialContent);
-    setIsUpdate(false);
+    onCancel();
   };
 
   // Auto-resize textarea
