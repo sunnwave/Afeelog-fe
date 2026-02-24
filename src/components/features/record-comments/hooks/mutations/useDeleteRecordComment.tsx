@@ -1,4 +1,5 @@
 // src/components/features/boardCommentList/hooks/mutations/useDeleteBoardComment.ts
+import { useToast } from "@/components/commons/toast/ToastProvider";
 import {
   IMutation,
   IMutationDeleteBoardCommentArgs,
@@ -17,8 +18,10 @@ export const useDeleteRecordComment = ({ password }: { password: string }) => {
     IMutationDeleteBoardCommentArgs
   >(DELETE_RECORD_COMMENT);
 
+  const { error } = useToast();
+
   const onDeleteRecordComment = async (commentId: string) => {
-    // 1) 모달 열림 + callback 등록
+    // TODO: confirm모달 구현 + callback 등록
     try {
       await deleteBoardComment({
         variables: { password, boardCommentId: commentId },
@@ -36,7 +39,7 @@ export const useDeleteRecordComment = ({ password }: { password: string }) => {
       });
     } catch (err) {
       if (err instanceof Error) {
-        alert(err);
+        error("댓글 삭제에 실패했습니다");
         console.error(err);
       }
     }

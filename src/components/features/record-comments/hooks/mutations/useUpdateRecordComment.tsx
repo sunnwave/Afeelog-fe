@@ -1,3 +1,4 @@
+import { useToast } from "@/components/commons/toast/ToastProvider";
 import {
   IMutation,
   IMutationUpdateBoardCommentArgs,
@@ -28,11 +29,6 @@ const UPDATE_RECORD_COMMENT = gql`
   }
 `;
 
-type UpdateCommentForm = {
-  commentId: string;
-  newContents: string;
-};
-
 interface IUpdateRecordCommentReturn {
   onUpdateRecordComment: (
     commentId: string,
@@ -49,6 +45,8 @@ export const useUpdateRecordComment = ({
     Pick<IMutation, "updateBoardComment">,
     IMutationUpdateBoardCommentArgs
   >(UPDATE_RECORD_COMMENT);
+
+  const { success, error } = useToast();
 
   const onUpdateRecordComment = async (
     commentId: string,
@@ -68,12 +66,10 @@ export const useUpdateRecordComment = ({
           },
         },
       });
-      await alert("댓글이 수정되었습니다");
-      // await openAlertModal("댓글이 수정되었습니다.");
-      // setIsUpdate?.(false);
+      await success("댓글이 수정되었습니다");
     } catch (err) {
       if (err instanceof Error) {
-        alert(err);
+        error("댓글 수정에 실패했습니다");
         console.error(err);
       }
     }

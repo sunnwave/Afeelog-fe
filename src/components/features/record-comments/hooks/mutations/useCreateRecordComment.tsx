@@ -1,3 +1,4 @@
+import { useToast } from "@/components/commons/toast/ToastProvider";
 import {
   IMutation,
   IMutationCreateBoardCommentArgs,
@@ -51,10 +52,11 @@ export const useCreateRecordComment = ({
     IMutationCreateBoardCommentArgs
   >(CREATE_RECORD_COMMENT);
 
+  const { error } = useToast();
+
   const onCreateRecordComment = async (form: CreateCommentForm) => {
     if (!recordId) {
-      alert("잘못된 게시글 ID입니다.");
-      // await openAlertModal("잘못된 게시글 ID입니다.");
+      error("잘못된 게시글 ID입니다.");
       return;
     }
 
@@ -89,8 +91,7 @@ export const useCreateRecordComment = ({
       });
     } catch (err) {
       if (err instanceof Error) {
-        alert(err.message);
-        // await openAlertModal(err.message);
+        error("댓글 작성에 실패했습니다.");
         console.error(err);
       }
     }
