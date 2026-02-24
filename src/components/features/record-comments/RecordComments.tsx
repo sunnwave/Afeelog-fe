@@ -3,7 +3,6 @@ import { useFetchRecordComments } from "./hooks/queries/useFetchRecordComments";
 import CommmentList from "../../commons/comment/commentList/CommentList";
 import CommentInput from "@/components/commons/comment/commentInput/CommentInput";
 import { useCreateRecordComment } from "./hooks/mutations/useCreateRecordComment";
-import { useBreakpoint } from "@/shared/hooks/ui/useBreakpoint";
 import { useUpdateRecordComment } from "./hooks/mutations/useUpdateRecordComment";
 import { CommentActionsProvider } from "@/components/commons/comment/context/CommentActionsContext";
 import { useDeleteRecordComment } from "./hooks/mutations/useDeleteRecordComment";
@@ -33,9 +32,6 @@ export default function RecordComments() {
   const { onUpdateRecordComment } = useUpdateRecordComment({ password });
   const { onDeleteRecordComment } = useDeleteRecordComment({ password });
 
-  const bp = useBreakpoint();
-  const isFixed = bp !== "desktop";
-
   const comments = data?.fetchBoardComments ?? [];
 
   console.log(comments);
@@ -60,7 +56,7 @@ export default function RecordComments() {
       >
         <CommmentList isLoading={loading} comments={comments} />
       </CommentActionsProvider>
-      <CommentInput onSubmit={onSubmit} isLoggedIn={true} isFixed={isFixed} />
+      <CommentInput onSubmit={onSubmit} isLoggedIn={true} />
     </div>
   );
 }

@@ -22,12 +22,11 @@ export default function ImageCarousel({
         {/* Main Image */}
         <Image
           src={getImageUrl(images[currentImageIndex])}
-          // src={images[currentImageIndex]}
           alt={`${images[currentImageIndex]}`}
           fill
           className="w-full h-full object-cover"
         />
-
+        {/* TODO: 모바일에서 스와이프 가능하도록 */}
         <NavigationArrow
           images={images}
           setCurrentImageIndex={setCurrentImageIndex}
