@@ -28,15 +28,29 @@ export type AlertVariant = NonNullable<
 function Alert({
   className,
   variant,
+  withBar = false,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+}: React.ComponentProps<"div"> &
+  VariantProps<typeof alertVariants> & { withBar?: boolean }) {
   return (
     <div
       data-slot="alert"
       role="alert"
-      className={cn(alertVariants({ variant }), className)}
+      className={cn(alertVariants({ variant }), withBar && "pl-5", className)}
       {...props}
-    />
+    >
+      {withBar && (
+        <div
+          className={cn(
+            "absolute left-0 top-0 h-full w-1.5 rounded-l-2xl pointer-events-none",
+            variant === "success" && "bg-success",
+            variant === "destructive" && "bg-destructive",
+            (!variant || variant === "default") && "bg-primary/40"
+          )}
+        />
+      )}
+      {props.children}
+    </div>
   );
 }
 
