@@ -49,7 +49,8 @@ const solidTone = {
   primary: "bg-primary text-white hover:opacity-90 active:opacity-85",
   indigo: "bg-point-indigo text-white hover:opacity-90 active:opacity-85",
   emerald: "bg-point-emerald text-white hover:opacity-90 active:opacity-85",
-  neutral: "bg-accent text-muted-foreground hover:opacity-90 active:opacity-85",
+  neutral:
+    "bg-secondary text-muted-foreground hover:opacity-90 active:opacity-85",
   destructive:
     "bg-destructive text-destructive-foreground hover:opacity-90 active:opacity-85",
 } satisfies Record<ButtonTone, string>;
