@@ -1,4 +1,4 @@
-import { ActionSheetOption } from "@/components/commons/actionSheet/ActionOption";
+import type { ActionSheetOption } from "@/components/commons/actionSheet/type";
 import { Pencil, Ticket } from "lucide-react";
 
 export function buildWriteActionSheetOptions(
@@ -15,7 +15,7 @@ export function buildWriteActionSheetOptions(
       icon: Ticket,
       label: "거래글 작성",
       description: "티켓이나 MD를 거래해보세요",
-      onClick: onClickNavigation("/trade/new"),
+      onClick: onClickNavigation("/market/new"),
       variant: "default",
     },
   ] as const satisfies ReadonlyArray<ActionSheetOption>;

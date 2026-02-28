@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
-import ActionOption, { ActionSheetOption } from "./ActionOption";
 import IconButton from "../button/IconButton";
 import { Button } from "../button/Button";
+import { ActionSheetOption } from "./type";
+import ActionOption from "./ActionOption";
 
 interface ActionSheetProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   description?: string;
-  options: ActionSheetOption[];
+  options: ReadonlyArray<ActionSheetOption>;
 }
 
 export function ActionSheet({
@@ -54,12 +55,7 @@ export function ActionSheet({
           {/* Options */}
           <div className="px-4 py-2 pb-safe">
             {options.map((option, index) => (
-              <ActionOption
-                key={index}
-                option={option}
-                index={index}
-                onClose={onClose}
-              />
+              <ActionOption key={index} option={option} onClose={onClose} />
             ))}
           </div>
 

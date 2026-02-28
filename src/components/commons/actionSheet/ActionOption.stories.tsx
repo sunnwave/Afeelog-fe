@@ -1,7 +1,8 @@
 // src/components/commons/actionSheet/ActionOption.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
-import ActionOption, { ActionSheetOption } from "./ActionOption";
 import { Trash2, Share2 } from "lucide-react";
+import ActionOption from "./ActionOption";
+import { ActionSheetOption } from "./type";
 
 const meta: Meta<typeof ActionOption> = {
   title: "commons/ActionSheet/ActionOption",
@@ -43,7 +44,7 @@ export const Danger: Story = {
       label: "삭제하기",
       description: "삭제하면 되돌릴 수 없어요",
       onClick: () => console.log("delete"),
-      variant: "danger",
+      variant: "destructive",
     } satisfies ActionSheetOption,
     onClose: () => {},
   },

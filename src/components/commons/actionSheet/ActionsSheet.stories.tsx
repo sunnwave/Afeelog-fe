@@ -74,7 +74,7 @@ export const Default: Story = {
               label: "글 삭제",
               description: "작성한 글을 삭제해요",
               onClick: () => console.log("글 삭제"),
-              variant: "danger",
+              variant: "destructive",
             },
           ]}
         />
