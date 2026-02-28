@@ -1,7 +1,10 @@
-// src/components/features/recordDetail/commentList/CommmentList.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
 import type { IBoardComment } from "@/shared/graphql/generated/types";
-import CommmentList from "./CommentList";
+import {
+  CommentActionsProvider,
+  type CommentActions,
+} from "../context/CommentActionsContext";
+import CommentList from "./CommentList";
 
 const baseComment = (over?: Partial<IBoardComment>) =>
   ({
@@ -27,15 +30,25 @@ const baseComment = (over?: Partial<IBoardComment>) =>
     ...over,
   } as unknown as IBoardComment);
 
-const meta: Meta<typeof CommmentList> = {
-  title: "commons/comment/CommmentList",
-  component: CommmentList,
+// ✅ Storybook 전용 더미 actions
+const actions: CommentActions = {
+  canEdit: () => true,
+  onStartEdit: (id) => console.log("startEdit:", id),
+  onSave: async (id, next) => console.log("save:", id, next),
+  onRequestDelete: (c) => console.log("requestDelete:", c),
+};
+
+const meta: Meta<typeof CommentList> = {
+  title: "commons/comment/CommentList",
+  component: CommentList,
   parameters: { layout: "padded" },
   decorators: [
     (Story) => (
       <div className="min-h-screen bg-background p-8">
         <div className="mx-auto w-full max-w-[720px] rounded-2xl border border-border bg-card p-6">
-          <Story />
+          <CommentActionsProvider value={actions}>
+            <Story />
+          </CommentActionsProvider>
         </div>
       </div>
     ),
@@ -43,7 +56,7 @@ const meta: Meta<typeof CommmentList> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof CommmentList>;
+type Story = StoryObj<typeof CommentList>;
 
 export const Empty: Story = {
   args: {
@@ -90,7 +103,7 @@ export const Loading: Story = {
   },
   render: (args) => (
     <div className="space-y-4">
-      <CommmentList {...args} />
+      <CommentList {...args} />
       <div className="text-xs text-muted-foreground">
         TODO: skeleton 구현 예정
       </div>
