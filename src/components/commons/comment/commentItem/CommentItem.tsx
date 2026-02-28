@@ -11,7 +11,7 @@ export default function CommentItem({ comment }: { comment: IBoardComment }) {
   // const isWriter=comment.user?._id
   // const isWriter = false;
 
-  const { canEdit, onSave, onDelete, onStartEdit } = useCommentActions();
+  const { canEdit, onSave, onStartEdit, onRequestDelete } = useCommentActions();
 
   const isWriter = canEdit(comment);
 
@@ -28,7 +28,7 @@ export default function CommentItem({ comment }: { comment: IBoardComment }) {
   };
 
   const handleDelete = async () => {
-    await onDelete(comment._id);
+    onRequestDelete(comment._id);
   };
   return (
     <div className="w-full flex items-start gap-3">

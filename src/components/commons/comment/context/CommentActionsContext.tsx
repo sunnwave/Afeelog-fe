@@ -5,7 +5,7 @@ export type CommentActions = {
   canEdit: (comment: IBoardComment) => boolean;
   onStartEdit?: (commentId: string) => void;
   onSave: (commentId: string, newContents: string) => Promise<void> | void;
-  onDelete: (commentId: string) => Promise<void> | void;
+  onRequestDelete: (commentId: string) => void;
 };
 
 const CommentActionsContext = createContext<CommentActions | null>(null);
