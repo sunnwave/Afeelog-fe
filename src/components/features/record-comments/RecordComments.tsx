@@ -1,15 +1,19 @@
 import { useRouter } from "next/router";
-import { useFetchRecordComments } from "./hooks/queries/useFetchRecordComments";
-import CommmentList from "../../commons/comment/commentList/CommentList";
-import CommentInput from "@/components/commons/comment/commentInput/CommentInput";
-import { useCreateRecordComment } from "./hooks/mutations/useCreateRecordComment";
-import { useUpdateRecordComment } from "./hooks/mutations/useUpdateRecordComment";
-import { CommentActionsProvider } from "@/components/commons/comment/context/CommentActionsContext";
-import { useDeleteRecordComment } from "./hooks/mutations/useDeleteRecordComment";
 import { useState } from "react";
 import { ConfirmModal } from "@/components/commons/modal/ConfirmModal";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/commons/button/Button";
+import {
+  CommentActionsProvider,
+  CommentInput,
+  CommentList,
+} from "@/components/commons/comment";
+import {
+  useCreateRecordComment,
+  useDeleteRecordComment,
+  useFetchRecordComments,
+  useUpdateRecordComment,
+} from "./hooks";
 
 export default function RecordComments() {
   const router = useRouter();
@@ -74,7 +78,7 @@ export default function RecordComments() {
             onRequestDelete: (commentId) => requestDeleteComment(commentId),
           }}
         >
-          <CommmentList isLoading={loading} comments={comments} />
+          <CommentList isLoading={loading} comments={comments} />
         </CommentActionsProvider>
         <CommentInput onSubmit={onSubmit} isLoggedIn={true} />
       </div>

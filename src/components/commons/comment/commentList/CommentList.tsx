@@ -2,7 +2,7 @@ import { IBoardComment } from "@/shared/graphql/generated/types";
 import { MessageCircle } from "lucide-react";
 import CommentItem from "../commentItem/CommentItem";
 
-export default function CommmentList({
+export default function CommentList({
   isLoading,
   comments,
   subText = "이 기록에 대한 생각을 공유해주세요",
