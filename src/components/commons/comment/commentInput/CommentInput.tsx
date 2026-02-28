@@ -1,6 +1,6 @@
 import { Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../button/Button";
+import IconButton from "../../button/IconButton";
 
 interface CommentInputProps {
   onSubmit: (comment: string) => void;
@@ -77,14 +77,12 @@ export default function CommentInput({
 
         {/* Clear Button */}
         {comment && (
-          <button
-            type="button"
+          <IconButton
             onClick={handleClear}
-            className="absolute right-14 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full hover:bg-muted flex items-center justify-center transition-colors"
-            aria-label="Clear comment"
+            className="absolute right-14 top-1/2 -translate-y-1/2 w-7 h-7 "
           >
-            <X className="w-4 h-4 text-muted-foreground" />
-          </button>
+            <X className="w-4 h-4" />
+          </IconButton>
         )}
 
         {/* Submit Button */}
