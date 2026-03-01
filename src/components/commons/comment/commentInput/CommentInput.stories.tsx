@@ -7,7 +7,6 @@ const meta: Meta<typeof CommentInput> = {
   parameters: { layout: "fullscreen" },
   args: {
     placeholder: "댓글을 입력하세요...",
-    isFixed: false,
     isLoggedIn: true,
   },
   decorators: [
@@ -32,16 +31,14 @@ const meta: Meta<typeof CommentInput> = {
 export default meta;
 type Story = StoryObj<typeof CommentInput>;
 
-export const LoggedInFixed: Story = {
+export const LoggedIn: Story = {
   args: {
-    isFixed: true,
     isLoggedIn: true,
   },
 };
 
-export const LoggedOutFixed: Story = {
+export const LoggedOut: Story = {
   args: {
-    isFixed: true,
     isLoggedIn: false,
   },
 };
