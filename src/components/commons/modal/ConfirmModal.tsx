@@ -2,25 +2,11 @@
 
 import * as React from "react";
 import { cn } from "@/utils/cn";
-import type { LucideIcon } from "lucide-react";
 import { X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import IconBadge from "@/components/ui/icons/IconBadge";
 import { Button } from "../button/Button";
-
-type ModalProps = {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  trigger?: React.ReactNode;
-  title?: string;
-  description?: string;
-  icon?: LucideIcon;
-  variant?: "default" | "destructive" | "success" | "primary";
-  showCloseButton?: boolean;
-  footer?: React.ReactNode;
-  className?: string;
-  closeOnOverlayClick?: boolean;
-};
+import { ModalProps } from "./type";
 
 export function ConfirmModal({
   open,
