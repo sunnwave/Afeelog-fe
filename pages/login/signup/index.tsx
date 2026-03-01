@@ -1,3 +1,5 @@
+import SignupPage from "@/components/features/auth/sign-up/SignupPage";
+
 export default function SignUpPage() {
-  return <div>Sign Up Page</div>;
+  return <SignupPage />;
 }
