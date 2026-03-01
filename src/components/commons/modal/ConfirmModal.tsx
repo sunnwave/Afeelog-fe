@@ -5,8 +5,8 @@ import { cn } from "@/utils/cn";
 import type { LucideIcon } from "lucide-react";
 import { X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import IconButton from "../button/IconButton";
 import IconBadge from "@/components/ui/icons/IconBadge";
+import { Button } from "../button/Button";
 
 type ModalProps = {
   open: boolean;
@@ -83,9 +83,9 @@ export function ConfirmModal({
 
               {showCloseButton ? (
                 <Dialog.Close asChild>
-                  <IconButton aria-label="닫기">
+                  <Button variant="ghost" size="icon" aria-label="닫기">
                     <X className="w-5 h-5" />
-                  </IconButton>
+                  </Button>
                 </Dialog.Close>
               ) : null}
             </div>

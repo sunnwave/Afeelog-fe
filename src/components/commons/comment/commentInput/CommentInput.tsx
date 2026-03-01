@@ -1,6 +1,7 @@
 import { Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import IconButton from "../../button/IconButton";
+import { Button } from "../../button/Button";
+import { LoggedIn } from "./CommentInput.stories";
 
 interface CommentInputProps {
   onSubmit: (comment: string) => void;
@@ -21,6 +22,8 @@ export default function CommentInput({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isLoggedIn) return;
+
     if (comment.trim()) {
       onSubmit(comment.trim());
       setComment("");
@@ -32,6 +35,8 @@ export default function CommentInput({
   };
 
   const handleClear = () => {
+    if (!isLoggedIn) return;
+
     setComment("");
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -41,6 +46,8 @@ export default function CommentInput({
 
   // Auto-resize textarea
   useEffect(() => {
+    if (!isLoggedIn) return;
+
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${Math.min(
@@ -48,7 +55,7 @@ export default function CommentInput({
         120
       )}px`;
     }
-  }, [comment]);
+  }, [comment, isLoggedIn]);
 
   return (
     <div className="pt-4 border-t border-border">
@@ -56,11 +63,13 @@ export default function CommentInput({
         <textarea
           ref={textareaRef}
           value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          onFocus={() => setIsFocused(true)}
+          onChange={(e) => isLoggedIn && setComment(e.target.value)}
+          onFocus={() => isLoggedIn && setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
           rows={1}
+          readOnly={!isLoggedIn}
+          disabled={!isLoggedIn}
           className={`
           w-full px-4 py-3 pr-24 rounded-xl resize-none
           border transition-all
@@ -77,32 +86,31 @@ export default function CommentInput({
 
         {/* Clear Button */}
         {comment && (
-          <IconButton
+          <Button
+            size="icon"
+            variant="ghost"
             onClick={handleClear}
-            className="absolute right-14 top-1/2 -translate-y-1/2 w-7 h-7 "
+            className="absolute right-14 top-1/2 -translate-y-1/2 w-7 h-7"
           >
             <X className="w-4 h-4" />
-          </IconButton>
+          </Button>
         )}
 
         {/* Submit Button */}
-        <button
+
+        <Button
           type="submit"
-          disabled={!comment.trim()}
+          size="icon"
+          disabled={!LoggedIn || !comment.trim()}
+          variant={isLoggedIn && comment.trim() ? "default" : "ghost"}
           className={`
           absolute right-3 top-1/2 -translate-y-1/2
-          w-8 h-8 rounded-lg flex items-center justify-center
-          transition-all
-          ${
-            comment.trim()
-              ? "bg-primary text-primary-foreground hover:bg-primary-hover"
-              : "bg-muted text-muted-foreground cursor-not-allowed"
-          }
+          transition-all rounded-full
         `}
           aria-label="Submit comment"
         >
           <Send className="w-4 h-4" />
-        </button>
+        </Button>
       </form>
     </div>
   );

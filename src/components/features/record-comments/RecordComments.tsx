@@ -95,8 +95,18 @@ export default function RecordComments() {
         variant="destructive"
         footer={
           <div className="flex justify-end gap-2">
-            <Button onClick={() => setModalOpen(false)}>취소</Button>
-            <Button tone="destructive" onClick={confirmDelete}>
+            <Button
+              variant="secondary"
+              onClick={() => setModalOpen(false)}
+              className="flex-1"
+            >
+              취소
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={confirmDelete}
+              className="flex-1"
+            >
               삭제
             </Button>
           </div>

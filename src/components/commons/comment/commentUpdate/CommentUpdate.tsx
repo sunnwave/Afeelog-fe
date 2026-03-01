@@ -86,24 +86,21 @@ export function CommentUpdate({
       {/* Action Buttons */}
       <div className="flex items-center justify-end gap-2">
         <Button
-          tone="neutral"
           variant="ghost"
-          size="xs"
-          className="max-w-fit font-medium"
+          size="sm"
+          className="rounded-full font-medium"
           onClick={handleCancel}
         >
           <X className="w-4 h-4" />
           <span>취소</span>
         </Button>
+
         <Button
-          tone={hasChanges ? "primary" : "neutral"}
-          variant={hasChanges ? "solid" : "ghost"}
-          size="xs"
+          variant={hasChanges ? "default" : "ghost"}
+          size="sm"
           type="submit"
           disabled={!hasChanges}
-          className={`max-w-fit font-medium ${
-            hasChanges ? "" : "cursor-not-allowed"
-          }`}
+          className={`rounded-full font-medium `}
         >
           <Check className="w-4 h-4" />
           <span>저장</span>

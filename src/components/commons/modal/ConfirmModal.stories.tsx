@@ -62,9 +62,13 @@ function Demo(
         open={open}
         onOpenChange={setOpen}
         footer={
-          <div className="flex justify-end gap-3">
-            <Button>취소</Button>
-            <Button tone="destructive">삭제</Button>
+          <div className="flex w-full items-center justify-center gap-3">
+            <Button variant="secondary" className="flex-1">
+              취소
+            </Button>
+            <Button variant="destructive" className="flex-1">
+              삭제
+            </Button>
           </div>
         }
       />

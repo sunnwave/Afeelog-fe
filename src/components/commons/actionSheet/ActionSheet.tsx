@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
-import IconButton from "../button/IconButton";
 import { Button } from "../button/Button";
 import { ActionSheetOption } from "./type";
 import ActionOption from "./ActionOption";
@@ -45,11 +44,11 @@ export function ActionSheet({
       <div className="fixed inset-x-0 bottom-0 z-[70] animate-in slide-in-from-bottom">
         <div className="max-w-lg mx-auto bg-background rounded-t-3xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-4.5 border-b border-border">
+          <div className="flex items-center justify-between px-4 py-4 border-b border-border">
             <h3 className="text-lg font-semibold">{title}</h3>
-            <IconButton onClick={onClose}>
+            <Button variant="ghost" size="icon" onClick={onClose}>
               <X className="w-5 h-5" />
-            </IconButton>
+            </Button>
           </div>
 
           {/* Options */}
@@ -61,7 +60,12 @@ export function ActionSheet({
 
           {/* Cancel Button */}
           <div className="px-4 pb-6 pt-2">
-            <Button tone="neutral" onClick={onClose}>
+            <Button
+              variant="secondary"
+              size="lg"
+              className="w-full"
+              onClick={onClose}
+            >
               취소
             </Button>
           </div>

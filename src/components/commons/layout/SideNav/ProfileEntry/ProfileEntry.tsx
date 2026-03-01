@@ -21,11 +21,11 @@ export default function ProfileEntry({
   return (
     <div className="p-4 border-b border-border">
       <Button
-        variant="outlined"
-        tone="neutral"
+        variant="outline"
         onClick={
           isLoggedIn ? onClickNavigation("/me") : onClickNavigation("/login")
         }
+        className="w-full h-auto rounded-2xl !p-4 text-left flex items-center gap-3 group-hover:flex border-border"
       >
         {isLoggedIn && <Avatar user={user} size="md" type="filled" />}
         <div className="flex-1 min-w-0 flex flex-col items-start">

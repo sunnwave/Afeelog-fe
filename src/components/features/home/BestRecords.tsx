@@ -16,10 +16,10 @@ export default function BestRecords(): JSX.Element {
           <Flame className="w-5 h-5" />
           <span>이번 주 베스트 필로그</span>
         </h2>
+
         <Button
           variant="ghost"
-          tone="neutral"
-          className="justify-end max-w-fit hover:bg-background"
+          className="justify-end hover:bg-background"
           onClick={onClickNavigation("/records")}
         >
           더보기

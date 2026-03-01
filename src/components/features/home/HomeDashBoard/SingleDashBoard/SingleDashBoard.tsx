@@ -18,18 +18,16 @@ export default function SingleDashBoard({
           {/* Switch Buttons */}
           <div className="flex gap-2 mb-4">
             <Button
-              variant="tab"
-              tone="indigo"
-              selected={activeKeywordType === "feelog"}
+              size="md"
+              variant={activeKeywordType === "feelog" ? "emerald" : "secondary"}
               onClick={() => handleManualSwitch("feelog")}
               className="flex-1"
             >
               필로그 키워드
             </Button>
             <Button
-              variant="tab"
-              tone="emerald"
-              selected={activeKeywordType === "market"}
+              size="md"
+              variant={activeKeywordType === "market" ? "indigo" : "secondary"}
               onClick={() => handleManualSwitch("market")}
               className="flex-1"
             >

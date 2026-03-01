@@ -1,11 +1,11 @@
 import { MoreVertical } from "lucide-react";
 import { useState } from "react";
+import { Button } from "../button/Button";
 
 export default function WriterMenu({
   onEditClick,
   onDeleteClick,
 }: {
-  // TODO: 수정, 삭제 함수 추가
   onEditClick: () => void;
   onDeleteClick: () => void;
 }) {
@@ -13,13 +13,9 @@ export default function WriterMenu({
 
   return (
     <div className="relative">
-      <button
-        onClick={() => setShowMenu(!showMenu)}
-        className="rounded hover:bg-muted flex items-center justify-center transition-colors"
-        aria-label="더보기"
-      >
+      <Button variant="ghost" onClick={() => setShowMenu(!showMenu)}>
         <MoreVertical className="w-4 h-4 text-muted-foreground" />
-      </button>
+      </Button>
 
       {showMenu && (
         <>

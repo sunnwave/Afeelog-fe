@@ -1,7 +1,5 @@
 import { IBoard } from "@/shared/graphql/generated/types";
-import { Button } from "@/components/commons/button/Button";
 import Profile from "@/components/commons/profile/Profile";
-import { Edit } from "lucide-react";
 import { JSX } from "react";
 import RecordDetailContentSubInfo from "./RecordDetailContentSubInfo";
 import RecordDetailContentMain from "./RecordDetailContentMain";
@@ -9,6 +7,7 @@ import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
 import BookMarkIcon from "@/components/ui/icons/bookmarkIcon/BookMarkIcon";
 import { cn } from "@/utils/cn";
 import RecordComments from "../../record-comments/RecordComments";
+import WriterMenu from "@/components/commons/writerMenu/WriterMenu";
 
 export default function RecordDetailContent({
   record,
@@ -20,6 +19,7 @@ export default function RecordDetailContent({
   className?: string;
 }): JSX.Element {
   const onEdit = () => {};
+  const onDelete = () => {};
   return (
     <div className={cn(className)}>
       <div className="space-y-6">
@@ -31,16 +31,7 @@ export default function RecordDetailContent({
           <div className="flex items-center justify-between p-4 border-b border-border">
             <Profile record={record} tone="primary" size="sm" />
             {isWriter && (
-              <Button
-                tone="neutral"
-                size="xs"
-                variant="outlined"
-                onClick={onEdit}
-                className="max-w-fit"
-              >
-                <Edit className="w-4 h-4" />
-                <span>수정</span>
-              </Button>
+              <WriterMenu onEditClick={onEdit} onDeleteClick={onDelete} />
             )}
           </div>
           {/* sub info */}
