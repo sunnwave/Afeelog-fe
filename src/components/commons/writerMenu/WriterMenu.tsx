@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui/button/Button";
 import { MoreVertical } from "lucide-react";
 import { useState } from "react";
-import { Button } from "../button/Button";
 
 export default function WriterMenu({
   onEditClick,

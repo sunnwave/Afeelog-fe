@@ -1,4 +1,4 @@
-import { GRADIENTS } from "@/constants/gradientPallete";
+import { GRADIENTS } from "@/shared/constants";
 
 function hashToIndex(input: string, mod: number) {
   let h = 0;

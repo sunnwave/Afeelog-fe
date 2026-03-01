@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
-import { Button } from "../button/Button";
 import { ActionSheetOption } from "./type";
 import ActionOption from "./ActionOption";
+import { Button } from "@/components/ui/button/Button";
 
 interface ActionSheetProps {
   isOpen: boolean;

@@ -1,10 +1,10 @@
 import WriterMenu from "@/components/commons/writerMenu/WriterMenu";
 import Avatar from "@/components/ui/avatar/Avatar";
 import { IBoardComment } from "@/shared/graphql/generated/types";
-import { fromNow } from "@/utils/date";
 import { useState } from "react";
 import { CommentUpdate } from "../commentUpdate/CommentUpdate";
 import { useCommentActions } from "../context/CommentActionsContext";
+import { fromNow } from "@/shared/utils";
 
 export default function CommentItem({ comment }: { comment: IBoardComment }) {
   // TODO: 작성자 판별

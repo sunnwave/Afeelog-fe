@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Check } from "lucide-react";
-import { Button } from "../../button/Button";
+import { Button } from "@/components/ui/button/Button";
 
 interface CommentEditFormProps {
   initialContent: string;

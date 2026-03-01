@@ -5,9 +5,9 @@ import RecordDetailContentSubInfo from "./RecordDetailContentSubInfo";
 import RecordDetailContentMain from "./RecordDetailContentMain";
 import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
 import BookMarkIcon from "@/components/ui/icons/bookmarkIcon/BookMarkIcon";
-import { cn } from "@/utils/cn";
 import RecordComments from "../../record-comments/RecordComments";
 import WriterMenu from "@/components/commons/writerMenu/WriterMenu";
+import { cn } from "@/shared/utils";
 
 export default function RecordDetailContent({
   record,

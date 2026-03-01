@@ -1,6 +1,6 @@
-import { SideNavItemType } from "@/constants/navigation";
 import { useRouter } from "next/router";
-import { Button } from "../../button/Button";
+import { SideNavItemType } from "@/shared/constants";
+import { Button } from "@/components/ui/button/Button";
 
 export default function NavItem({ nav }: { nav: SideNavItemType }) {
   const router = useRouter();

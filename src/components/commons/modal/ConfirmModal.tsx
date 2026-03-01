@@ -1,12 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/utils/cn";
 import { X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import IconBadge from "@/components/ui/icons/IconBadge";
-import { Button } from "../button/Button";
 import { ModalProps } from "./type";
+import { cn } from "@/shared/utils/cn";
+import { Button } from "@/components/ui/button/Button";
 
 export function ConfirmModal({
   open,

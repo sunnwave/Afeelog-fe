@@ -1,12 +1,13 @@
 import { IBoard } from "@/shared/graphql/generated/types";
 import Avatar, { AvatarType } from "@/components/ui/avatar/Avatar";
-import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
 import { JSX } from "react";
-import { formatDate } from "@/utils/date";
+import { CARD_UI_SIZE, UI_SIZE } from "@/shared/tokens";
+import { formatDate } from "@/shared/utils";
 
 type ProfileTone = "primary" | "white";
 
 export default function Profile({
+  // TODO: IBoard 대신 User 정보만 받도록 수정 필요
   record,
   size = "lg",
   tone = "white",

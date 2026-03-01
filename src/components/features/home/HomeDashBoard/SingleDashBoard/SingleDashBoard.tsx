@@ -1,7 +1,7 @@
 import { JSX } from "react";
 import { MOCK_FEELLOG_KEYWORDS, MOCK_MARKET_KEYWORDS } from "../../constants";
 import KeywordDashBoard from "../KeywordDashBoard/KeywordDashBoard";
-import { Button } from "@/components/commons/button/Button";
+import { Button } from "@/components/ui/button/Button";
 
 export default function SingleDashBoard({
   activeKeywordType,

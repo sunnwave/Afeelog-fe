@@ -1,7 +1,7 @@
 import { Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../button/Button";
 import { LoggedIn } from "./CommentInput.stories";
+import { Button } from "@/components/ui/button/Button";
 
 interface CommentInputProps {
   onSubmit: (comment: string) => void;

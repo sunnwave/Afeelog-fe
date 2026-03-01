@@ -1,4 +1,4 @@
-import { FileText, Home, LucideIcon, Plus, Ticket } from "lucide-react";
+import { FileText, Home, LucideIcon, Ticket } from "lucide-react";
 
 export const SIDE_NAV_ITEMS = [
   { tab: "home", href: "/", label: "홈", icon: Home },

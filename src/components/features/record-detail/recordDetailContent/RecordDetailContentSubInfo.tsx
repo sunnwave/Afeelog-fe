@@ -1,5 +1,5 @@
 import { IBoard } from "@/shared/graphql/generated/types";
-import { formatDate } from "@/utils/date";
+import { formatDate } from "@/shared/utils";
 import { Calendar, MapPin } from "lucide-react";
 import { JSX } from "react";
 

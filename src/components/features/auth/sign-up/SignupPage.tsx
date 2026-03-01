@@ -1,5 +1,5 @@
 import BackButton from "@/components/commons/backButton/BackButton";
-import { Button } from "@/components/commons/button/Button";
+import { Button } from "@/components/ui/button/Button";
 import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 
 export default function SignupPage() {

@@ -1,5 +1,5 @@
-import { ICON_COLOR, ICON_SIZE, IconColor, IconSize } from "@/ui/iconSize";
-import { cn } from "@/utils/cn";
+import { ICON_COLOR, ICON_SIZE, IconColor, IconSize } from "@/shared/tokens";
+import { cn } from "@/shared/utils";
 import { Bookmark } from "lucide-react";
 import { JSX, useState } from "react";
 

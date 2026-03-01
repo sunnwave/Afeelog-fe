@@ -1,9 +1,9 @@
 import { IUser } from "@/shared/graphql/generated/types";
 import { useNavigation } from "@/shared/hooks/ui/useNavigation";
-import { Button } from "@/components/commons/button/Button";
 import Avatar from "@/components/ui/avatar/Avatar";
 import { ChevronRight } from "lucide-react";
 import { JSX } from "react";
+import { Button } from "@/components/ui/button/Button";
 
 type ProfileEntryVariant = "loggedIn" | "loggedOut";
 

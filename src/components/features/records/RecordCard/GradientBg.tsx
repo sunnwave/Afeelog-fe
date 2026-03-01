@@ -1,4 +1,4 @@
-import { pickQuoteGradient } from "@/utils/pickQuoteGradient";
+import { pickQuoteGradient } from "@/shared/utils";
 
 export default function GradientBg({ boardId }: { boardId: string }) {
   const g = pickQuoteGradient(boardId);

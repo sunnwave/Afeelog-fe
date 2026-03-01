@@ -1,5 +1,5 @@
-import { IconSize, ICON_SIZE } from "@/ui/iconSize";
-import { cn } from "@/utils/cn";
+import { ICON_SIZE, IconSize } from "@/shared/tokens";
+import { cn } from "@/shared/utils";
 import { MessageCircle } from "lucide-react";
 import { JSX } from "react";
 

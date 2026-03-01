@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@/shared/utils";
 import { LucideIcon } from "lucide-react";
 
 type IconBadgeVariant = "default" | "destructive" | "success" | "primary";

@@ -1,5 +1,5 @@
 import { IBoard } from "@/shared/graphql/generated/types";
-import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
+import { CARD_UI_SIZE, UI_SIZE } from "@/shared/tokens";
 import { JSX } from "react";
 
 export default function RecordCardContent({

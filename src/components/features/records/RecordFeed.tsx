@@ -4,9 +4,9 @@ import RecordFeedCard from "./RecordCard/RecordCard";
 import { Sparkles } from "lucide-react";
 import ResponsiveGrid from "@/components/commons/layout/ResponsiveGrid";
 import { useBreakpoint } from "@/shared/hooks/ui/useBreakpoint";
-import { CARD_SIZE_BY_BP } from "@/ui/pickCardSize";
 import { useFetchRecords } from "./hooks/queries/useFetchRecords";
 import { useInfiniteScroll } from "@/shared/hooks/ui/useInfiniteScroll";
+import { CARD_SIZE_BY_BP } from "@/shared/tokens";
 
 const RECORDS_PER_PAGE = 10;
 

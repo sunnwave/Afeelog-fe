@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { ConfirmModal } from "@/components/commons/modal/ConfirmModal";
 import { Trash2 } from "lucide-react";
-import { Button } from "@/components/commons/button/Button";
 import {
   CommentActionsProvider,
   CommentInput,
@@ -14,6 +13,7 @@ import {
   useFetchRecordComments,
   useUpdateRecordComment,
 } from "./hooks";
+import { Button } from "@/components/ui/button/Button";
 
 export default function RecordComments() {
   const router = useRouter();

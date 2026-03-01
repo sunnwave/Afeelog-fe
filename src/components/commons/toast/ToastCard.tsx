@@ -6,8 +6,8 @@ import {
 } from "@/components/ui/alert/Alert";
 import { ToastItem } from "./types";
 import useSwipeToDismiss from "./useToastSwipeToDismiss";
-import { cn } from "@/utils/cn";
 import { X } from "lucide-react";
+import { cn } from "@/shared/utils";
 
 export default function ToastCard({
   toast,

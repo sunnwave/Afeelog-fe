@@ -1,8 +1,8 @@
 import { ArrowLeft } from "lucide-react";
-import { Button } from "../button/Button";
 import { ButtonHTMLAttributes, useCallback } from "react";
-import { cn } from "@/utils/cn";
 import { useRouter } from "next/router";
+import { cn } from "@/shared/utils/cn";
+import { Button } from "@/components/ui/button/Button";
 
 type Props = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
   fallbackHref?: string;

@@ -1,13 +1,13 @@
 import { IBoard } from "@/shared/graphql/generated/types";
-import { getImageUrl } from "@/utils/getImage";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { JSX } from "react";
 import RecordCardBottom from "./RecordCardBottom/RecordCardBottom";
 import GradientBg from "./GradientBg";
 import BookMarkIcon from "@/components/ui/icons/bookmarkIcon/BookMarkIcon";
-import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
+import { CARD_UI_SIZE, UI_SIZE } from "@/shared/tokens";
 import RecordCardContent from "./RecordCardContent";
+import { getImageUrl } from "@/shared/utils";
 
 export default function RecordCard({
   board,

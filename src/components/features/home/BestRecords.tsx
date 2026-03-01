@@ -1,9 +1,9 @@
 import { JSX } from "react";
 import { useFetchBestRecords } from "./hooks/queries/useFetchBestRecords";
 import RecordCard from "../records/RecordCard/RecordCard";
-import { Button } from "@/components/commons/button/Button";
 import { ChevronRight, Flame } from "lucide-react";
 import { useNavigation } from "@/shared/hooks/ui/useNavigation";
+import { Button } from "@/components/ui/button/Button";
 
 export default function BestRecords(): JSX.Element {
   const { data } = useFetchBestRecords();

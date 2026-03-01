@@ -2,8 +2,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { AlertTriangle, Info, CheckCircle2 } from "lucide-react";
-import { Button } from "../button/Button";
 import { ConfirmModal } from "./ConfirmModal";
+import { Button } from "@/components/ui/button/Button";
 
 const meta: Meta<typeof ConfirmModal> = {
   title: "commons/Modal/confirmModal",

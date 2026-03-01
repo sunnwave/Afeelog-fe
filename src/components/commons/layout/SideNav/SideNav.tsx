@@ -2,15 +2,15 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "@/shared/stores";
 import Logo from "../../../ui/logo/Logo";
 import ProfileEntry from "./ProfileEntry/ProfileEntry";
-import { SIDE_NAV_ITEMS } from "@/constants/navigation";
 import NavItem from "./NavItem";
 import { LogOut } from "lucide-react";
 import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 import { useState } from "react";
 import { ConfirmModal } from "../../modal/ConfirmModal";
 import { ActionSheet } from "../../actionSheet/ActionSheet";
-import { buildWriteActionSheetOptions } from "@/constants/actionSheetOptions";
-import { Button } from "../../button/Button";
+import { buildWriteActionSheetOptions } from "@/shared/constants/actionSheetOptions";
+import { SIDE_NAV_ITEMS } from "@/shared/constants/navigation";
+import { Button } from "@/components/ui/button/Button";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);

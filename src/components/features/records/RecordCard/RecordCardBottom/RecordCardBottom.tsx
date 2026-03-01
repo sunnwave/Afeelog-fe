@@ -2,7 +2,7 @@ import { JSX } from "react";
 import { IBoard } from "@/shared/graphql/generated/types";
 import CommentIcon from "@/components/ui/icons/commentIcon/CommentIcon";
 import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
-import { CARD_UI_SIZE, UI_SIZE } from "@/ui/size";
+import { CARD_UI_SIZE, UI_SIZE } from "@/shared/tokens";
 import Profile from "@/components/commons/profile/Profile";
 
 export default function RecordCardBottom({

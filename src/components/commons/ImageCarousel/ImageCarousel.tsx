@@ -3,8 +3,7 @@ import { JSX, useState } from "react";
 import ImageCounter from "./ImageCounter";
 import DotIndicator from "./DotIndicator";
 import NavigationArrow from "./NavigationArrow";
-import { getImageUrl } from "@/utils/getImage";
-import { cn } from "@/utils/cn";
+import { cn, getImageUrl } from "@/shared/utils";
 
 export default function ImageCarousel({
   images,

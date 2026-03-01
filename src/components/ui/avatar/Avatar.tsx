@@ -1,6 +1,5 @@
 import { IUser } from "@/shared/graphql/generated/types";
-import { getProfileImage } from "@/utils/getImage";
-import { pickAvatarGradient } from "@/utils/pickAvatarColor";
+import { getProfileImage, pickAvatarGradient } from "@/shared/utils";
 import Image from "next/image";
 import { JSX } from "react";
 

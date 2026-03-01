@@ -1,4 +1,3 @@
-// src/components/features/boardCommentList/hooks/mutations/useDeleteBoardComment.ts
 import { useToast } from "@/components/commons/toast/ToastProvider";
 import {
   IMutation,

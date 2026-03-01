@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@/shared/utils";
 import type { ActionOptionVariant, ActionSheetOption } from "./type";
 
 const styles: Record<ActionOptionVariant, { iconWrap: string; title: string }> =
