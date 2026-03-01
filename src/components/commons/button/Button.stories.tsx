@@ -1,39 +1,45 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
   title: "commons/Button",
   component: Button,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+  },
   args: {
     children: "버튼",
-    variant: "solid",
-    tone: "neutral",
-    size: "sm",
-    selected: false,
+    variant: "default",
+    size: "default",
     disabled: false,
+    asChild: false,
   },
   argTypes: {
-    onClick: { action: "clicked" },
     variant: {
       control: "inline-radio",
-      options: ["tab", "solid", "outlined", "ghost"],
-    },
-    tone: {
-      control: "inline-radio",
-      options: ["primary", "indigo", "emerald", "neutral", "destructive"], // ✅ 추가
+      options: [
+        "default",
+        "destructive",
+        "outline",
+        "secondary",
+        "ghost",
+        "link",
+      ],
     },
     size: {
       control: "inline-radio",
-      options: ["tab", "xs", "sm", "md", "lg"], // ✅ xs 추가
+      options: ["default", "sm", "lg", "icon"],
     },
-    selected: { control: "boolean" },
-    disabled: { control: "boolean" },
+    asChild: { control: "boolean" },
+    onClick: { action: "clicked" },
     className: { control: "text" },
+    children: { control: "text" },
   },
   decorators: [
     (Story) => (
-      <div className="min-h-[240px] w-[420px] bg-background p-6 rounded-2xl border border-border flex items-center justify-center">
+      <div className="min-h-[240px] w-[520px] rounded-2xl border border-border bg-background p-6 flex items-center justify-center">
         <Story />
       </div>
     ),
@@ -43,158 +49,76 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Tab: Story = {
+export const SizeShowcase: Story = {
+  render: () => (
+    <div className="w-[520px] space-y-3">
+      <div className="flex items-center gap-3">
+        <Button size="sm">size=sm</Button>
+        <Button size="default">size=default</Button>
+        <Button size="md">size=md</Button>
+        <Button size="lg">size=lg</Button>
+      </div>
+      <div className="flex items-center gap-3">
+        <Button size="icon" variant="outline" aria-label="아이콘 버튼">
+          <ChevronRight className="size-4" />
+        </Button>
+        <span className="text-sm text-muted-foreground">size=icon</span>
+      </div>
+    </div>
+  ),
+};
+
+export const VariantShowcase: Story = {
+  render: () => (
+    <div className="w-[520px] grid grid-cols-2 gap-3">
+      <Button variant="default">default</Button>
+      <Button variant="secondary">secondary</Button>
+      <Button variant="outline">outline</Button>
+      <Button variant="ghost">ghost</Button>
+      <Button variant="destructive">destructive</Button>
+      <Button variant="emerald">destructive</Button>
+      <Button variant="indigo">destructive</Button>
+      <Button variant="link">link</Button>
+    </div>
+  ),
+};
+
+export const WithIconRight: Story = {
   args: {
-    variant: "tab",
-    tone: "indigo",
-    selected: true,
-    size: "tab",
-    children: "필로그 키워드",
+    children: (
+      <>
+        다음으로 <ChevronRight className="size-4" />
+      </>
+    ),
+    variant: "default",
+    size: "default",
   },
 };
 
-export const SolidPrimary: Story = {
+export const IconOnly: Story = {
   args: {
-    variant: "solid",
-    tone: "primary",
-    size: "md",
-    children: "Primary Solid",
-  },
-};
-
-export const OutlinedEmerald: Story = {
-  args: {
-    variant: "outlined",
-    tone: "emerald",
-    size: "md",
-    children: "Outlined Emerald",
-  },
-};
-
-export const GhostNeutral: Story = {
-  args: {
+    size: "icon",
     variant: "ghost",
-    tone: "neutral",
-    size: "sm",
-    children: "Ghost Neutral",
+    children: <ChevronRight className="size-4" />,
+    "aria-label": "다음",
   },
 };
 
 export const Disabled: Story = {
   args: {
-    variant: "solid",
-    tone: "indigo",
-    size: "md",
     disabled: true,
     children: "Disabled",
   },
 };
 
-// ✅ destructive 추가 스토리들
-export const SolidDestructive: Story = {
+/**
+ * asChild 데모: Next.js Link를 직접 쓰면 Storybook에서 라우팅 의존성이 생길 수 있어서
+ * 여기서는 <a>로만 보여줌.
+ */
+export const AsChildAnchor: Story = {
   args: {
-    variant: "solid",
-    tone: "destructive",
-    size: "md",
-    children: "삭제",
+    asChild: true,
+    children: <a href="#demo">asChild (anchor)</a>,
+    variant: "default",
   },
-};
-
-export const OutlinedDestructive: Story = {
-  args: {
-    variant: "outlined",
-    tone: "destructive",
-    size: "md",
-    children: "삭제",
-  },
-};
-
-export const SizeShowcase: Story = {
-  render: () => (
-    <div className="w-[520px] space-y-3">
-      <Button size="xs">Size xs</Button>
-      <Button size="sm">Size sm</Button>
-      <Button size="md">Size md</Button>
-      <Button size="lg">Size lg</Button>
-    </div>
-  ),
-};
-
-export const ToneShowcaseSolid: Story = {
-  render: () => (
-    <div className="w-[520px] grid grid-cols-2 gap-3">
-      <Button tone="primary" variant="solid">
-        primary
-      </Button>
-      <Button tone="indigo" variant="solid">
-        indigo
-      </Button>
-      <Button tone="emerald" variant="solid">
-        emerald
-      </Button>
-      <Button tone="neutral" variant="solid">
-        neutral
-      </Button>
-      <Button tone="destructive" variant="solid">
-        destructive
-      </Button>
-    </div>
-  ),
-};
-
-export const ToneShowcaseOutlined: Story = {
-  render: () => (
-    <div className="w-[520px] grid grid-cols-2 gap-3">
-      <Button tone="primary" variant="outlined">
-        primary
-      </Button>
-      <Button tone="indigo" variant="outlined">
-        indigo
-      </Button>
-      <Button tone="emerald" variant="outlined">
-        emerald
-      </Button>
-      <Button tone="neutral" variant="outlined">
-        neutral
-      </Button>
-      <Button tone="destructive" variant="outlined">
-        destructive
-      </Button>
-    </div>
-  ),
-};
-
-export const ToneShowcaseGhost: Story = {
-  render: () => (
-    <div className="w-[520px] grid grid-cols-2 gap-3">
-      <Button tone="primary" variant="ghost">
-        primary
-      </Button>
-      <Button tone="indigo" variant="ghost">
-        indigo
-      </Button>
-      <Button tone="emerald" variant="ghost">
-        emerald
-      </Button>
-      <Button tone="neutral" variant="ghost">
-        neutral
-      </Button>
-      <Button tone="destructive" variant="ghost">
-        destructive
-      </Button>
-    </div>
-  ),
-};
-
-export const TabPairExample: Story = {
-  render: () => (
-    <div className="w-[520px] flex gap-2">
-      <Button variant="tab" tone="indigo" size="tab" selected>
-        필로그 키워드
-      </Button>
-      <Button variant="tab" tone="emerald" size="tab" selected={false}>
-        마켓 키워드
-      </Button>
-    </div>
-  ),
 };

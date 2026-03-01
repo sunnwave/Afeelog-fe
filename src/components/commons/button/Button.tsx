@@ -1,117 +1,61 @@
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
-import { ButtonHTMLAttributes, forwardRef } from "react";
 
-type ButtonVariant = "tab" | "solid" | "outlined" | "ghost";
-type ButtonTone = "primary" | "indigo" | "emerald" | "neutral" | "destructive";
-type ButtonSize = "tab" | "xs" | "sm" | "md" | "lg";
-
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonVariant;
-  tone?: ButtonTone;
-  size?: ButtonSize;
-  selected?: boolean;
-};
-
-const base =
-  "w-full flex items-center justify-center rounded-lg font-medium cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none";
-
-const sizes = {
-  tab: "py-2.5 px-4 text-sm",
-  xs: "px-3 py-1.5 text-sm font-semibold gap-1.5",
-  sm: "px-4 py-3 text-sm font-medium gap-3",
-  md: "px-5 py-3 text-md font-bold gap-3",
-  lg: "px-6 py-4 text-base font-semibold gap-3",
-} satisfies Record<ButtonSize, string>;
-const tabTone = {
-  primary: {
-    idle: "hover:bg-accent text-foreground",
-    selected: "bg-primary text-white",
-  },
-  indigo: {
-    idle: "bg-accent text-muted-foreground hover:bg-soft-accent",
-    selected: "bg-point-indigo text-white shadow-md",
-  },
-  emerald: {
-    idle: "bg-accent text-muted-foreground hover:bg-soft-accent",
-    selected: "bg-point-emerald text-white shadow-md",
-  },
-  neutral: {
-    idle: "bg-accent text-muted-foreground hover:bg-soft-accent",
-    selected: "bg-foreground text-background shadow-md",
-  },
-  destructive: {
-    idle: "bg-accent text-muted-foreground hover:bg-soft-accent",
-    selected: "bg-destructive text-destructive-foreground shadow-md",
-  },
-} satisfies Record<ButtonTone, { idle: string; selected: string }>;
-
-const solidTone = {
-  primary: "bg-primary text-white hover:opacity-90 active:opacity-85",
-  indigo: "bg-point-indigo text-white hover:opacity-90 active:opacity-85",
-  emerald: "bg-point-emerald text-white hover:opacity-90 active:opacity-85",
-  neutral:
-    "bg-secondary text-muted-foreground hover:opacity-90 active:opacity-85",
-  destructive:
-    "bg-destructive text-destructive-foreground hover:opacity-90 active:opacity-85",
-} satisfies Record<ButtonTone, string>;
-
-const outlinedTone = {
-  primary: "border border-primary text-primary hover:bg-primary/5",
-  indigo:
-    "border border-point-indigo text-point-indigo hover:bg-point-indigo/5",
-  emerald:
-    "border border-point-emerald text-point-emerald hover:bg-point-emerald/5",
-  neutral:
-    "border border-border text-muted-foreground hover:bg-accent/70 active:bg-accent/70 transition-colors",
-  destructive:
-    "border border-destructive text-destructive hover:bg-destructive/10 active:bg-destructive/15",
-} satisfies Record<ButtonTone, string>;
-
-const ghostTone = {
-  primary: "text-foreground hover:bg-accent",
-  indigo:
-    "text-point-indigo hover:bg-point-indigo/10 active:bg-point-indigo/15",
-  emerald:
-    "text-point-emerald hover:bg-point-emerald/10 active:bg-point-emerald/15",
-  neutral:
-    "text-muted-foreground hover:bg-muted hover:text-primary transition-colors active:bg-muted/80",
-  destructive:
-    "text-destructive hover:bg-destructive/10 active:bg-destructive/15",
-} satisfies Record<ButtonTone, string>;
-
-export const Button = forwardRef<HTMLButtonElement, Props>(function Button(
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer rounded-lg text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
-    className,
-    variant = "solid",
-    tone = "neutral",
-    selected = false,
-    size = "sm",
-    ...props
-  },
-  ref
-) {
-  const getVariantClass = () => {
-    switch (variant) {
-      case "tab":
-        return selected ? tabTone[tone].selected : tabTone[tone].idle;
-      case "solid":
-        return solidTone[tone];
-      case "outlined":
-        return outlinedTone[tone];
-      case "ghost":
-        return ghostTone[tone];
-      default:
-        return ghostTone[tone];
-    }
-  };
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        emerald:
+          "bg-point-emerald text-primary-foreground hover:bg-point-emerald/90",
+        indigo:
+          "bg-point-indigo text-primary-foreground hover:bg-point-indigo/90",
+        destructive:
+          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-accent/80",
+        ghost:
+          "hover:bg-accent/80 hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        md: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        lg: "h-12 rounded-md px-8 has-[>svg]:px-6 text-base",
+        icon: "size-9 rounded-md",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
 
-  const variantClass = getVariantClass();
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  }) {
+  const Comp = asChild ? Slot : "button";
 
   return (
-    <button
-      ref={ref}
-      className={cn(base, sizes[size], variantClass, className)}
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
   );
-});
+}
+
+export { Button, buttonVariants };
