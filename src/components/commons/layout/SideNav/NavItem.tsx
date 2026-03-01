@@ -8,11 +8,9 @@ export default function NavItem({ nav }: { nav: SideNavItemType }) {
 
   return (
     <Button
-      variant="tab"
-      tone="primary"
-      size="md"
-      selected={isActive}
-      className="relative rounded-2xl justify-start"
+      size="lg"
+      variant={isActive ? "default" : "ghost"}
+      className=" relative rounded-2xl justify-start"
       onClick={() => router.push(nav.href)}
     >
       <nav.icon className="w-4.5 h-4.5" />

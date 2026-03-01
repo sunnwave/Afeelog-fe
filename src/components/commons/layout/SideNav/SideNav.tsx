@@ -5,12 +5,12 @@ import ProfileEntry from "./ProfileEntry/ProfileEntry";
 import { SIDE_NAV_ITEMS } from "@/constants/navigation";
 import NavItem from "./NavItem";
 import { LogOut } from "lucide-react";
-import { Button } from "../../button/Button";
 import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 import { useState } from "react";
 import { ConfirmModal } from "../../modal/ConfirmModal";
 import { ActionSheet } from "../../actionSheet/ActionSheet";
 import { buildWriteActionSheetOptions } from "@/constants/actionSheetOptions";
+import { Button } from "../../button/Button";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);
@@ -38,12 +38,11 @@ export default function Sidebar() {
         <Logo size="lg" showSubtitle />
       </div>
       <ProfileEntry />
-      <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+      <nav className="flex flex-col overflow-y-auto p-4 space-y-2">
         <Button
-          variant="outlined"
-          tone="primary"
-          size="md"
-          className=" hover:scale-[0.98]"
+          variant="outline"
+          size="lg"
+          className="hover:scale-[0.98]"
           onClick={onClickWrite}
         >
           작성하기
@@ -54,7 +53,7 @@ export default function Sidebar() {
       </nav>
       {isLoggedIn && (
         <div className="pt-2 px-4 border-t border-border">
-          <Button variant="ghost" className="justify-start">
+          <Button variant="ghost" className="justify-start w-full">
             <LogOut className="w-4.5 h-4.5" />
             <span>로그아웃</span>
           </Button>
@@ -69,9 +68,13 @@ export default function Sidebar() {
         variant="primary"
         footer={
           <div className="flex justify-end gap-2">
-            <Button onClick={() => setLoginModalOpen(false)}>취소</Button>
             <Button
-              tone="primary"
+              variant="secondary"
+              onClick={() => setLoginModalOpen(false)}
+            >
+              취소
+            </Button>
+            <Button
               onClick={() => {
                 onClickNavigation("/login")();
                 setLoginModalOpen(false);
