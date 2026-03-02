@@ -1,15 +1,26 @@
+import { ConfirmVariant } from "@/shared/stores";
 import { LucideIcon } from "lucide-react";
 
 export type ModalProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  trigger?: React.ReactNode;
+
   title?: string;
   description?: string;
+
   icon?: LucideIcon;
-  variant?: "default" | "destructive" | "success" | "primary";
-  showCloseButton?: boolean;
-  footer?: React.ReactNode;
-  className?: string;
+  variant?: ConfirmVariant;
+
+  confirmText?: string;
+  cancelText?: string;
+
   closeOnOverlayClick?: boolean;
+
+  loading?: boolean;
+
+  onConfirm?: () => void | Promise<void>;
+  onCancel?: () => void;
+  onClose?: () => void;
+
+  className?: string;
 };
