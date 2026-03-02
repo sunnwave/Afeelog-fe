@@ -46,7 +46,8 @@ export default function RecordDetail(): JSX.Element | null {
         record && (
           <RecordDetailContent
             record={record}
-            isWriter={false}
+            // TODO: 로그인한 유저의 id와 record의 작성자 id 비교해서 isWriter 값 설정하기
+            isWriter={true}
             className="w-full max-w-3xl mx-auto px-2 py-2 lg:px-4"
           />
         )

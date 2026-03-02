@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 const FETCH_RECORD = gql`
   query fetchBoard($boardId: ID!) {
     fetchBoard(boardId: $boardId) {
+      _id
       writer
       title
       contents

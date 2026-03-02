@@ -3,12 +3,12 @@ import Profile from "@/components/commons/profile/Profile";
 import { JSX } from "react";
 import RecordDetailContentSubInfo from "./RecordDetailContentSubInfo";
 import RecordDetailContentMain from "./RecordDetailContentMain";
-import HeartIcon from "@/components/ui/icons/heartIcon/HeartIcon";
-import BookMarkIcon from "@/components/ui/icons/bookmarkIcon/BookMarkIcon";
-import RecordComments from "../../record-comments/RecordComments";
 import WriterMenu from "@/components/commons/writerMenu/WriterMenu";
 import { cn } from "@/shared/utils";
-
+import { useConfirmPreset } from "@/shared/hooks/ui/useConfirmPreset";
+import { useDeleteBoard } from "../hooks/mutations/useDeleteRecord";
+import RecordComments from "../../record-comments/RecordComments";
+import { BookMarkIcon, HeartIcon } from "@/components/ui/icons";
 export default function RecordDetailContent({
   record,
   isWriter,
@@ -18,8 +18,19 @@ export default function RecordDetailContent({
   isWriter: boolean;
   className?: string;
 }): JSX.Element {
+  const { openConfirmPreset } = useConfirmPreset();
+  const { onDeleteRecord } = useDeleteBoard();
+
   const onEdit = () => {};
-  const onDelete = () => {};
+
+  const onDelete = () => {
+    openConfirmPreset("deleteRecord", {
+      onConfirm: async () => {
+        await onDeleteRecord(record._id);
+      },
+    });
+  };
+
   return (
     <div className={cn(className)}>
       <div className="space-y-6">
@@ -57,6 +68,5 @@ export default function RecordDetailContent({
         <RecordComments />
       </div>
     </div>
-    // </>
   );
 }
