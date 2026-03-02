@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
 import {
   CommentActionsProvider,
   CommentInput,
@@ -40,8 +39,6 @@ export default function RecordComments() {
   const { onDeleteRecordComment } = useDeleteRecordComment({ password });
 
   const comments = data?.fetchBoardComments ?? [];
-
-  console.log(comments);
 
   const requestDeleteComment = (commentId: string) => {
     // setTargetCommentId(commentId);
