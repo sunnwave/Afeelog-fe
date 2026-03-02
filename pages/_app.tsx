@@ -1,4 +1,5 @@
 import Layout from "@/components/commons/layout/Layout";
+import ConfirmModalHost from "@/components/commons/modal/ConfirmModalHost";
 import { ToastProvider } from "@/components/commons/toast/ToastProvider";
 import ApolloSetting from "@/lib/apollo/ApolloSetting";
 import "@/styles/globals.css";
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <ApolloSetting>
           <Layout>
             <Component {...pageProps} />
+            <ConfirmModalHost />
           </Layout>
         </ApolloSetting>
       </ToastProvider>

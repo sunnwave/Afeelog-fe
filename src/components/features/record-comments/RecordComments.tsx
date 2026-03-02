@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { ConfirmModal } from "@/components/commons/modal/ConfirmModal";
-import { Trash2 } from "lucide-react";
 import {
   CommentActionsProvider,
   CommentInput,
@@ -13,7 +11,7 @@ import {
   useFetchRecordComments,
   useUpdateRecordComment,
 } from "./hooks";
-import { Button } from "@/components/ui/button/Button";
+import { useConfirmPreset } from "@/shared/hooks/ui/useConfirmPreset";
 
 export default function RecordComments() {
   const router = useRouter();
@@ -28,8 +26,7 @@ export default function RecordComments() {
   const writer = "test";
   const password = "test";
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [targetCommentId, setTargetCommentId] = useState<string | null>(null);
+  const { openConfirmPreset } = useConfirmPreset();
 
   const { data, fetchMore, refetch, loading } =
     useFetchRecordComments(recordId);
@@ -39,7 +36,6 @@ export default function RecordComments() {
     writer,
     password,
   });
-
   const { onUpdateRecordComment } = useUpdateRecordComment({ password });
   const { onDeleteRecordComment } = useDeleteRecordComment({ password });
 
@@ -48,15 +44,12 @@ export default function RecordComments() {
   console.log(comments);
 
   const requestDeleteComment = (commentId: string) => {
-    setTargetCommentId(commentId);
-    setModalOpen(true);
-  };
-
-  const confirmDelete = async () => {
-    if (!targetCommentId) return;
-    await onDeleteRecordComment(targetCommentId);
-    setModalOpen(false);
-    setTargetCommentId(null);
+    // setTargetCommentId(commentId);
+    openConfirmPreset("deleteComment", {
+      onConfirm: async () => {
+        await onDeleteRecordComment(commentId);
+      },
+    });
   };
 
   const onSubmit = (contents: string) => {
@@ -82,36 +75,6 @@ export default function RecordComments() {
         </CommentActionsProvider>
         <CommentInput onSubmit={onSubmit} isLoggedIn={true} />
       </div>
-
-      <ConfirmModal
-        open={modalOpen}
-        onOpenChange={(v) => {
-          setModalOpen(v);
-          if (!v) setTargetCommentId(null);
-        }}
-        title="댓글을 삭제할까요?"
-        description="삭제한 댓글은 복구할 수 없어요."
-        icon={Trash2}
-        variant="destructive"
-        footer={
-          <div className="flex justify-end gap-2">
-            <Button
-              variant="secondary"
-              onClick={() => setModalOpen(false)}
-              className="flex-1"
-            >
-              취소
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={confirmDelete}
-              className="flex-1"
-            >
-              삭제
-            </Button>
-          </div>
-        }
-      />
     </>
   );
 }

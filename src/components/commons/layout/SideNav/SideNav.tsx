@@ -6,11 +6,11 @@ import NavItem from "./NavItem";
 import { LogOut } from "lucide-react";
 import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 import { useState } from "react";
-import { ConfirmModal } from "../../modal/ConfirmModal";
 import { ActionSheet } from "../../actionSheet/ActionSheet";
 import { buildWriteActionSheetOptions } from "@/shared/constants/actionSheetOptions";
 import { SIDE_NAV_ITEMS } from "@/shared/constants/navigation";
 import { Button } from "@/components/ui/button/Button";
+import { useConfirmPreset } from "@/shared/hooks/ui/useConfirmPreset";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);
@@ -18,18 +18,28 @@ export default function Sidebar() {
   const isLoggedIn = true; // TODO: 임시로 로그인 상태 고정, 추후 accessToken 상태에 따라 변경
 
   const { onClickNavigation } = useNavigation();
+  const { openConfirmPreset } = useConfirmPreset();
 
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [writeSheetOpen, setWriteSheetOpen] = useState(false);
-
   const options = buildWriteActionSheetOptions(onClickNavigation);
 
   const onClickWrite = () => {
     if (!isLoggedIn) {
-      setLoginModalOpen(true);
+      openConfirmPreset("loginRequired", {
+        onConfirm: onClickNavigation("/login"),
+      });
       return;
     }
     setWriteSheetOpen(true);
+  };
+
+  const onClickLogout = () => {
+    openConfirmPreset("logout", {
+      // TODO: 로그아웃 핸들러 연결
+      onConfirm: () => {
+        console.log("로그아웃 처리");
+      },
+    });
   };
 
   return (
@@ -53,38 +63,16 @@ export default function Sidebar() {
       </nav>
       {isLoggedIn && (
         <div className="pt-2 px-4 border-t border-border">
-          <Button variant="ghost" className="justify-start w-full">
+          <Button
+            variant="ghost"
+            className="justify-start w-full"
+            onClick={onClickLogout}
+          >
             <LogOut className="w-4.5 h-4.5" />
             <span>로그아웃</span>
           </Button>
         </div>
       )}
-
-      <ConfirmModal
-        open={loginModalOpen}
-        onOpenChange={setLoginModalOpen}
-        title="작성하려면 로그인해요✋🏻🤚🏻"
-        description="로그인하고 필로그와 거래글을 작성해보세요"
-        variant="primary"
-        footer={
-          <div className="flex justify-end gap-2">
-            <Button
-              variant="secondary"
-              onClick={() => setLoginModalOpen(false)}
-            >
-              취소
-            </Button>
-            <Button
-              onClick={() => {
-                onClickNavigation("/login")();
-                setLoginModalOpen(false);
-              }}
-            >
-              로그인
-            </Button>
-          </div>
-        }
-      />
 
       <ActionSheet
         options={options}
