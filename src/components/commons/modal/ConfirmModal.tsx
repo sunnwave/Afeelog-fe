@@ -4,27 +4,27 @@ import * as React from "react";
 import { X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import IconBadge from "@/components/ui/icons/IconBadge";
-import { ModalProps } from "./type";
 import { cn } from "@/shared/utils/cn";
 import { Button } from "@/components/ui/button/Button";
+import { ModalProps } from "./type";
 
 export function ConfirmModal({
   open,
   onOpenChange,
-  trigger,
   title,
   description,
   icon,
   variant = "default",
-  showCloseButton = true,
-  footer,
   className,
   closeOnOverlayClick = true,
+  onConfirm,
+  onCancel,
+  confirmText,
+  cancelText,
+  loading = false,
 }: ModalProps) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
-      {trigger ? <Dialog.Trigger asChild>{trigger}</Dialog.Trigger> : null}
-
       <Dialog.Portal>
         {/* ✅ Overlay */}
         <Dialog.Overlay
@@ -51,7 +51,7 @@ export function ConfirmModal({
           )}
         >
           {/* Header */}
-          {(title || description || icon || showCloseButton) && (
+          {(title || description || icon) && (
             <div className="flex items-start gap-3 px-6 pt-6 pb-4">
               {icon && variant && <IconBadge icon={icon} variant={variant} />}
               <div className="min-w-0 flex-1">
@@ -67,18 +67,40 @@ export function ConfirmModal({
                 ) : null}
               </div>
 
-              {showCloseButton ? (
-                <Dialog.Close asChild>
-                  <Button variant="ghost" size="icon" aria-label="닫기">
-                    <X className="w-5 h-5" />
-                  </Button>
-                </Dialog.Close>
-              ) : null}
+              <Dialog.Close asChild>
+                <Button variant="ghost" size="icon" aria-label="닫기">
+                  <X className="w-5 h-5" />
+                </Button>
+              </Dialog.Close>
             </div>
           )}
 
-          {/* Body */}
-          {footer ? <div className="px-5 py-4">{footer}</div> : null}
+          <div className="px-5 py-4">
+            <div className="mt-2 flex gap-2">
+              <Button
+                variant="secondary"
+                className="flex-1"
+                onClick={() => {
+                  onCancel?.();
+                  onOpenChange(false);
+                }}
+                disabled={loading}
+              >
+                {cancelText}
+              </Button>
+
+              <Button
+                variant={variant === "destructive" ? "destructive" : "default"}
+                className="flex-1"
+                onClick={async () => {
+                  await onConfirm?.();
+                }}
+                disabled={loading}
+              >
+                {loading ? "처리중..." : confirmText}
+              </Button>
+            </div>
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
