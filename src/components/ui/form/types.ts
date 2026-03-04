@@ -17,25 +17,20 @@ export type SignUpValues = {
 
 export type TextFieldProps<TFieldValues extends FieldValues> = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "name"
+  "name" | "value" | "defaultValue" | "onChange"
 > & {
-  /** RHF name (타입 안전) */
+  id?: string;
   name: Path<TFieldValues>;
-  label: string;
+  rightSlot?: React.ReactNode;
   register: UseFormRegister<TFieldValues>;
   error?: FieldError;
 };
 
-export type PasswordFieldProps<TFieldValues extends FieldValues> = {
-  id: string;
-  name: Path<TFieldValues>;
-  label: string;
-  placeholder: string;
-  autoComplete?: string;
-
-  register: UseFormRegister<TFieldValues>;
+export type PasswordFieldProps<TFieldValues extends FieldValues> = Omit<
+  TextFieldProps<TFieldValues>,
+  "rightSlot" | "type"
+> & {
   watch: UseFormWatch<TFieldValues>;
   setValue: UseFormSetValue<TFieldValues>;
-
-  error?: FieldError;
+  autoComplete?: string; // (원하면 TextFieldProps에 원래도 있으니 사실 없어도 됨)
 };
