@@ -1,30 +1,27 @@
 import * as React from "react";
-import type { FieldError } from "react-hook-form";
+import type { FieldValues } from "react-hook-form";
 import { cn } from "@/shared/utils";
+import { TextFieldProps } from "./types";
 
-type Props = React.InputHTMLAttributes<HTMLInputElement> & {
-  label?: string;
-  required?: boolean;
-  error?: FieldError;
-  /** input 오른쪽에 아이콘/버튼 넣고 싶을 때 */
-  rightSlot?: React.ReactNode;
-};
-
-export function TextField({
+export function TextField<TFieldValues extends FieldValues>({
   id,
   name,
-  error,
+  type = "text",
   rightSlot,
+  register,
   className,
+  error,
   ...props
-}: Props) {
-  const inputId = id ?? (typeof name === "string" ? name : undefined);
+}: TextFieldProps<TFieldValues>) {
+  const inputId = id ?? String(name); // id가 명시적으로 주어지지 않으면 name을 id로 사용
 
   return (
     <div className="relative">
       <input
         id={inputId}
-        name={name}
+        type={type}
+        {...register(name)}
+        {...props}
         className={cn(
           `
           w-full h-11 px-4 rounded-xl border bg-background
@@ -39,7 +36,6 @@ export function TextField({
         `,
           className
         )}
-        {...props}
       />
 
       {rightSlot ? (
