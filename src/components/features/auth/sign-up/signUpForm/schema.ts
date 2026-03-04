@@ -1,5 +1,5 @@
+import type { SignUpValues } from "@/components/ui/form";
 import * as yup from "yup";
-import { SignUpValues } from "../types";
 
 export const schema: yup.ObjectSchema<SignUpValues> = yup.object({
   email: yup
