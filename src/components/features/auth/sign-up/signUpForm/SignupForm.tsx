@@ -28,7 +28,7 @@ export default function SignupForm({ onSubmit }: Props) {
     mode: "onChange", // 입력하면서 isValid 갱신
     defaultValues: {
       email: "",
-      nickname: "",
+      name: "",
       password: "",
       passwordConfirm: "",
     },
@@ -37,7 +37,7 @@ export default function SignupForm({ onSubmit }: Props) {
   const submit = async (values: SignUpValues) => {
     await onSubmit?.({
       email: values.email.trim(),
-      nickname: values.nickname.trim(),
+      name: values.name.trim(),
       password: values.password,
     });
   };
@@ -63,19 +63,19 @@ export default function SignupForm({ onSubmit }: Props) {
         <FieldError error={errors.email} />
       </div>
 
-      {/* Nickname */}
+      {/* name */}
       <div className="flex flex-col space-y-2">
-        <FormLabel htmlFor="nickname" required={true}>
-          닉네임
+        <FormLabel htmlFor="name" required={true}>
+          이름
         </FormLabel>
         <TextField
-          name="nickname"
+          name="name"
           placeholder="1~12자"
           autoComplete="username"
           register={register}
-          error={errors.nickname}
+          error={errors.name}
         />
-        <FieldError error={errors.nickname} />
+        <FieldError error={errors.name} />
       </div>
 
       {/* Password */}

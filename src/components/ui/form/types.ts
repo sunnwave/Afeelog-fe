@@ -10,7 +10,7 @@ import {
 
 export type SignUpValues = {
   email: string;
-  nickname: string;
+  name: string;
   password: string;
   passwordConfirm: string;
 };

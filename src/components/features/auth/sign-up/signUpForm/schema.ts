@@ -7,7 +7,7 @@ export const schema: yup.ObjectSchema<SignUpValues> = yup.object({
     .trim()
     .required("이메일을 입력해주세요.")
     .email("이메일 형식이 올바르지 않아요."),
-  nickname: yup
+  name: yup
     .string()
     .trim()
     .required("닉네임을 입력해주세요.")
