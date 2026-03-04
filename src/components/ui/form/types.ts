@@ -15,6 +15,11 @@ export type SignUpValues = {
   passwordConfirm: string;
 };
 
+export type LoginValues = {
+  email: string;
+  password: string;
+};
+
 export type TextFieldProps<TFieldValues extends FieldValues> = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   "name" | "value" | "defaultValue" | "onChange"

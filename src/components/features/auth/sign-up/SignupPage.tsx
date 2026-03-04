@@ -13,7 +13,7 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden px-2 py-4 lg:px-6 lg:pb-8">
       {/* TODO: 뒤로가기 경로 설정 */}
-      <BackButton fallbackHref="/login" label="로그인으로 돌아가기" />
+      <BackButton fallbackHref="/login" label="뒤로가기" />
 
       <main className="flex-1 flex flex-col items-center px-4 py-8 pb-20 gap-10">
         <SignupTop />

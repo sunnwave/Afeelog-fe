@@ -14,9 +14,6 @@ const meta: Meta<typeof SignupForm> = {
       </div>
     ),
   ],
-  argTypes: {
-    onSubmit: { action: "onSubmit" },
-  },
 };
 
 export default meta;
