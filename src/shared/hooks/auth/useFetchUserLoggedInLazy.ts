@@ -22,6 +22,7 @@ export function useFetchUserLoggedInLazy() {
 
   const run = async () => {
     const res = await fetchUserLoggedIn();
+    if (res.error) throw res.error;
     return res.data?.fetchUserLoggedIn ?? null;
   };
 
