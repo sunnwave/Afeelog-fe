@@ -11,14 +11,16 @@ import { buildWriteActionSheetOptions } from "@/shared/constants/actionSheetOpti
 import { SIDE_NAV_ITEMS } from "@/shared/constants/navigation";
 import { Button } from "@/components/ui/button/Button";
 import { useConfirmPreset } from "@/shared/hooks/ui/useConfirmPreset";
+import useLogoutUser from "@/shared/hooks/auth/useLogoutUser";
 
 export default function Sidebar() {
   const accessToken = useRecoilValue(accessTokenState);
-  // const isLoggedIn = !!accessToken;
-  const isLoggedIn = true; // TODO: 임시로 로그인 상태 고정, 추후 accessToken 상태에 따라 변경
+  const isLoggedIn = !!accessToken;
 
   const { onClickNavigation } = useNavigation();
   const { openConfirmPreset } = useConfirmPreset();
+
+  const { onLogoutUser, loading } = useLogoutUser();
 
   const [writeSheetOpen, setWriteSheetOpen] = useState(false);
   const options = buildWriteActionSheetOptions(onClickNavigation);
@@ -37,7 +39,7 @@ export default function Sidebar() {
     openConfirmPreset("logout", {
       // TODO: 로그아웃 핸들러 연결
       onConfirm: () => {
-        console.log("로그아웃 처리");
+        onLogoutUser();
       },
     });
   };
