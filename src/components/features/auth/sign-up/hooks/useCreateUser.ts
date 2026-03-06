@@ -3,6 +3,7 @@ import {
   IMutation,
   IMutationCreateUserArgs,
 } from "@/shared/graphql/generated/types";
+import { useNavigation } from "@/shared/hooks/ui/useNavigation";
 import { gql, useMutation } from "@apollo/client";
 
 const CREATE_USER = gql`
@@ -29,6 +30,8 @@ export const useCreateUser = () => {
 
   const { error, success } = useToast();
 
+  const { onClickNavigation } = useNavigation();
+
   const onCreateUser = async (form: CreateUserForm) => {
     try {
       const res = await createUser({
@@ -41,6 +44,7 @@ export const useCreateUser = () => {
         },
       });
       success("회원가입이 완료되었습니다👐🏻✨");
+      onClickNavigation("/login")();
       console.log(res.data?.createUser);
     } catch (err) {
       if (err instanceof Error) {
