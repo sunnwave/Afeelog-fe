@@ -22,8 +22,6 @@ export const useFetchBestRecords = () => {
   const { data, refetch } =
     useQuery<Pick<IQuery, "fetchBoardsOfTheBest">>(FETCH_BEST_RECORDS);
 
-  console.log(data);
-
   return {
     data,
     refetch,
