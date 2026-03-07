@@ -91,7 +91,7 @@ export const useCreateRecordComment = ({
       });
     } catch (err) {
       if (err instanceof Error) {
-        error("댓글 작성에 실패했습니다.");
+        error(err.message || "댓글 작성에 실패했습니다😢");
         console.error(err);
       }
     }

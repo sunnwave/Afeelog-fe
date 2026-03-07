@@ -43,9 +43,8 @@ export const useCreateUser = () => {
           },
         },
       });
-      success("회원가입이 완료되었습니다👐🏻✨");
+      success(`${res.data?.createUser.name}님 회원가입이 완료되었습니다👐🏻✨`);
       onClickNavigation("/login")();
-      console.log(res.data?.createUser);
     } catch (err) {
       if (err instanceof Error) {
         error(err.message || "회원가입에 실패했습니다😢");
