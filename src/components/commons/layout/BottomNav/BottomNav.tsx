@@ -3,11 +3,11 @@ import { useRecoilValue } from "recoil";
 import BottomNavItem from "./BottomNavItem";
 import { FileText, Home, Plus, Ticket, User } from "lucide-react";
 import Avatar from "@/components/ui/avatar/Avatar";
-import { accessTokenState } from "@/shared/stores/authToken";
+import { loggedInUserState } from "@/shared/stores/user";
 
 export default function BottomNav() {
-  const accessToken = useRecoilValue(accessTokenState);
-  const isLoggedIn = !!accessToken;
+  const me = useRecoilValue(loggedInUserState);
+  const isLoggedIn = !!me;
 
   return (
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border safe-area-inset-bottom">

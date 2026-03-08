@@ -1,13 +1,8 @@
 import { JSX, useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import TwoColumnDashboard from "./TwoColumnDashboard/TwoColumnDashboard";
 import SingleDashBoard from "./SingleDashBoard/SingleDashBoard";
-import { accessTokenState } from "@/shared/stores/authToken";
 
 export default function HomeDashBoard(): JSX.Element {
-  const accessToken = useRecoilValue(accessTokenState);
-  const isLoggedIn = !!accessToken;
-
   const [activeKeywordType, setActiveKeywordType] = useState<
     "feelog" | "market"
   >("feelog");

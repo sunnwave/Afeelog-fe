@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 import BottomNav from "./BottomNav/BottomNav";
-import Sidebar from "./SideNav/SideNav";
 import Logo from "../../ui/logo/Logo";
+import SideNav from "./SideNav/SideNav";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-[#111827]">
       {/* ✅ Desktop Sidebar: viewport 기준 왼쪽 고정 */}
       <aside className="hidden lg:block fixed left-0 top-0 h-screen w-[300px] z-50">
-        <Sidebar />
+        <SideNav />
       </aside>
 
       {/* ✅ Mobile Header */}

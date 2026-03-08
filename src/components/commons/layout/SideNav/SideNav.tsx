@@ -1,5 +1,4 @@
 import { useRecoilValue } from "recoil";
-import { accessTokenState } from "@/shared/stores";
 import Logo from "../../../ui/logo/Logo";
 import ProfileEntry from "./ProfileEntry/ProfileEntry";
 import NavItem from "./NavItem";
@@ -12,10 +11,11 @@ import { SIDE_NAV_ITEMS } from "@/shared/constants/navigation";
 import { Button } from "@/components/ui/button/Button";
 import { useConfirmPreset } from "@/shared/hooks/ui/useConfirmPreset";
 import useLogoutUser from "@/shared/hooks/auth/useLogoutUser";
+import { loggedInUserState } from "@/shared/stores/user";
 
-export default function Sidebar() {
-  const accessToken = useRecoilValue(accessTokenState);
-  const isLoggedIn = !!accessToken;
+export default function SideNav() {
+  const me = useRecoilValue(loggedInUserState);
+  const isLoggedIn = !!me;
 
   const { onClickNavigation } = useNavigation();
   const { openConfirmPreset } = useConfirmPreset();
@@ -37,7 +37,6 @@ export default function Sidebar() {
 
   const onClickLogout = () => {
     openConfirmPreset("logout", {
-      // TODO: 로그아웃 핸들러 연결
       onConfirm: () => {
         onLogoutUser();
       },

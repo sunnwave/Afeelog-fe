@@ -3,11 +3,11 @@ import HomeDashBoard from "./HomeDashBoard/HomeDashBoard";
 import BestRecords from "./BestRecords";
 import { useRecoilValue } from "recoil";
 import MyDashBoard from "./HomeDashBoard/MyDashBoard/MyDashBoard";
-import { accessTokenState } from "@/shared/stores/authToken";
+import { loggedInUserState } from "@/shared/stores/user";
 
 export default function HomePage(): JSX.Element {
-  const accessToken = useRecoilValue(accessTokenState);
-  const isLoggedIn = !!accessToken;
+  const me = useRecoilValue(loggedInUserState);
+  const isLoggedIn = !!me;
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden px-4 py-4 lg:px-6 lg:pb-8">
