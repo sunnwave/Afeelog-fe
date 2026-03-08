@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useRecoilValue } from "recoil";
-import { accessTokenState } from "@/shared/stores";
 import BottomNavItem from "./BottomNavItem";
 import { FileText, Home, Plus, Ticket, User } from "lucide-react";
 import Avatar from "@/components/ui/avatar/Avatar";
+import { accessTokenState } from "@/shared/stores/authToken";
 
 export default function BottomNav() {
   const accessToken = useRecoilValue(accessTokenState);

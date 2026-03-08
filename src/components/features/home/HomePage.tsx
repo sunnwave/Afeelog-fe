@@ -2,8 +2,8 @@ import { JSX } from "react";
 import HomeDashBoard from "./HomeDashBoard/HomeDashBoard";
 import BestRecords from "./BestRecords";
 import { useRecoilValue } from "recoil";
-import { accessTokenState } from "@/shared/stores";
 import MyDashBoard from "./HomeDashBoard/MyDashBoard/MyDashBoard";
+import { accessTokenState } from "@/shared/stores/authToken";
 
 export default function HomePage(): JSX.Element {
   const accessToken = useRecoilValue(accessTokenState);

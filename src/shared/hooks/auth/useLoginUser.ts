@@ -3,12 +3,12 @@ import {
   IMutation,
   IMutationLoginUserArgs,
 } from "@/shared/graphql/generated/types";
-import { accessTokenState } from "@/shared/stores";
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useFetchUserLoggedInLazy } from "./useFetchUserLoggedInLazy";
 import { loggedInUserState } from "@/shared/stores/user";
+import { accessTokenState } from "@/shared/stores/authToken";
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -66,6 +66,10 @@ export default function useLoginUser() {
       await Promise.resolve(); // accessToken 상태가 업데이트된 이후에 fetchMe가 실행되도록 보장
 
       const me = await fetchMe();
+      if (!me) {
+        error("유저 정보를 불러오지 못했어요. 다시 로그인해주세요😢");
+        return;
+      }
       setLoggedInUser(me);
       success("로그인에 성공했습니다👐🏻✨");
 
