@@ -1,3 +1,4 @@
+import AuthInitialize from "@/components/commons/auth/AuthInitialize";
 import Layout from "@/components/commons/layout/Layout";
 import ConfirmModalHost from "@/components/commons/modal/ConfirmModalHost";
 import { ToastProvider } from "@/components/commons/toast/ToastProvider";
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <RecoilRoot>
       <ToastProvider>
         <ApolloSetting>
+          <AuthInitialize />
           <Layout>
             <Component {...pageProps} />
             <ConfirmModalHost />
