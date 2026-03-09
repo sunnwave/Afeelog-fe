@@ -27,6 +27,7 @@ export default function RecordComments() {
 
   const { openConfirmPreset } = useConfirmPreset();
 
+  // TODO: 댓글 무한스크롤 처리 (fetchMore, hasMore 등)
   const { data, fetchMore, refetch, loading } =
     useFetchRecordComments(recordId);
 

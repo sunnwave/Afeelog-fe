@@ -20,7 +20,7 @@ export default function SideNav() {
   const { onClickNavigation } = useNavigation();
   const { openConfirmPreset } = useConfirmPreset();
 
-  const { onLogoutUser, loading } = useLogoutUser();
+  const { onLogoutUser } = useLogoutUser();
 
   const [writeSheetOpen, setWriteSheetOpen] = useState(false);
   const options = buildWriteActionSheetOptions(onClickNavigation);

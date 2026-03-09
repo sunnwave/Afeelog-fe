@@ -30,7 +30,7 @@ const meta: Meta<typeof KeywordItem> = {
 export default meta;
 type Story = StoryObj<typeof KeywordItem>;
 
-export const feelogActive: Story = {
+export const FeelogActive: Story = {
   args: {
     variant: "feelog",
     active: true,
@@ -38,7 +38,7 @@ export const feelogActive: Story = {
   },
 };
 
-export const feelogInactive: Story = {
+export const FeelogInactive: Story = {
   args: {
     variant: "feelog",
     active: false,

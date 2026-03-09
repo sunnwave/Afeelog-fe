@@ -39,6 +39,7 @@ export default function BackButton({
         variant="ghost"
         className="p-0 justify-start max-w-fit"
         onClick={onBack}
+        {...props}
       >
         <ArrowLeft className="w-4-h-4" />
         <span>{label}</span>

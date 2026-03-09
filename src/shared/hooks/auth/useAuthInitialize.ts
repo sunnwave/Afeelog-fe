@@ -47,12 +47,14 @@ export function useAuthInitialize() {
 
           setUser(me);
         } catch (e) {
+          console.error("Failed to fetch logged in user", e);
           if (cancelled) return;
 
           setAccessToken("");
           setUser(null);
         }
       } catch (e) {
+        console.error("Failed to initialize auth", e);
         if (cancelled) return;
         setAccessToken("");
         setUser(null);

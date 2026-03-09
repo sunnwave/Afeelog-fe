@@ -40,6 +40,7 @@ export function getAccessToken(): Promise<string | null> {
       const token = result?.restoreAccessToken?.accessToken ?? null;
       return token;
     } catch (e) {
+      console.error("Failed to refresh access token", e);
       return null;
     } finally {
       refreshingPromise = null;
