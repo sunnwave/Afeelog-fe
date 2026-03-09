@@ -4,10 +4,32 @@ import BottomNavItem from "./BottomNavItem";
 import { FileText, Home, Plus, Ticket, User } from "lucide-react";
 import Avatar from "@/components/ui/avatar/Avatar";
 import { loggedInUserState } from "@/shared/stores/user";
+import { Button } from "@/components/ui/button/Button";
+import { useNavigation } from "@/shared/hooks/ui/useNavigation";
+import { useConfirmPreset } from "@/shared/hooks/ui/useConfirmPreset";
+import { useState } from "react";
+import { buildWriteActionSheetOptions } from "@/shared/constants";
+import { ActionSheet } from "../../actionSheet/ActionSheet";
 
 export default function BottomNav() {
   const me = useRecoilValue(loggedInUserState);
   const isLoggedIn = !!me;
+
+  const { onClickNavigation } = useNavigation();
+  const { openConfirmPreset } = useConfirmPreset();
+
+  const [writeSheetOpen, setWriteSheetOpen] = useState(false);
+  const options = buildWriteActionSheetOptions(onClickNavigation);
+
+  const onClickWrite = () => {
+    if (!isLoggedIn) {
+      openConfirmPreset("loginRequired", {
+        onConfirm: onClickNavigation("/login"),
+      });
+      return;
+    }
+    setWriteSheetOpen(true);
+  };
 
   return (
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border safe-area-inset-bottom">
@@ -15,16 +37,15 @@ export default function BottomNav() {
         <BottomNavItem href="/" label="홈" icon={Home} />
         <BottomNavItem href="/records" label="필로그" icon={FileText} />
         {/* Write (+) */}
-        <Link
-          href={isLoggedIn ? "/write" : "/login"}
-          className="flex flex-col items-center justify-center gap-1 h-full transition-colors relative"
-          aria-label="작성"
-        >
-          <div className="flex items-center justify-center w-12 h-12 -mt-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+        <div className="relative flex flex-col items-center gap-1 h-full justify-center">
+          <Button
+            className="size-12 rounded-full -mt-3 shadow-lg hover:shadow-xl hover:scale-105"
+            onClick={onClickWrite}
+          >
             <Plus className="w-6 h-6" strokeWidth={2.5} />
-          </div>
+          </Button>
           <span className="text-xs font-semibold">작성</span>
-        </Link>
+        </div>
         <BottomNavItem href="/trade" label="마켓" icon={Ticket} />
 
         {isLoggedIn ? (
@@ -32,12 +53,18 @@ export default function BottomNav() {
             href="/me"
             className="flex flex-1 flex-col items-center justify-center"
           >
-            <Avatar size="md" />
+            <Avatar user={me ?? undefined} size="md" type="filled" />
           </Link>
         ) : (
           <BottomNavItem href="/login" label="로그인" icon={User} />
         )}
       </div>
+      <ActionSheet
+        options={options}
+        isOpen={writeSheetOpen}
+        onClose={() => setWriteSheetOpen(false)}
+        title="무엇을 작성할까요?"
+      />
     </nav>
   );
 }
