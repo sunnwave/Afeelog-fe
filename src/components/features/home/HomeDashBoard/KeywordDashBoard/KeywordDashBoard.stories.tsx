@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import KeywordDashBoard from "./KeywordDashBoard";
 import { MOCK_FEELLOG_KEYWORDS, MOCK_MARKET_KEYWORDS } from "../../constants";
 

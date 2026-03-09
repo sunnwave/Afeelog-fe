@@ -20,7 +20,6 @@ export const useDeleteRecordComment = ({ password }: { password: string }) => {
   const { error } = useToast();
 
   const onDeleteRecordComment = async (commentId: string) => {
-    // TODO: confirm모달 구현 + callback 등록
     try {
       await deleteBoardComment({
         variables: { password, boardCommentId: commentId },

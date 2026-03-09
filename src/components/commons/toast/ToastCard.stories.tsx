@@ -1,5 +1,4 @@
-// src/components/ui/toast/ToastCard.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import ToastCard from "./ToastCard";
 import type { ToastItem } from "./types";
 

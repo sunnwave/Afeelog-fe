@@ -1,5 +1,4 @@
-// src/components/commons/actionSheet/ActionSheet.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
 import { Pencil, Ticket, Trash } from "lucide-react";
 import { ActionSheet } from "./ActionSheet";

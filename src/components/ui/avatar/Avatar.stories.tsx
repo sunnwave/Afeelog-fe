@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Avatar from "./Avatar";
 import { IUser } from "@/shared/graphql/generated/types";
 

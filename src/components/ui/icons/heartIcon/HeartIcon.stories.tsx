@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import HeartIcon from "./HeartIcon";
 
 const meta: Meta<typeof HeartIcon> = {

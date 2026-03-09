@@ -1,5 +1,4 @@
-// src/components/commons/actionSheet/ActionOption.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Trash2, Share2 } from "lucide-react";
 import ActionOption from "./ActionOption";
 import { ActionSheetOption } from "./type";

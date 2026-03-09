@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import RecordCardBottom from "./RecordCardBottom";
 import type { IBoard } from "@/shared/graphql/generated/types";
 

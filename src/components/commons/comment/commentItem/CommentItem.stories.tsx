@@ -1,5 +1,4 @@
-// src/components/.../CommentItem.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import CommentItem from "./CommentItem";
 import type { IBoardComment } from "@/shared/graphql/generated/types";
 
@@ -45,12 +44,11 @@ const baseComment = {
 export const Default: Story = {
   args: {
     comment: baseComment,
-    isWriter: false
   },
 };
 
 export const AnonymousUser: Story = {
-  args: { comment: { ...baseComment, user: null, writer: "익명" } as any },
+  args: { comment: { ...baseComment, user: null, writer: "익명" } },
 };
 
 export const LongContent: Story = {
@@ -60,6 +58,6 @@ export const LongContent: Story = {
       contents:
         "아주 긴 댓글 내용입니다. ".repeat(20) +
         "\n\n줄바꿈도 있고, 계속 길어집니다.",
-    } as any,
+    },
   },
 };

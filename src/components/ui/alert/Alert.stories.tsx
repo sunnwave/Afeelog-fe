@@ -1,5 +1,4 @@
-// src/components/commons/alert/Alert.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Alert, AlertTitle, AlertDescription, AlertIcon } from "./Alert";
 
 const meta: Meta<typeof Alert> = {

@@ -1,5 +1,4 @@
-// src/components/.../CommentUpdate.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { CommentUpdate } from "./CommentUpdate";
 
 const meta: Meta<typeof CommentUpdate> = {
