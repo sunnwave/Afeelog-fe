@@ -7,7 +7,6 @@ import { formatDate } from "@/shared/utils";
 type ProfileTone = "primary" | "white";
 
 export default function Profile({
-  // TODO: IBoard 대신 User 정보만 받도록 수정 필요
   record,
   size = "lg",
   tone = "white",
