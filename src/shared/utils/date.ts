@@ -4,7 +4,7 @@ import "moment/locale/ko";
 moment.locale("ko");
 
 export function formatDate(dateString: string): string {
-  return moment(dateString).format("YYYY.MM.DD");
+  return moment.utc(dateString).format("YYYY.MM.DD");
 }
 
 export function fromNow(dateString: string): string {
