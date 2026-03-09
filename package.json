@@ -9,7 +9,14 @@
     "lint": "eslint",
     "generate": "graphql-codegen",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "vitest",
+    "test:unit": "vitest --project unit",
+    "test:sb": "vitest --project storybook",
+    "test:unit:run": "vitest --project unit run",
+    "test:sb:run": "vitest --project storybook run"
+
+
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -41,6 +48,9 @@
     "@storybook/addon-vitest": "^10.2.6",
     "@storybook/nextjs-vite": "^10.2.6",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/apollo-upload-client": "^17.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -50,6 +60,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "eslint-plugin-storybook": "^10.2.6",
+    "jsdom": "^28.1.0",
     "playwright": "^1.58.1",
     "storybook": "^10.2.6",
     "tailwindcss": "^4",
